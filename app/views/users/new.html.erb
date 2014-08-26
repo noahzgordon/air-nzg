@@ -1,0 +1,32 @@
+<h1>Sign up for AirNZG</h1>
+
+<form action="<%= users_url %>" method="POST">
+  <%= auth_token %>
+
+  <label for="user-email">Email</label>
+  <input type="text"
+         name="user[email]"
+         id="user-email"
+         value="<%= @user.email %>">
+
+  <label for="user-password">Password</label>
+  <input type="password" name="user[password]" id="user-password">
+
+  <label for="user-fname">First Name</label>
+  <input type="text"
+         name="user[fname]"
+         id="user-fname"
+         value="<%= @user.fname %>">
+
+  <label for="user-lname">Last Name</label>
+  <input type="text"
+         name="user[lname]"
+         id="user-lname"
+         value="<%= @user.lname %>">
+
+  <button>Sign Up</button>
+</form>
+
+<h3>Or sign up using Facebook...</h3>
+
+<!-- Facebook Auth button goes here! -->

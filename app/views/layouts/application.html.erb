@@ -8,6 +8,18 @@
 </head>
 <body>
 
+  <% if !!flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if !!flash[:errors] %>
+    <ul class="errors">
+      <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
 <%= yield %>
 
 </body>

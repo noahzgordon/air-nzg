@@ -1,0 +1,20 @@
+<h1>Sign in below!</h1>
+
+<form action="<%= session_url %>" method="POST">
+  <%= auth_token %>
+
+  <label for="user-email">Email</label>
+  <input type="text"
+         name="user[email]"
+         id="user-email"
+         value="<%= @user.email %>">
+
+  <label for="user-password">Password</label>
+  <input type="password" name="user[password]" id="user-password">
+
+  <button>Sign In</button>
+</form>
+
+<h3>Or sign in with Facebook...</h3>
+
+<!-- Facebook Auth button goes here! -->
