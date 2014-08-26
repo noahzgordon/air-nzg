@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140826181035) do
 
   create_table "amenities", force: true do |t|
     t.integer  "listing_id"
-    t.string   "type"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
