@@ -39,20 +39,6 @@ h1, h3, p, li, input, button, label {
 
 /* STYLES */
 
-form {
-  text-align: center;
-}
-
-input {
-  display: block;
-  margin: auto;
-  border-bottom: 2px solid #ccc;
-}
-
-label: {
-  display: block;
-}
-
 header {
   display: block;
   position: fixed;
