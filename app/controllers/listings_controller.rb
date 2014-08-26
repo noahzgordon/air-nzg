@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
     end
 
     if listing_params[:accomodates]
-      @listings = @listings.where("accomodates <= ?", listing_params[:accomodates])
+      @listings = @listings.where("accomodates >= ?", listing_params[:accomodates])
     end
 
     if listing_params[:start] && listing_params[:end]
@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
       end
     end
 
+    @params = listing_params
     render :index
   end
 

@@ -13,6 +13,12 @@ u1 = User.create!(
   password: "batman"
 )
 
+u2 = User.create!(
+  fname: "Batman",
+  email: "batman@batcave.net",
+  password: "brucewayne"
+)
+
 l1 = u1.listings.create!(
   title: "Stately Wayne Manor",
   home_type: "mansion",
@@ -20,7 +26,17 @@ l1 = u1.listings.create!(
   accomodates: 1,
   term: "long",
   city: "New York",
-  price: 10_000_000
+  price: 5000
+)
+
+l2 = u2.listings.create!(
+  title: "The Batcave",
+  home_type: "cave",
+  room_type: "shared",
+  accomodates: 2,
+  term: "short",
+  city: "New York",
+  price: 50
 )
 
 l1.amenities.create!([

@@ -1,4 +1,54 @@
-<ul>
-<% @listings.each do |listing| %>
-  <li><%= listing.title %></li>
-<% end %>
+<section class="map">
+  MAP GOES HERE!
+</section>
+
+<section class="listing-params">
+  <form action="<%= listings_url %>" action="GET">
+
+  <!-- Hidden form inputs carry over search params from prev. page -->
+    <input type="hidden" name=listing[term] value="<%= @params[:term] %>">
+    <input type="hidden" name=listing[city] value="<%= @params[:city] %>">
+    <input type="hidden" name=listing[accomodates]
+           value="<%= @params[:accomodates] %>">
+
+    <strong>Dates:</strong>
+    <label for="listing-start">Start Date</label>
+    <input type="date" name="listing[start]" id="listing-start"
+           value="<%= @params[:start] %>">
+
+    <label for="listing-end">End Date</label>
+    <input type="date" name="listing[end]" id="listing-end"
+           value="<%= @params[:end] %>">
+    <br>
+
+    <strong>Room:</strong>
+    <label for="room-type-whole">Whole Apt/Home</label>
+    <input type="radio" name="listing[room_type]" value="whole"
+           id="room-type-whole">
+
+    <label for="room-type-private">Private Room</label>
+    <input type="radio" name="listing[room_type]" value="private"
+           id="room-type-private">
+
+    <label for="room-type-shared">Shared Room</label>
+    <input type="radio" name="listing[room_type]" value="shared"
+           id="room-type-shared">
+    <br>
+
+    <strong>Price:</strong>
+    <input type="number" name="listing[low_price]" placeholder="Low Price">
+    <input type="number" name="listing[high_price]" placeholder="High Price">
+    <br>
+
+    <button>Filter</button>
+  </form>
+</section>
+
+<section class="listing-list">
+  <h3>Listings</h3>
+  <ul>
+  <% @listings.each do |listing| %>
+    <li><%= listing.title %></li>
+  <% end %>
+</section>
+

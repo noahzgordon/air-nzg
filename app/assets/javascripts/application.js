@@ -12,5 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui/slider
 //= require turbolinks
 //= require_tree .
