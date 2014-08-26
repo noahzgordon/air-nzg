@@ -1,21 +1,22 @@
 class ListingsController < ApplicationController
   def index
     listing_params = params[:listing]
-    @listings = Listing
+    @listings = Listing.all
 
-    if listing_params[:city]
+    if listing_params[:city] && listing_params[:city] != ""
       @listings = @listings.where(city: listing_params[:city])
     end
 
-    if listing_params[:accomodates]
+    if listing_params[:accomodates] && listing_params[:accomodates] != ""
       @listings = @listings.where("accomodates >= ?", listing_params[:accomodates])
     end
 
-    if listing_params[:room_type]
+    if listing_params[:room_type] && listing_params[:room_type] != ""
       @listings = @listings.where(room_type: listing_params[:room_type])
     end
 
-    if listing_params[:low_price] && listing_params[:high_price]
+    if listing_params[:low_price] && listing_params[:high_price] &&
+       listing_params[:low_price] != "" && listing_params[:high_price] != ""
       @listings = @listings.where(
         "price >= ? AND price <= ?",
         listing_params[:low_price],
@@ -23,7 +24,8 @@ class ListingsController < ApplicationController
       )
     end
 
-    if listing_params[:start] && listing_params[:end]
+    if listing_params[:start] && listing_params[:end] &&
+       listing_params[:start] != "" && listing_params[:start] != ""
       @listings = @listings.includes(:unavailable_ranges).select do |listing|
         listing.available_range?(listing_params[:start], listing_params[:end])
       end

@@ -13,19 +13,37 @@
 .listing-params {
   display: block;
   float: left;
-  width: 50%;
+  width: 55%;
   padding: 20px;
 }
 
 .listing-params input {
   border: 1px solid black;
-  width: 130px;
+  margin: 20px;
+  margin-right: 5px;
 }
 
+.listing-params input[type="date"] {
+  border: 1px solid black;
+  width: 150px;
+}
+
+.listing-params button {
+  display: block;
+  margin: auto;
+  padding: 5px 15px;
+  background: #555;
+  color: #fff;
+}
+
+//.listing-params button:active {
+//  border-top: 2px solid #222;
+//  box-sizing: border-box;
+//}
 
 .listing-list {
   display: block;
   float: left;
-  width: 50%;
+  width: 55%;
   padding: 20px;
 }
