@@ -94,8 +94,5 @@ h3 {
   margin: auto;
   display: block;
   border: 1px solid black;
-}
-
-.listing-search > label {
-
+  text-align: center;
 }

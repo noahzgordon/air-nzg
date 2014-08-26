@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826151021) do
+ActiveRecord::Schema.define(version: 20140826164457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listings", force: true do |t|
+    t.integer  "user_id"
+    t.string   "term"
+    t.string   "city"
+    t.integer  "accomodates"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "beds"
+    t.float    "baths"
+    t.float    "price"
+    t.string   "room_type"
+    t.string   "home_type"
+    t.string   "address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listings", ["accomodates"], name: "index_listings_on_accomodates", using: :btree
+  add_index "listings", ["baths"], name: "index_listings_on_baths", using: :btree
+  add_index "listings", ["beds"], name: "index_listings_on_beds", using: :btree
+  add_index "listings", ["city"], name: "index_listings_on_city", using: :btree
+  add_index "listings", ["home_type"], name: "index_listings_on_home_type", using: :btree
+  add_index "listings", ["latitude", "longitude"], name: "index_listings_on_latitude_and_longitude", using: :btree
+  add_index "listings", ["price"], name: "index_listings_on_price", using: :btree
+  add_index "listings", ["room_type"], name: "index_listings_on_room_type", using: :btree
+  add_index "listings", ["term"], name: "index_listings_on_term", using: :btree
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false
