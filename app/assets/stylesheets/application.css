@@ -20,6 +20,7 @@ html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label {
   padding: 0;
   margin: 0;
   border: 0;
+  outline: none;
   font: inherit;
 }
 
@@ -76,7 +77,7 @@ main {
 
 h1 {
   text-align: center;
-  margin: 100px;
+  margin: 60px;
   font-size: 40px;
 }
 
@@ -86,7 +87,7 @@ h3 {
   font-size: 25px;
 }
 
-.listing-search {
+form {
   display: block;
   margin: auto;
   text-align: center;

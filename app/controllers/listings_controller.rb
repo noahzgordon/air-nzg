@@ -39,15 +39,37 @@ class ListingsController < ApplicationController
   end
 
   def new
+    @listing = current_user.listings.new
+    render :new
   end
 
   def create
+    @listing = current_user.listings.new(listing_params)
+
+    if @listing.save
+      flash[:notice] = "Listing created. Now tell the world more!"
+      redirect_to edit_listing_url(@listing)
+    else
+      flash.now[:errors] = @listing.errors.full_messages
+      render :new
+    end
   end
 
   def edit
+    @listing = current_user.listings.find(params[:id])
+    render :edit
   end
 
   def update
+    @listing = current_user.listings.find(params[:id])
+
+    if @listing.update(listing_params)
+      flash[:notice] = "Listing updated!"
+      redirect_to edit_listing_url(@listing)
+    else
+      flash[:errors] = @listing.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
@@ -57,7 +79,13 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(
-
+      :title,
+      :city,
+      :home_type,
+      :room_type,
+      :accomodates,
+      :term,
+      :price
     )
   end
 end
