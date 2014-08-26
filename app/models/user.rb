@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :listings
+
   validates :email, :password_digest, presence: true, uniqueness: true
   validates :fname, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
