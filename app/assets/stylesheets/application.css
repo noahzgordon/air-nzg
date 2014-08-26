@@ -16,7 +16,7 @@
 
 /* RESETS */
 
-html, body, header, footer, div, ul, li, h1, h3, p, form, input, button {
+html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label {
   padding: 0;
   margin: 0;
   border: 0;
@@ -82,4 +82,20 @@ h3 {
   text-align: center;
   margin: 50px;
   font-size: 25px;
+}
+
+.listing-search {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+.listing-search > input {
+  margin: auto;
+  display: block;
+  border: 1px solid black;
+}
+
+.listing-search > label {
+
 }
