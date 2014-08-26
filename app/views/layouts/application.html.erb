@@ -8,19 +8,49 @@
 </head>
 <body>
 
-  <% if !!flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
+  <header class="group">
+    <a href="<%= home_url %>" class="logo">AirNZG</a>
 
-  <% if !!flash[:errors] %>
-    <ul class="errors">
-      <% flash[:errors].each do |error| %>
-        <li><%= error %></li>
+    <nav class="header-nav group">
+
+      <% if signed_in? %>
+        <span class="user-info"><%= current_user.fname %>
+          <ul class="dropdown">
+            <li><a href="#">Your Listings</a></li>
+            <li><a href="#">Your Bookings</a></li>
+            <li><a href="#">Your Wishlist</a></li>
+            <li><a href="#">Edit Profile</a></li>
+            <li><a href="#">Account</a></li>
+            <li><%= link_to 'Log Out', session_url, method: :delete %></li>
+          </ul>
+        </span>
+        <a href="#">Messages</a>
+        <a href="#">Notifications</a>
+        <a href="#">New Listing</a>
+      <% else %>
+        <a href="<%= new_session_url %>">Sign In</a>
+        <a href="<%= new_user_url %>">Sign Up</a>
+        <a href="#">Help</a>
       <% end %>
-    </ul>
-  <% end %>
 
-<%= yield %>
+    </nav>
+  </header>
 
+  <main>
+
+    <% if !!flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
+    <% if !!flash[:errors] %>
+      <ul class="errors">
+        <% flash[:errors].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= yield %>
+  </main>
 </body>
 </html>

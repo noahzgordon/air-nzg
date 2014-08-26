@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
     if sign_in(@user)
       flash[:notice] = "Welcome back!"
-      redirect_to :back
+      redirect_to home_url
     else
       flash.now[:errors] = ["Invalid email or password!"]
       render :new
