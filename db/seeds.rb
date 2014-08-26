@@ -34,9 +34,9 @@ l2 = u2.listings.create!(
   home_type: "cave",
   room_type: "shared",
   accomodates: 2,
-  term: "short",
+  term: "long",
   city: "New York",
-  price: 50
+  price: 500
 )
 
 l1.amenities.create!([

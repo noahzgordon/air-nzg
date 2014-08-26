@@ -24,20 +24,25 @@
     <strong>Room:</strong>
     <label for="room-type-whole">Whole Apt/Home</label>
     <input type="radio" name="listing[room_type]" value="whole"
-           id="room-type-whole">
+           id="room-type-whole"
+           <%= "checked" if @params[:room_type] == "whole" %>>
 
     <label for="room-type-private">Private Room</label>
     <input type="radio" name="listing[room_type]" value="private"
-           id="room-type-private">
+           id="room-type-private"
+           <%= "checked" if @params[:room_type] == "private" %>>
 
     <label for="room-type-shared">Shared Room</label>
     <input type="radio" name="listing[room_type]" value="shared"
-           id="room-type-shared">
+           id="room-type-shared"
+           <%= "checked" if @params[:room_type] == "shared" %>>
     <br>
 
     <strong>Price:</strong>
-    <input type="number" name="listing[low_price]" placeholder="Low Price">
-    <input type="number" name="listing[high_price]" placeholder="High Price">
+    <input type="number" name="listing[low_price]" placeholder="Low Price"
+           value="<%= @params[:low_price] %>">
+    <input type="number" name="listing[high_price]" placeholder="High Price"
+           value="<%= @params[:high_price] %>">
     <br>
 
     <button>Filter</button>

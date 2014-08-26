@@ -23,9 +23,11 @@ html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label {
   font: inherit;
 }
 
-h1, h3, p, li, input, button {
+h1, h3, p, li, input, button, label {
   font-family: sans-serif;
 }
+
+
 
 /* CLEARFIX */
 
@@ -36,6 +38,20 @@ h1, h3, p, li, input, button {
 }
 
 /* STYLES */
+
+form {
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: auto;
+  border-bottom: 2px solid #ccc;
+}
+
+label: {
+  display: block;
+}
 
 header {
   display: block;

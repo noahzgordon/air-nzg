@@ -1,16 +1,18 @@
 <h1>Sign in below!</h1>
 
-<form action="<%= session_url %>" method="POST">
+<form action="<%= session_url %>" method="POST" class="user-form">
   <%= auth_token %>
 
-  <label for="user-email">Email</label>
+
   <input type="text"
          name="user[email]"
          id="user-email"
          value="<%= @user.email %>">
+  <label for="user-email">Email</label>
 
-  <label for="user-password">Password</label>
   <input type="password" name="user[password]" id="user-password">
+  <label for="user-password">Password</label>
+  <br>
 
   <button>Sign In</button>
 </form>
