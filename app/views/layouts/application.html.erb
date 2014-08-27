@@ -15,6 +15,7 @@
 
       <% if signed_in? %>
         <span class="user-info"><%= current_user.fname %>
+					<img src="<%= current_user.avatar.url(:thumbnail) %>">
 					<div class="invis"></div>
           <ul class="dropdown">
             <li><a href="<%= my_listings_url %>">Your Listings</a></li>

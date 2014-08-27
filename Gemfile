@@ -17,7 +17,7 @@ gem 'jquery-ui-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-gem "paperclip", "~> 4.1"
+gem "paperclip"
 gem "figaro"
 gem "aws-sdk"
 

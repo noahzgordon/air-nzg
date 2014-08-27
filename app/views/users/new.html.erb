@@ -1,6 +1,7 @@
 <h1>Sign up for AirNZG</h1>
 
-<form action="<%= users_url %>" method="POST" class="user-form">
+<form action="<%= users_url %>" method="POST" class="user-form"
+	    enctype="multipart/form-data">
   <%= auth_token %>
 
   <input type="text"
@@ -27,6 +28,8 @@
          value="<%= @user.lname %>">
   <label for="user-lname">Last Name</label>
   <br>
+	
+	<input type="file" name="user[avatar]">
 
   <button>Sign Up</button>
 </form>
