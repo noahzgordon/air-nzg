@@ -15,7 +15,6 @@
 
       <% if signed_in? %>
         <span class="user-info"><%= current_user.fname %>
-					<img src="<%= current_user.avatar.url(:thumbnail) %>">
 					<div class="invis"></div>
           <ul class="dropdown">
             <li><a href="<%= my_listings_url %>">Your Listings</a></li>
@@ -26,6 +25,7 @@
             <li><%= link_to 'Log Out', session_url, method: :delete %></li>
           </ul>
         </span>
+				<%= image_tag current_user.avatar.url(:thumb) %>
         <a href="#">Messages</a>
         <a href="#">Notifications</a>
         <a href="<%= new_listing_url %>">New Listing</a>

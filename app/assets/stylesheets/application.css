@@ -60,10 +60,14 @@ header > nav {
   float: right;
 }
 
-header a, header span {
+header a, header span, header img {
 	padding: 10px;
 	display: block;
 	float: left;
+}
+
+header img {
+	padding-top: 0px;
 }
 
 ul.dropdown {

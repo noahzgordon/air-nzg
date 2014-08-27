@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "Welcome to the site!"
+      sign_in(@user)
       redirect_to home_url
     else
       flash.now[:errors] = @user.errors.full_messages

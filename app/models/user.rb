@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   
   has_attached_file(
     :avatar, 
-    styles: { thumbnail: "100x100", medium: "300x300"  }
+    styles: { thumb: "40x60#", small: "100x100#", medium: "300x300#" },
+    default_url: "/images/missing_:style.png"
   )
   
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
