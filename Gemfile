@@ -17,6 +17,10 @@ gem 'jquery-ui-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem "paperclip", "~> 4.1"
+gem "figaro"
+gem "aws-sdk"
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
