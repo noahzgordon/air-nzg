@@ -8,6 +8,16 @@ class Booking < ActiveRecord::Base
   
   before_save :default_to_pending_status
   
+  def approve!
+    self.status = "APPROVED"
+    self.save!
+  end
+  
+  def deny!
+    self.status = "DENIED"
+    self.save!
+  end
+  
   private
   
   def default_to_pending_status
