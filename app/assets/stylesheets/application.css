@@ -24,7 +24,7 @@ html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label {
   font: inherit;
 }
 
-h1, h3, p, li, input, button, label {
+h1, h3, p, li, input, button, label, td {
   font-family: sans-serif;
 }
 

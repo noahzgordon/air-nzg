@@ -1,0 +1,63 @@
+<section class="listing-head">
+	<div class="user-block">
+		<img src="#">
+		<a href="#">contact</a>
+	</div>
+	
+	<div class="basic-info">
+		<h3 class="listing-title"><%= @listing.title %></h4>
+		<p class="listing-info"><%= @listing.home_type.capitalize %> |
+			Accomodates <%= @listing.accomodates %></p>
+		<p class="score">Average Score: #</p>
+	</div>
+	
+	<div class="request-form">
+		<% price_per = @listing.term == "long" ? "per month" : "per day" %>
+		<p>Price: $<%= @listing.price %>0</p>
+		<form action="#" method="POST">
+		  <label for="booking-start">Check In</label>
+		  <input type="date" name="booking[start]" id="booking-start">
+
+		  <label for="booking-end">Check Out</label>
+		  <input type="date" name="booking[end]" id="booking-end">
+			
+			<button>Request</button>
+		</form>			
+	</div>
+</section>
+
+<section class="listing-main">
+	<h3>About This Listing</h3>
+	<% if @listing.description %>
+		<p><%= @listing.description %></p>
+	
+	<% else %>
+		<p>There is no description for this listing.</p>
+	<% end %>
+	
+	<div class="photo-galery">
+		Photos go here!
+	</div>
+	
+	<h3>More Info</h3>
+	<table>
+		<tr>
+			<td>Room Type</td>
+			<td><%= @listing.room_type %></td>
+		</tr>
+		<tr>
+			<td>Home Type</td>
+			<td><%= @listing.home_type %></td>
+		</tr>
+		<% if @listing.amenities.any? %>
+		<tr>
+			<td>Amenities</td>
+			<td><ul>
+				<% @listing.amenities.each do |amenity| %>
+					<li><%= amenity.name %></li>
+				<% end %>
+			</ul></td>
+		</tr>
+		<% end %>
+						
+</section>

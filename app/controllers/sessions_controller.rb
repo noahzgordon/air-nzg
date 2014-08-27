@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    redirect_to home_url
+    redirect_to new_session_url
   end
 
   private

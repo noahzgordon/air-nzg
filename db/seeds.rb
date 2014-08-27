@@ -25,7 +25,7 @@ l1 = u1.listings.create!(
   room_type: "private",
   accomodates: 1,
   term: "long",
-  city: "New York",
+  city: "Chicago, United States",
   price: 5000
 )
 
@@ -35,7 +35,7 @@ l2 = u2.listings.create!(
   room_type: "shared",
   accomodates: 2,
   term: "long",
-  city: "New York",
+  city: "Chicago, United States",
   price: 500
 )
 
