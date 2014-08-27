@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :listings
+  
+  has_attached_file :avatar, styles: { thumbnail: "100x100#", medium: "300x300#" }
+  validates_attachment_content_type :beard_photo, content_type: /\Aimage\/.*\Z/
 
   validates :email, :password_digest, presence: true, uniqueness: true
   validates :fname, presence: true
