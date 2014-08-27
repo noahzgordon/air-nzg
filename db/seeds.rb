@@ -6,20 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-u1 = User.create!(
+bruce = User.create!(
   fname: "Bruce",
   lname: "Wayne",
   email: "bruce@wayneenterprises.com",
   password: "batman"
 )
 
-u2 = User.create!(
+batman = User.create!(
   fname: "Batman",
   email: "batman@batcave.net",
   password: "brucewayne"
 )
 
-l1 = u1.listings.create!(
+superman = User.create!(
+  fname: "Superman",
+  email: "superman@fortress.sol",
+  password: "superman"
+)
+
+l1 = bruce.listings.create!(
   title: "Stately Wayne Manor",
   home_type: "mansion",
   room_type: "private",
@@ -29,7 +35,7 @@ l1 = u1.listings.create!(
   price: 5000
 )
 
-l2 = u2.listings.create!(
+l2 = batman.listings.create!(
   title: "The Batcave",
   home_type: "cave",
   room_type: "shared",

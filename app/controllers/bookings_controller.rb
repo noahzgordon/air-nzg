@@ -24,6 +24,7 @@ class BookingsController < ApplicationController
     @booking = current_user.booking_requests.find(params[:id])
     @booking.approve!
     
+    flash[:notice] = "Booking approved! All conflicting pending requests have been automatically denied."
     redirect_to my_booking_requests_url
   end
   

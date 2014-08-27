@@ -76,6 +76,12 @@
 	width: 140px;
 }
 
+.listing-head, .listing-main {
+	display: block;
+	width: 1300px;
+	margin: auto;
+}
+
 .basic-info {
 	width: 600px;
 	text-align: center;
@@ -95,10 +101,4 @@
 .request-form > form > input, .request-form > form > button {
 	margin: 5px;
 	border: 1px solid black;
-}
-
-.listing-main {
-	display: block;
-	min-height: 500px;
-	width: 1140px;
 }
