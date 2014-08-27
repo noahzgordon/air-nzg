@@ -60,7 +60,7 @@ header > nav {
   float: right;
 }
 
-header a, header span, header img {
+header a, header span, header img, header div {
 	padding: 10px;
 	display: block;
 	float: left;
