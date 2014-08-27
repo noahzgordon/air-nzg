@@ -47,3 +47,19 @@
   width: 55%;
   padding: 20px;
 }
+
+.my-listings-toggler {
+	width: 300px;
+	height: 400px;
+	display: block;
+	float: left;
+	border: 1px solid black;
+}
+
+.my-listings-list {
+	width: 500px;
+	min-height: 400px;
+	display: block;
+	float: right;
+	border: 1px solid black;
+}

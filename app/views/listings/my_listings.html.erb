@@ -1,0 +1,20 @@
+<section class="my-listings-toggler">
+	<ul>
+		<li>My Listings</li>
+		<li><a href="#">My Bookings</a></li>
+	</ul>
+</section>
+
+<section class="my-listings-list group">
+	<% if @listings.any? %>
+		<ul>
+			<% @listings.each do |listing| %>
+				<li><%= listing.title %></li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>You haven't made any listings.
+			<a href="<%= new_listing_url %>">Make one now!</a>
+		</p>
+	<% end %>
+</section>

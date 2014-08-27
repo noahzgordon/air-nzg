@@ -36,6 +36,8 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listing = Listing.find(params[:id])
+    render :show
   end
 
   def new
@@ -73,6 +75,11 @@ class ListingsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  def my_listings
+    @listings = current_user.listings
+    render :my_listings
   end
 
   private

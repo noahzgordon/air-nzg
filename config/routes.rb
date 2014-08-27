@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :listings
+  get 'my_listings', to: 'listings#my_listings'
 
   root to: "static_pages#home", as: "home"
 end

@@ -15,8 +15,9 @@
 
       <% if signed_in? %>
         <span class="user-info"><%= current_user.fname %>
+					<div class="invis"></div>
           <ul class="dropdown">
-            <li><a href="#">Your Listings</a></li>
+            <li><a href="<%= my_listings_url %>">Your Listings</a></li>
             <li><a href="#">Your Bookings</a></li>
             <li><a href="#">Your Wishlist</a></li>
             <li><a href="#">Edit Profile</a></li>
