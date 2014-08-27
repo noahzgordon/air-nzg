@@ -37,36 +37,51 @@
 
 <section class="listing-main">
 	<h3>About This Listing</h3>
-	<% if @listing.description %>
-		<p><%= @listing.description %></p>
 	
-	<% else %>
-		<p>There is no description for this listing.</p>
+	<article class="unavailable-list">
+		<p>Dates Unavailable</p>
+		<ul>
+			<% @listing.bookings.where(status: "APPROVED").concat(@listing.unavailable_ranges).each do |obj| %>
+			
+				<li><%= obj.start_date %> - <%= obj.end_date %></li>
+			<% end %>
+		</ul>
+	</article>
+	
+	<article class="description">
+		<% if @listing.description %>
+			<p><%= @listing.description %></p>
+		<% else %>
+			<p>There is no description for this listing.</p>
 	<% end %>
+	</article>
 	
-	<div class="photo-galery">
+	<article class="photo-galery">
 		Photos go here!
 	</div>
 	
-	<h3>More Info</h3>
-	<table>
-		<tr>
-			<td>Room Type</td>
-			<td><%= @listing.room_type %></td>
-		</tr>
-		<tr>
-			<td>Home Type</td>
-			<td><%= @listing.home_type %></td>
-		</tr>
-		<% if @listing.amenities.any? %>
-		<tr>
-			<td>Amenities</td>
-			<td><ul>
-				<% @listing.amenities.each do |amenity| %>
-					<li><%= amenity.name %></li>
-				<% end %>
-			</ul></td>
-		</tr>
-		<% end %>
+	<article class="more-info">
+		<h3>More Info</h3>
+		<table>
+			<tr>
+				<td>Room Type</td>
+				<td><%= @listing.room_type.titleize %></td>
+			</tr>
+			<tr>
+				<td>Home Type</td>
+				<td><%= @listing.home_type.titleize %></td>
+			</tr>
+			<% if @listing.amenities.any? %>
+			<tr>
+				<td>Amenities</td>
+				<td><ul>
+					<% @listing.amenities.each do |amenity| %>
+						<li><%= amenity.name %></li>
+					<% end %>
+				</ul></td>
+			</tr>
+			<% end %>
+		</table>
+	</article>
 						
 </section>

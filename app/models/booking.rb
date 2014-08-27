@@ -9,13 +9,13 @@ class Booking < ActiveRecord::Base
   
   before_save :default_to_pending_status
   def approve!
-      if self.pending?
-        Booking.transaction do
-          self.update(status: "APPROVED")
-          overlapping_pending_requests.each { |request| request.deny! }
-        end
+    if self.pending?
+      Booking.transaction do
+        self.update(status: "APPROVED")
+        overlapping_pending_requests.each { |request| request.deny! }
       end
     end
+  end
 
   def deny!
     self.update(status: "DENIED")

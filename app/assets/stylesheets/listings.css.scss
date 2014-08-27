@@ -82,6 +82,10 @@
 	margin: auto;
 }
 
+.listing-head {
+	height: 230px;
+}
+
 .basic-info {
 	width: 600px;
 	text-align: center;
@@ -101,4 +105,9 @@
 .request-form > form > input, .request-form > form > button {
 	margin: 5px;
 	border: 1px solid black;
+}
+
+.listing-main > article {
+	display: block;
+	padding: 20px 100px;
 }
