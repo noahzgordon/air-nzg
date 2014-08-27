@@ -2,12 +2,16 @@ class Booking < ActiveRecord::Base
   belongs_to :user
   belongs_to :listing
   
+  has_one :listing_owner, through: :listing, source: :user
+  has_many :notifications, as: :notifiable, inverse_of: :notifiable, dependent: :destroy
+  
   validates :start_date, :end_date, :user, :listing, presence: true
   validate :end_date_is_after_start_date
   validate :start_date_is_not_past
   validate :does_not_overlap_with_approved_request_or_unavailable_range
   
   before_save :default_to_pending_status
+  
   def approve!
     if self.pending?
       Booking.transaction do
@@ -18,7 +22,8 @@ class Booking < ActiveRecord::Base
   end
 
   def deny!
-    self.update(status: "DENIED")
+    self.update!(status: "DENIED")
+    finalize_booking
   end
 
   def pending?

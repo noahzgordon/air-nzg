@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :bookings
   
   has_many :booking_requests, through: :listings, source: :bookings
+  has_many :notifications, inverse_of: :user, counter_cache: true
   
   has_attached_file(
     :avatar, 
