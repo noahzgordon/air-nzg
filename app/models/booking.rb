@@ -11,6 +11,7 @@ class Booking < ActiveRecord::Base
   validate :does_not_overlap_with_approved_request_or_unavailable_range, on: :create
   
   before_save :default_to_pending_status
+  after_create :make_creation_notification
   
   enum status: [:pending, :denied, :approved]
   
@@ -29,6 +30,8 @@ class Booking < ActiveRecord::Base
     self.denied!
     finalize_booking
   end
+  
+  private
 
   def overlapping_requests
     if self.persisted?
@@ -81,5 +84,14 @@ class Booking < ActiveRecord::Base
   end
   
   def finalize_booking
+    if self.approved?
+      notifications.create(event_id: 2, user_id: user.id)
+    elsif self.denied?
+      notifications.create(event_id: 3, user_id: user.id)
+    end
+  end
+  
+  def make_creation_notification
+    notifications.create(event_id: 1, user_id: listing_owner.id)
   end
 end

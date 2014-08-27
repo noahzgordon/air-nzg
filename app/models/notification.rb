@@ -13,7 +13,7 @@ class Notification < ActiveRecord::Base
   belongs_to :notifiable, inverse_of: :notifications, polymorphic: true
   
   validates :notifiable, :user, presence: true
-  validates :event, inclusion: { in: EVENTS }
+  validates :event_id, inclusion: { in: EVENTS }
   
   def url
     case self.event_name
