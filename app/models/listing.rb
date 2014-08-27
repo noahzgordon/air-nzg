@@ -2,6 +2,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :unavailable_ranges
   has_many :amenities
+  has_many :bookings
 
   validates :title, presence: true, uniqueness: true
   validates :home_type, :room_type, :accomodates, :term, :city, :price,

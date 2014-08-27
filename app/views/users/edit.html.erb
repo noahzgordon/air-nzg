@@ -1,0 +1,47 @@
+<h1>Update your Profile</h1>
+
+<form action="<%= user_url(@user) %>" method="POST" class="user-form"
+	    enctype="multipart/form-data">
+  <%= auth_token %>
+	
+	<input type="hidden" name="_method" value="PATCH">
+
+  <input type="text"
+         name="user[fname]"
+         id="user-fname"
+         value="<%= @user.fname %>">
+  <label for="user-fname">First Name</label>
+
+
+  <input type="text"
+         name="user[lname]"
+         id="user-lname"
+         value="<%= @user.lname %>">
+  <label for="user-lname">Last Name</label>
+  <br>
+	
+  <input type="text"
+         name="user[locale]"
+         id="user-locale"
+         value="<%= @user.locale %>"
+				 list="cities">
+  <label for="user-lname">What city do you live in?</label>
+  <br>
+	
+  <datalist id="cities">
+    <option value="New York, United States">
+    <option value="Chicago, United States">
+    <option value="Los Angeles, United States">
+    <option value="Tokyo, Japan">
+  </datalist>
+	
+	<textarea name="user[description]" id="user-description" value="<%= @user.description %>"></textarea>
+	<br>
+	<label for="user-description">Tell us a bit about yourself.</label>
+	<br>
+
+	<input type="file" name="user[avatar]" id="user-avatar">
+	<label for="user-avatar">Upload an Avatar</label>
+
+  <button>Update Profile</button>
+</form>

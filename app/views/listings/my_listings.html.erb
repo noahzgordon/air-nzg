@@ -9,7 +9,7 @@
 	<% if @listings.any? %>
 		<ul>
 			<% @listings.each do |listing| %>
-				<li><%= listing.title %></li>
+				<li><a href="<%= listing_url(listing) %>"><%= listing.title %></a></li>
 			<% end %>
 		</ul>
 	<% else %>

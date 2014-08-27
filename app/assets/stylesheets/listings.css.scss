@@ -63,3 +63,42 @@
 	float: right;
 	border: 1px solid black;
 }
+
+.listing-head > div {
+	display: block;
+	float: left;
+	height: 150px;
+	padding: 20px;
+}
+
+.user-block {
+	text-align: center;
+	width: 140px;
+}
+
+.basic-info {
+	width: 600px;
+	text-align: center;
+	margin: auto;
+}
+
+.request-form {
+	width: 400px;
+	float: right;
+	border: 5px solid #888;
+}
+
+.request-form > form {
+	padding: 30px;
+}
+
+.request-form > form > input, .request-form > form > button {
+	margin: 5px;
+	border: 1px solid black;
+}
+
+.listing-main {
+	display: block;
+	min-height: 500px;
+	width: 1140px;
+}

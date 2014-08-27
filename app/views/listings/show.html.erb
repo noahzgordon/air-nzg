@@ -1,6 +1,9 @@
 <section class="listing-head">
 	<div class="user-block">
-		<img src="#">
+		<%= @listing.user.fname %>
+		<a href="<%= user_url(@listing.user) %>">
+			<%= image_tag @listing.user.avatar.url(:small) %>
+		</a>
 		<a href="#">contact</a>
 	</div>
 	
@@ -13,13 +16,19 @@
 	
 	<div class="request-form">
 		<% price_per = @listing.term == "long" ? "per month" : "per day" %>
-		<p>Price: $<%= @listing.price %>0</p>
-		<form action="#" method="POST">
+		<p>Price: $<%= @listing.price %></p>
+		<form action="<%= bookings_url %>" method="POST">
+			<%= auth_token %>
+			
 		  <label for="booking-start">Check In</label>
-		  <input type="date" name="booking[start]" id="booking-start">
+		  <input type="date" name="booking[start_date]" id="booking-start">
+			<br>
 
 		  <label for="booking-end">Check Out</label>
-		  <input type="date" name="booking[end]" id="booking-end">
+		  <input type="date" name="booking[end_date]" id="booking-end">
+			<br>
+			
+			<input type="hidden" name="booking[listing_id]" value="<%= @listing.id %>">
 			
 			<button>Request</button>
 		</form>			

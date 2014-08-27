@@ -8,12 +8,29 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:notice] = "Welcome to the site!"
+      flash[:notice] = "Thank you for signing up! Now please fill in some more information about yourself."
       sign_in(@user)
-      redirect_to home_url
+      redirect_to edit_user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
+    end
+  end
+  
+  def edit
+    @user = current_user
+    render :edit
+  end
+  
+  def update
+    @user = current_user
+    
+    if @user.update(user_params)
+      flash[:notice] = "Profile updated!"
+      redirect_to home_url
+    else
+      flash.now[:errors] = @user.errors.full_messages
+      render :edit
     end
   end
 

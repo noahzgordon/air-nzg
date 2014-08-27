@@ -20,7 +20,7 @@
             <li><a href="<%= my_listings_url %>">Your Listings</a></li>
             <li><a href="#">Your Bookings</a></li>
             <li><a href="#">Your Wishlist</a></li>
-            <li><a href="#">Edit Profile</a></li>
+            <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
             <li><a href="#">Account</a></li>
             <li><%= link_to 'Log Out', session_url, method: :delete %></li>
           </ul>

@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
   has_many :listings
+  has_many :bookings
+  
+  has_many :booking_requests, through: :listings, source: :bookings
   
   has_attached_file(
     :avatar, 
-    styles: { thumb: "40x60#", small: "100x100#", medium: "300x300#" },
+    styles: { thumb: "40x40#", small: "100x100#", medium: "300x300#" },
     default_url: "/images/missing_:style.png"
   )
   
