@@ -27,7 +27,7 @@
         </span>
 				<%= image_tag current_user.avatar.url(:thumb) %>
         <a href="#">Messages</a>
-        <a href="#">Notifications</a> <div class="notif-num"><%= current_user.notifications.size %></div>
+        <a href="#">Notifications</a> <div class="notif-num"><%#= current_user.notifications.size %></div>
         <a href="<%= new_listing_url %>">New Listing</a>
       <% else %>
         <a href="<%= new_session_url %>">Sign In</a>

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_signed_in, only: [:edit, :update]
+  before_action :require_not_signed_in, only: [:new, :create]
+  
   def new
     @user = User.new()
     render :new

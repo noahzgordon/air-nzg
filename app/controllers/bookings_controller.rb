@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :require_signed_in
+  
   def create
     @booking = current_user.bookings.new(booking_params)
     

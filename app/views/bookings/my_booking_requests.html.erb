@@ -10,15 +10,15 @@
 		<ul>
 			<% @bookings.each do |booking| %>
 				<li><%= booking.user.fname %> | Dates requested:	<%= booking.start_date %> - <%= booking.end_date %></li>
-				<% if booking.status == "PENDING" %>
+				<% if booking.pending? %>
 					<li>
 						<%= button_to "Approve", approve_booking_url(booking), method: :patch %>
 						<%= button_to "Deny", deny_booking_url(booking), method: :patch %>
 					</li>
-				<% elsif booking.status == "APPROVED" %>
-					<li>APPROVED</li>
-				<% elsif booking.status == "DENIED" %>
-					<li>DENIED</li>
+				<% elsif booking.approved? %>
+					<li>Approved</li>
+				<% elsif booking.denied? %>
+					<li>Denied</li>
 				<% end %>
 			<% end %>
 		</ul>

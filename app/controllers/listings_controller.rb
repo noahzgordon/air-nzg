@@ -1,4 +1,6 @@
 class ListingsController < ApplicationController
+  before_action :require_signed_in, only: [:new, :create, :edit, :update]
+  
   def index
     listing_params = params[:listing]
     @listings = Listing.all

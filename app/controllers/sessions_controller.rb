@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :require_not_signed_in, only: [:new, :create]
+  
   def new
     @user = User.new
   end

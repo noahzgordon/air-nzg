@@ -41,7 +41,7 @@
 	<article class="unavailable-list">
 		<p>Dates Unavailable</p>
 		<ul>
-			<% @listing.bookings.where(status: "APPROVED").concat(@listing.unavailable_ranges).each do |obj| %>
+			<% @listing.bookings.approved.concat(@listing.unavailable_ranges).each do |obj| %>
 			
 				<li><%= obj.start_date %> - <%= obj.end_date %></li>
 			<% end %>

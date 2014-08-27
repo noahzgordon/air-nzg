@@ -8,29 +8,27 @@ class Booking < ActiveRecord::Base
   validates :start_date, :end_date, :user, :listing, presence: true
   validate :end_date_is_after_start_date
   validate :start_date_is_not_past
-  validate :does_not_overlap_with_approved_request_or_unavailable_range
+  validate :does_not_overlap_with_approved_request_or_unavailable_range, on: :create
   
   before_save :default_to_pending_status
+  
+  enum status: [:pending, :denied, :approved]
   
   def approve!
     if self.pending?
       Booking.transaction do
-        self.update(status: "APPROVED")
+        self.approved!
         overlapping_pending_requests.each { |request| request.deny! }
       end
     end
-  end
-
-  def deny!
-    self.update!(status: "DENIED")
+    
     finalize_booking
   end
 
-  def pending?
-    self.status == "PENDING"
+  def deny!
+    self.denied!
+    finalize_booking
   end
-
-  private
 
   def overlapping_requests
     if self.persisted?
@@ -55,11 +53,11 @@ class Booking < ActiveRecord::Base
   end
 
   def overlapping_pending_requests
-    overlapping_requests.where(status: "PENDING")
+    overlapping_requests.pending
   end
 
   def overlapping_approved_requests
-    overlapping_requests.where(status: "APPROVED")
+    overlapping_requests.approved
   end
 
   def does_not_overlap_with_approved_request_or_unavailable_range
@@ -69,7 +67,7 @@ class Booking < ActiveRecord::Base
   end
   
   def default_to_pending_status
-    self.status ||= "PENDING"
+    self.status ||= "pending"
   end
   
   def end_date_is_after_start_date
@@ -80,5 +78,8 @@ class Booking < ActiveRecord::Base
   def start_date_is_not_past
     return if start_date.nil?
     errors.add(:start_date, "must be a present or future date.") if start_date < Date.today
+  end
+  
+  def finalize_booking
   end
 end
