@@ -6,4 +6,10 @@ module ApplicationHelper
           value="#{form_authenticity_token}">
     HTML
   end
+  
+  def cities_datalist
+    <<-HTML.html_safe
+    
+    HTML
+  end
 end

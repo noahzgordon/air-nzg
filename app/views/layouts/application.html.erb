@@ -14,8 +14,29 @@
     <nav class="header-nav group">
 
       <% if signed_in? %>
+				<article class="notifications">
+	      	<a href="#">Notifications</a> 
+					<div class="notif-num">
+						<%= current_user.notifications.size %>
+					</div>
+					<ul class="dropdown">
+						<%= render partial: "notifications/notification", 
+						collection: current_user.notifications %>
+					</ul>
+				</article>
+			
+	      <article class="messages">
+					<a href="#">Messages</a>
+				</article>
+				
+				<figure class="user-thumbnail">
+					<%= image_tag current_user.avatar.url(:thumb) %>
+				</figure>
+				
         <article class="user-info">
-					<a href="#"><%= current_user.fname %></a>
+					<a href="#">
+						<%= current_user.fname %>
+					</a>
 					<div class="invis"></div>
           <ul class="dropdown">
             <li><a href="<%= my_listings_url %>">
@@ -38,39 +59,21 @@
 							method: :delete %>
 						</li>
           </ul>
-					<%= image_tag current_user.avatar.url(:thumb) %>
         </article>
-				
-				
-        <article class="messages">
-					<a href="#">Messages</a>
-				</article>
-				
-				<article class="notifications">
-        	<a href="#">Notifications</a> 
-					<div class="notif-num">
-						<%= current_user.notifications.size %>
-					</div>
-					<ul class="dropdown">
-						<%= render partial: "notifications/notification", 
-						collection: current_user.notifications %>
-					</ul>
-				</article>
-				
+			
 				<article class="new-listing">
 	        <a href="<%= new_listing_url %>">New Listing</a>
 				</article>
+				
       <% else %>
         <a href="<%= new_session_url %>">Sign In</a>
         <a href="<%= new_user_url %>">Sign Up</a>
-        <a href="#">Help</a>
       <% end %>
 
     </nav>
   </header>
 
-  <main>
-
+  <main class="group">
     <% if !!flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
     <% end %>

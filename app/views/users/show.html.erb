@@ -1,0 +1,16 @@
+<section class="sidebar">
+	<div class="avatar-block">
+		<%= image_tag @user.avatar.url(:small) %>
+		<a href="#">contact</a>
+	</div>
+</section>
+
+<section class="content">
+	<article class="basic-info">
+		<p><%= @user.locale %> | Member since <%= @user.created_at %></p>
+	</article>
+	
+	<article class="reviews">
+		Reviews will eventually go here!
+	</article>
+</section>

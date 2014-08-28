@@ -49,8 +49,14 @@
   <label for="listing-price">Base Price</label>
   <input type="text" name="listing[price]" value="<%= @listing.price %>"
          id="listing-price">
-
-
+				 
+	<hr>
+				 
+	<label for="listing-address">*Address</label>
+	<input type="text" name="listing[address]" value="<%= @listing.address %>"
+				 id="listing-address">
+				 
+	<small>*Your address will never be shared with other users.</small>
 
   <hr>
   <button>Update Listing</button>

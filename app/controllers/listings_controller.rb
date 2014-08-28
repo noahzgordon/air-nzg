@@ -94,7 +94,8 @@ class ListingsController < ApplicationController
       :room_type,
       :accomodates,
       :term,
-      :price
+      :price,
+      :address
     )
   end
 end

@@ -16,7 +16,8 @@
 
 /* RESETS */
 
-html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label {
+html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label,
+figure, article {
   padding: 0;
   margin: 0;
   border: 0;
@@ -42,6 +43,10 @@ ul, li{
 
 /* STYLES */
 
+body {
+	background: #999;
+}
+
 header {
   display: block;
   position: fixed;
@@ -66,8 +71,22 @@ header article {
 	float: left;
 }
 
-header article > div, header article > img {
+header figure {
+	padding-left: 10px;
+	display: block;
+	float: left;
+}
+
+header article > div {
 	display: inline-block;
+}
+
+main {
+	width: 1200px;
+	background: #fff;
+	margin: auto;
+	padding: 50px 0;
+	
 }
 
 ul.dropdown {
@@ -86,7 +105,7 @@ article:hover > ul.dropdown {
   display: block;
 }
 
-.user-info:hover > ul.dropdown:after {
+article:hover > ul.dropdown:after {
 	content: "";
   display: block;
   position: absolute;
@@ -102,12 +121,13 @@ article:hover > ul.dropdown {
   background: transparent;
 }
 
-/*.user-info:hover > .invis {
-  position: absolute;
-  display: block;
-	top: 30px;
-	border: 10px solid #eee;
-}*/
+.dropdown > li {
+	padding: 5px;
+}
+
+.notifications > .dropdown {
+	width: 300px;
+}
 
 
 main {
