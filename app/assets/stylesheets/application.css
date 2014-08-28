@@ -60,14 +60,14 @@ header > nav {
   float: right;
 }
 
-header a, header span, header img, header div {
+header article {
 	padding: 10px;
 	display: block;
 	float: left;
 }
 
-header img {
-	padding-top: 0px;
+header article > div, header article > img {
+	display: inline-block;
 }
 
 ul.dropdown {
@@ -82,7 +82,7 @@ ul.dropdown {
   position: relative;
 }
 
-.user-info:hover > ul.dropdown {
+article:hover > ul.dropdown {
   display: block;
 }
 

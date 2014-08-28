@@ -14,21 +14,52 @@
     <nav class="header-nav group">
 
       <% if signed_in? %>
-        <span class="user-info"><%= current_user.fname %>
+        <article class="user-info">
+					<a href="#"><%= current_user.fname %></a>
 					<div class="invis"></div>
           <ul class="dropdown">
-            <li><a href="<%= my_listings_url %>">Your Listings</a></li>
-            <li><a href="<%= my_booking_requests_url %>">Your Booking Requests</a></li>
-            <li><a href="#">Your Wishlist</a></li>
-            <li><a href="<%= edit_user_url(current_user) %>">Edit Profile</a></li>
-            <li><a href="#">Account</a></li>
-            <li><%= link_to 'Log Out', session_url, method: :delete %></li>
+            <li><a href="<%= my_listings_url %>">
+							Your Listings
+						</a></li>
+            <li><a href="<%= my_booking_requests_url %>">
+							Your Booking Requests
+						</a></li>
+            <li><a href="#">
+							Your Wishlist
+						</a></li>
+            <li><a href="<%= edit_user_url(current_user) %>">
+							Edit Profile
+						</a></li>
+            <li><a href="#">
+							Account
+						</a></li>
+            <li>
+							<%= link_to 'Log Out', session_url, 
+							method: :delete %>
+						</li>
           </ul>
-        </span>
-				<%= image_tag current_user.avatar.url(:thumb) %>
-        <a href="#">Messages</a>
-        <a href="#">Notifications</a> <div class="notif-num"><%= current_user.notifications.size %></div>
-        <a href="<%= new_listing_url %>">New Listing</a>
+					<%= image_tag current_user.avatar.url(:thumb) %>
+        </article>
+				
+				
+        <article class="messages">
+					<a href="#">Messages</a>
+				</article>
+				
+				<article class="notifications">
+        	<a href="#">Notifications</a> 
+					<div class="notif-num">
+						<%= current_user.notifications.size %>
+					</div>
+					<ul class="dropdown">
+						<%= render partial: "notifications/notification", 
+						collection: current_user.notifications %>
+					</ul>
+				</article>
+				
+				<article class="new-listing">
+	        <a href="<%= new_listing_url %>">New Listing</a>
+				</article>
       <% else %>
         <a href="<%= new_session_url %>">Sign In</a>
         <a href="<%= new_user_url %>">Sign Up</a>

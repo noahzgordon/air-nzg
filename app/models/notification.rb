@@ -41,12 +41,12 @@ class Notification < ActiveRecord::Base
       listing = self.notifiable.listing
       approving_user = self.notifiable.listing_owner
       
-      "#{approving_user} has approved your request to rent #{listing.title}. Contact them now!"
+      "#{approving_user.fname} has approved your request to rent #{listing.title}. Contact them now!"
     when :booking_denied
       listing = self.notifiable.listing
       approving_user = self.notifiable.listing_owner
       
-      "#{approving_user} has denied your request to rent #{listing.title}."
+      "#{approving_user.fname} has denied your request to rent #{listing.title}."
     when :new_message
       "You have a new message from #{self.notifiable.sender}"
     end
