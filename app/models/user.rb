@@ -33,9 +33,27 @@ class User < ActiveRecord::Base
     user = User.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
     return user if user
     
-    
-    
+    User.create!(
+      uid: auth_hash[:uid],
+      provider: auth_hash[:provider],
+      email: auth_hash[:email],
+      fname: auth_hash[:fname],
+      lname: auth_hash[:lname],
+      avatar: File.new(RestClient.get(auth_hash[:image])),
+      locale: auth_hash[:location]
+    )
   end
+  
+  :info => {
+    :nickname => 'jbloggs',
+    :email => 'joe@bloggs.com',
+    :name => 'Joe Bloggs',
+    :first_name => 'Joe',
+    :last_name => 'Bloggs',
+    :image => 'http://graph.facebook.com/1234567/picture?type=square',
+    :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
+    :location => 'Palo Alto, California',
+    :verified => true
 
   attr_reader :password
 
