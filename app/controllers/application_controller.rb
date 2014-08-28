@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :signed_in?, :require_signed_in, :require_not_signed_in
 
-  def sign_in(user)
-    found_user = User.find_by_credentials(user.email, user.password)
+  def sign_in(user, auth_hash = nil)
+    if auth_hash.nil?
+      found_user = User.find_by_credentials(user.email, user.password)
+    else
+      found_user = User.find_by_auth_hash(auth_hash)
+    end
+
     return false unless found_user
 
     session[:token] = found_user.reset_session_token!

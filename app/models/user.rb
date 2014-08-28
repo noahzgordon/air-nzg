@@ -29,31 +29,28 @@ class User < ActiveRecord::Base
     user && user.is_password?(password) ? user : nil
   end
   
-  def self.find_or_create_by_auth_hash(auth_hash)
-    user = User.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
-    return user if user
-    
+  def self.find_by_auth_hash(auth_hash)
+    User.find_by(uid: auth_hash[:uid], provider: auth_hash[:provider])
+  end
+  
+  def self.create_by_auth_hash(auth_hash)
     User.create!(
       uid: auth_hash[:uid],
       provider: auth_hash[:provider],
-      email: auth_hash[:email],
-      fname: auth_hash[:fname],
-      lname: auth_hash[:lname],
-      avatar: File.new(RestClient.get(auth_hash[:image])),
-      locale: auth_hash[:location]
+      email: auth_hash[:info][:email],
+      fname: auth_hash[:info][:first_name],
+      lname: auth_hash[:info][:last_name],
+      avatar: process_uri(auth_hash[:info][:image]),
+      locale: auth_hash[:info][:location],
+      password: SecureRandom.urlsafe_base64(8)
     )
   end
   
-  :info => {
-    :nickname => 'jbloggs',
-    :email => 'joe@bloggs.com',
-    :name => 'Joe Bloggs',
-    :first_name => 'Joe',
-    :last_name => 'Bloggs',
-    :image => 'http://graph.facebook.com/1234567/picture?type=square',
-    :urls => { :Facebook => 'http://www.facebook.com/jbloggs' },
-    :location => 'Palo Alto, California',
-    :verified => true
+  def self.process_uri(uri)
+    open(uri, :allow_redirections => :safe) do |r|
+      r.base_uri.to_s
+    end
+  end
 
   attr_reader :password
 
@@ -78,4 +75,6 @@ class User < ActiveRecord::Base
   def ensure_session_token
     self.session_token ||= self.class.generate_token
   end
+  
+  
 end

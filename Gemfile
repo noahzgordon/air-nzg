@@ -13,7 +13,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'jquery-ui-rails'
-gem 'rest_client'
+gem 'open_uri_redirections'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
