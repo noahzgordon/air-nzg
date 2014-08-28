@@ -14,4 +14,12 @@
 //= require jquery_ujs
 //= require jquery-ui/slider
 //= require turbolinks
+//= require underscore
+//= require backbone
+//= require air_nzg
+//= require_tree ../templates
+//= require_tree ./models
+//= require_tree ./collections
+//= require_tree ./views
+//= require_tree ./routers
 //= require_tree .
