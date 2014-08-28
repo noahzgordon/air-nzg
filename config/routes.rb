@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'my_booking_requests', to: 'bookings#my_booking_requests'
   patch '/bookings/approve/:id', to: 'bookings#approve', as: 'approve_booking'
   patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
+  
+  get 'auth/facebook/callback', to: 'oauth_callbacks#create'
 
   root to: "static_pages#home", as: "home"
 end

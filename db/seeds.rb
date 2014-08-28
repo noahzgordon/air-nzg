@@ -10,19 +10,42 @@ bruce = User.create!(
   fname: "Bruce",
   lname: "Wayne",
   email: "bruce@wayneenterprises.com",
-  password: "batman"
+  password: "password",
+  locale: "Chicago",
+  avatar: File.new("#{Rails.root}/seeds/images/bruce.png")
 )
 
 batman = User.create!(
   fname: "Batman",
   email: "batman@batcave.net",
-  password: "brucewayne"
+  password: "password",
+  locale: "Chicago",
+  avatar: File.new("#{Rails.root}/seeds/images/batman.jpg")
+)
+
+joker = User.create!(
+  fname: "Joker",
+  email: "joker@arkham.com",
+  password: "password",
+  locale: "Chicago",
+  avatar: File.new("#{Rails.root}/seeds/images/joker.jpg")
 )
 
 superman = User.create!(
   fname: "Superman",
   email: "superman@fortress.sol",
-  password: "superman"
+  password: "password",
+  locale: "New York",
+  avatar: File.new("#{Rails.root}/seeds/images/superman.jpg")
+)
+
+lex = User.create!(
+  fname: "Lex",
+  lname: "Luthor",
+  email: "lex@lexcorp.org",
+  password: "password",
+  locale: "New York",
+  avatar: File.new("#{Rails.root}/seeds/images/lex.jpg")
 )
 
 l1 = bruce.listings.create!(
@@ -31,7 +54,7 @@ l1 = bruce.listings.create!(
   room_type: "private",
   accomodates: 1,
   term: "long",
-  city: "Chicago, United States",
+  city: "Chicago",
   price: 5000
 )
 
@@ -41,7 +64,7 @@ l2 = batman.listings.create!(
   room_type: "shared",
   accomodates: 2,
   term: "long",
-  city: "Chicago, United States",
+  city: "Chicago",
   price: 500
 )
 
