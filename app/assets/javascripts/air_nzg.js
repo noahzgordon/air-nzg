@@ -4,7 +4,8 @@ window.AirNZG = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    new AirNZG.Routers.Listings();
+		Backbone.history.start();
   }
 };
 

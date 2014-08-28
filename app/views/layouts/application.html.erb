@@ -73,8 +73,8 @@
 
     </nav>
   </header>
-
-  <main class="group">
+	
+	<span class="notice-bar">
     <% if !!flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
     <% end %>
@@ -86,7 +86,9 @@
         <% end %>
       </ul>
     <% end %>
+	</span>
 
+  <main class="group">
     <%= yield %>
   </main>
 </body>

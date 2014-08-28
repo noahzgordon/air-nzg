@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, except: [:index, :destroy]
+  
+  namespace :api, defaults: { format: :json } do
+    resources :listings, only: [:index, :show]
+  end
 
   resources :listings
   get 'my_listings', to: 'listings#my_listings'

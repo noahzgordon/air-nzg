@@ -1,0 +1,71 @@
+<section class="listing-head">
+	<div class="user-block">
+		<a href="#">
+			<img src="#">
+		</a>
+		<a href="#">contact</a>
+	</div>
+	
+	<div class="basic-info">
+		<h3 class="listing-title"><%= listing.escape("title") %></h3>
+		<p class="listing-info"><%= listing.escape("home_type") %> |
+			Accomodates <%= listing.escape("accomodates") %></p>
+		<p class="score">Average Score: #</p>
+	</div>
+	
+	<div class="request-form">
+		<% var price_per = listing.get("term") === "long" ? "/month" : "/day" %>
+		<p>Price: $<%= listing.escape("price") %><%= price_per %></p>
+		<form>
+		  <label for="booking-start">Check In</label>
+		  <input type="date" name="booking[start_date]" id="booking-start">
+			<br>
+
+		  <label for="booking-end">Check Out</label>
+		  <input type="date" name="booking[end_date]" id="booking-end">
+			<br>
+			
+			<input type="hidden" name="booking[listing_id]" value="<%= listing.id %>">
+			
+			<button>Request</button>
+		</form>			
+	</div>
+</section>
+
+<section class="listing-main">
+	<h3>About This Listing</h3>
+	
+	<article class="unavailable-list">
+		<p>Dates Unavailable</p>
+		<ul>
+
+		</ul>
+	</article>
+	
+	<article class="description">
+		<% if(listing.attributes.description) { %>
+			<p><%= listing.escape("description") %></p>
+		<% } else { %>
+			<p>There is no description for this listing.</p>
+			<% } %>
+	</article>
+	
+	<article class="photo-galery">
+		Photos go here!
+	</div>
+	
+	<article class="more-info">
+		<h3>More Info</h3>
+		<table>
+			<tr>
+				<td>Room Type</td>
+				<td><%= listing.escape("room_type") %></td>
+			</tr>
+			<tr>
+				<td>Home Type</td>
+				<td><%= listing.escape("home_type") %></td>
+			</tr>
+		</table>
+	</article>
+						
+</section>

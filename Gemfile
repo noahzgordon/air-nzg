@@ -23,6 +23,7 @@ gem "figaro"
 gem "aws-sdk"
 
 gem 'backbone-on-rails'
+gem 'ejs'
 
 group :development do
   gem 'better_errors'
