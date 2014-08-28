@@ -4,6 +4,7 @@ window.AirNZG = {
   Views: {},
   Routers: {},
   initialize: function() {
+		AirNZG.users.fetch();
     new AirNZG.Routers.Listings();
 		Backbone.history.start();
   }
