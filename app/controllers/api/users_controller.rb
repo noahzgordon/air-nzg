@@ -2,12 +2,12 @@ class Api::UsersController < ApplicationController
   
   def index
     @users = User.all
-    render json: @users
+    render :index
   end
   
   def show
-    @users = User.find(params[:id])
-    render json: @user
+    @user = User.find(params[:id])
+    render :show
   end
   
 end

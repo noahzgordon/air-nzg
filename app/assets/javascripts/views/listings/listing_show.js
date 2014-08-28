@@ -2,18 +2,21 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	
   template: JST['listings/show'],
 	
-	initialize: function() {
+	initialize: function(options) {
 		this.listenTo(this.model, "sync", this.render);
-		this.listenTo(AirNZG.users, "add", this.render);
+		this.listenTo(this.model.user(), "sync", this.render)
 	},
 	
 	render: function() {
-		var user = AirNZG.users.getOrFetch(this.model.get("user_id"))
+		
+		console.log("Listing", this.model)
+		console.log("User", this.model.user())
 		
 		var content = this.template({ 
 			listing: this.model,
-			user: user
+			user: this.model.user()
 		});
+		
 		this.$el.html(content);
 		
 		return this;

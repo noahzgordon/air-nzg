@@ -1,8 +1,9 @@
 <section class="listing-head">
 	<div class="user-block">
-		<%= user.escape("fname") %>
+		
 		<a href="#">
-			<img src="#">
+			<%= user.escape("fname") %>
+			<img src="<%= user.escape("avatar_small") %>">
 		</a>
 		<a href="#">contact</a>
 	</div>
@@ -48,7 +49,7 @@
 	</article>
 	
 	<article class="description">
-		<% if(listing.attributes.description) { %>
+		<% if(listing.escape("description")) { %>
 			<p><%= listing.escape("description") %></p>
 		<% } else { %>
 			<p>There is no description for this listing.</p>

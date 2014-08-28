@@ -4,11 +4,9 @@ AirNZG.Collections.Users = Backbone.Collection.extend({
 	
   getOrFetch: function (id) {
      var users = this;
-
-     var user;
-     if (user = this.get(id)) {
-       user.fetch();
-     } else {
+		 
+		 var user = this.get(id)
+     if (!user) {
        user = new AirNZG.Models.User({ id: id });
        user.fetch({
          success: function () { users.add(user); }
@@ -19,4 +17,4 @@ AirNZG.Collections.Users = Backbone.Collection.extend({
    }
 });
 
-AirNZG.users = new AirNZG.Collections.Users
+AirNZG.users = new AirNZG.Collections.Users();

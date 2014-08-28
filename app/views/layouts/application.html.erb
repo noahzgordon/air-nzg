@@ -74,6 +74,8 @@
     </nav>
   </header>
 	
+	
+	
 	<span class="notice-bar">
     <% if !!flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
@@ -91,5 +93,7 @@
   <main class="group">
     <%= yield %>
   </main>
+	
+	<a href="#/listings/1">Go to Show</a>
 </body>
 </html>
