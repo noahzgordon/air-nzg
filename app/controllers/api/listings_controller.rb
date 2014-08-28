@@ -40,7 +40,7 @@ class Api::ListingsController < ApplicationController
   
   def show
     @listing = Listing.find(params[:id])
-    render json: @listing
+    render :show
   end
   #
   # def new

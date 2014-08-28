@@ -10,6 +10,8 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 		var content = this.template({ listing: this.model });
 		this.$el.html(content);
 		
+		console.log(this.model)
+		
 		return this;
 	}
 
