@@ -6,6 +6,32 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'csv'
+
+seed_text = CSV.foreach("#{Rails.root}/seeds/us-100.csv") do |row|  
+  next if row[0] == "first_name"
+
+  user = User.create!(
+    fname: row[0],
+    lname: row[1],
+    locale: row[4],
+    email: row[10],
+    password: "password"
+  )
+  
+  listing = user.listings.create!(
+    term: ["short", "long"].sample,
+    city: user.locale,
+    accomodates: [1, 2, 3, 4].sample,
+    title: ["#{user.fname} #{user.lname}'s sweet apartment"].sample,
+    description: "Check out this awesome apartment!",
+    price: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].sample,
+    room_type: ["whole", "private", "shared"].sample,
+    home_type: "apartment",
+    address: row[3]
+  )
+end
+
 bruce = User.create!(
   fname: "Bruce",
   lname: "Wayne",
@@ -74,3 +100,7 @@ l1.amenities.create!([
   { name: "Cable TV"},
   { name: "WiFi"}
 ])
+
+
+
+

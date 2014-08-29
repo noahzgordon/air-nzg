@@ -2,7 +2,7 @@ class Api::ListingsController < ApplicationController
   before_action :require_signed_in, only: []
   
   def index
-    @listings = Listing.all
+    @listings = Listing.includes(:amenities).includes(:unavailable_ranges).all
 
     if params[:city].present?
       @listings = @listings.where(city: params[:city])
@@ -19,14 +19,14 @@ class Api::ListingsController < ApplicationController
     if params[:low_price].present? && params[:high_price].present?
       @listings = @listings.where(
         "price >= ? AND price <= ?",
-        listing_params[:low_price],
-        listing_params[:high_price]
+        params[:low_price],
+        params[:high_price]
       )
     end
 
     if params[:start].present? && params[:end].present?
       @listings = @listings.includes(:unavailable_ranges).select do |listing|
-        listing.available_range?(_params[:start], params[:end])
+        listing.available_range?(params[:start], params[:end])
       end
     end
 

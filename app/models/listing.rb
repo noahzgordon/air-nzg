@@ -10,7 +10,7 @@ class Listing < ActiveRecord::Base
 
   validates :home_type, inclusion: { in: %w(apartment house mansion cave),
                                      message: "Not a valid home type."}
-  validates :room_type, inclusion: { in: %w(entire private shared),
+  validates :room_type, inclusion: { in: %w(whole private shared),
                                      message: "Not a valid room type."}
 
   def available_range?(start_date, end_date)

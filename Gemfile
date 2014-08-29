@@ -25,6 +25,8 @@ gem "aws-sdk"
 gem 'backbone-on-rails'
 gem 'ejs'
 
+gem 'faker'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'

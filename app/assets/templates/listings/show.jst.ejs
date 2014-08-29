@@ -10,7 +10,7 @@
 	
 	<div class="basic-info">
 		<h3 class="listing-title"><%= listing.escape("title") %></h3>
-		<p class="listing-info"><%= listing.escape("home_type") %> |
+		<p class="listing-info"><%= listing.escape("home_type") %> in <%= listing.escape("city") %> |
 			Accomodates <%= listing.escape("accomodates") %></p>
 		<p class="score">Average Score: #</p>
 	</div>
@@ -39,12 +39,14 @@
 	
 	<article class="unavailable-list">
 		<p>Dates Unavailable</p>
-		<% if(listing.get("unavailable_ranges")) { %>
+		<% if(listing.get("unavailable_ranges") && listing.get("unavailable_ranges").count > 0) { %>
 		<ul>
 			<% listing.get("unavailable_ranges").forEach(function(range) { %>
 				<li><%= range.start_date %> - <%= range.end_date %></li>
 			<% }) %>
 		</ul>
+		<% } else { %>
+			<p>None!</p>
 		<% } %>
 	</article>
 	
@@ -64,15 +66,15 @@
 		<h3>More Info</h3>
 		<table>
 			<tr>
-				<td>Room Type</td>
+				<td>Room Type:</td>
 				<td><%= listing.escape("room_type") %></td>
 			</tr>
 			<tr>
-				<td>Home Type</td>
+				<td>Home Type:</td>
 				<td><%= listing.escape("home_type") %></td>
 			</tr>
 			<tr>
-				<td>Amenities</td>
+				<td>Amenities:</td>
 				<td>
 					<% if (listing.get("amenities")) { %>
 					<ul>
