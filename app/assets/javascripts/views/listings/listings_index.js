@@ -1,7 +1,7 @@
 AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	
 	initialize: function() {
-		this.listenTo(this.collection, "sync", this.renderListings);
+		this.listenTo(this.collection, "add", this.render)
 	},
 	
 	events: {
@@ -30,15 +30,17 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
   template: JST['listings/index'],
 	
 	render: function() {
-		console.log(this.collection)
-		
 		var content = this.template({ listings: this.collection });
 		this.$el.html(content)
+		
+		this.renderList();
 		
 		return this;
 	},
 	
-	renderListings: function() {
+	renderList: function() {
+		var listView = new AirNZG.Views.ListingsList({ collection: this.collection });
 		
+		$(".listings-list").html(listView.render().$el)
 	}
 });

@@ -50,12 +50,6 @@
   </form>
 </section>
 
-<section class="listing-list">
-  <h3>Listings</h3>
-  <ul>
-  <% listings.each(function(listing) { %>
-    <li><a href="#/listings/<%= listing.id %>"><%= listing.escape("title") %></a></li>
-  <% }); %>
-	</ul>
-</section>
+<h3>Listings</h3>
+<section class="listings-list"></section>
 
