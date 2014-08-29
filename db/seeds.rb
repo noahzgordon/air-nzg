@@ -19,6 +19,8 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-100.csv") do |row|
     password: "password"
   )
   
+  lat, long = Geocoder.coordinates([row[4], row[5], row[6], row[7], row[8]].join(","))
+  
   listing = user.listings.create!(
     term: ["short", "long"].sample,
     city: user.locale,
@@ -28,7 +30,9 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-100.csv") do |row|
     price: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].sample,
     room_type: ["whole", "private", "shared"].sample,
     home_type: "apartment",
-    address: row[3]
+    address: row[3],
+    latitude: lat,
+    longitude: long
   )
 end
 
@@ -81,7 +85,9 @@ l1 = bruce.listings.create!(
   accomodates: 1,
   term: "long",
   city: "Chicago",
-  price: 5000
+  price: 5000,
+  latitude: 0,
+  longitude: 0
 )
 
 l2 = batman.listings.create!(
@@ -91,7 +97,9 @@ l2 = batman.listings.create!(
   accomodates: 2,
   term: "long",
   city: "Chicago",
-  price: 500
+  price: 500,
+  latitude: 0,
+  longitude: 0
 )
 
 l1.amenities.create!([

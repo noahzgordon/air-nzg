@@ -1,7 +1,8 @@
 AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	
 	initialize: function() {
-		this.listenTo(this.collection, "add", this.renderList)
+		this.listenTo(this.collection, "add", this.renderList),
+		this.listenTo(this.collection, "add", this.updateMap)
 	},
 	
 	events: {	
@@ -45,8 +46,32 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	},
 	
 	showMap: function() {
-		var map = L.mapbox.map("map", "tortuga-man.jc47j4o8", {
-			accessToken: 'pk.eyJ1IjoidG9ydHVnYS1tYW4iLCJhIjoiLTI5bEk0OCJ9.X62Suravr7Rij4PdYOizFQ'
+		L.mapbox.accessToken = "pk.eyJ1IjoidG9ydHVnYS1tYW4iLCJhIjoiLTI5bEk0OCJ9.X62Suravr7Rij4PdYOizFQ"
+		this.map = L.mapbox.map("map", "tortuga-man.jc47j4o8");
+		
+		// ap.setView(/* CITY LAT/LONG */)
+	},
+	
+	updateMap: function() {
+		var data = [];
+		
+		this.collection.each(function(listing) {
+			data.push({
+	      type: 'Feature',
+	      geometry: {
+	        type: 'Point',
+	        coordinates: [listing.get("longitude"), listing.get("latitude")]
+	      },
+	      properties: {
+	        name: listing.get("name"),
+	        address: listing.get("street"),
+	        'marker-color': '#00607d',
+	        'marker-symbol': 'circle',
+	        'marker-size': 'medium'
+	      }
+	    });
 		});
+		
+		L.mapbox.featureLayer(data).addTo(this.map);
 	}
 });

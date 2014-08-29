@@ -24,7 +24,7 @@ gem "aws-sdk"
 gem 'backbone-on-rails'
 gem 'ejs'
 
-gem 'faker'
+gem 'geocoder'
 
 group :development do
   gem 'better_errors'
