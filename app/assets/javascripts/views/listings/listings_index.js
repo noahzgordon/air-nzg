@@ -4,7 +4,7 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "add", this.render)
 	},
 	
-	events: {
+	events: {	
 		"click .filter-form": "filterPage"
 	},
 	
@@ -12,7 +12,6 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		event.preventDefault();
 		
 		var data = $(event.currentTarget).serializeJSON();
-		console.log(data)
 		
 		// REMEMBER: ask instructors if it's OK to NOT use strong params for get requests
 		
