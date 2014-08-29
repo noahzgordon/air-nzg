@@ -6,11 +6,12 @@ class BookingsController < ApplicationController
     
     if @booking.save
       flash[:notice] = "Your request has been sent to the listing owner."
-      redirect_to listings_url(listing: {
-        city: @booking.listing.city,
-        term: @booking.listing.term,
-        accomodates: @booking.listing.accomodates
-      })
+      # redirect_to listings_url(listing: {
+      #   city: @booking.listing.city,
+      #   term: @booking.listing.term,
+      #   accomodates: @booking.listing.accomodates
+      # })
+      redirect_to home_url
     else
       flash[:errors] = @booking.errors.full_messages
       redirect_to :back

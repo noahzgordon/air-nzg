@@ -19,7 +19,7 @@
 		<% var price_per = listing.get("term") === "long" ? "/month" : "/day" %>
 		<p>Price: $<%= listing.escape("price") %><%= price_per %></p>
 		<form>
-		  <label for="booking-start">Check In</label>
+			<label for="booking-start">Check In</label>
 		  <input type="date" name="booking[start_date]" id="booking-start">
 			<br>
 
