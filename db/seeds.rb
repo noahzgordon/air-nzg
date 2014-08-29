@@ -86,8 +86,9 @@ l1 = bruce.listings.create!(
   term: "long",
   city: "Chicago",
   price: 5000,
-  latitude: 0,
-  longitude: 0
+  latitude: -87.893272,
+  longitude: 41.666085,
+  address: "11152-11198 W 123rd St., Palos Park, IL 60464"
 )
 
 l2 = batman.listings.create!(
@@ -98,8 +99,8 @@ l2 = batman.listings.create!(
   term: "long",
   city: "Chicago",
   price: 500,
-  latitude: 0,
-  longitude: 0
+  latitude: -87.890186,
+  longitude: 41.676043,
 )
 
 l1.amenities.create!([

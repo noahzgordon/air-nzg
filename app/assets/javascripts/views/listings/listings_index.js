@@ -34,9 +34,13 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		$(".listing-params").html(filterView.render().$el)
 	},
 	
-	renderMap: function() {
+	showMap: function() {
 		L.mapbox.accessToken = "pk.eyJ1IjoidG9ydHVnYS1tYW4iLCJhIjoiLTI5bEk0OCJ9.X62Suravr7Rij4PdYOizFQ"
 		this.mapBox = L.mapbox.map("map", "tortuga-man.jc47j4o8");
+	},
+	
+	renderMap: function() {
+
 		
 		var map = this.mapBox
 		L.mapbox.geocoder("mapbox.places-city-v1").query(this.collection.params().city, function(err, data) {
@@ -57,7 +61,7 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	        coordinates: [listing.get("longitude"), listing.get("latitude")]
 	      },
 	      properties: {
-	        name: listing.get("name"),
+	        title: listing.get("title"),
 	        address: listing.get("street"),
 	        'marker-color': '#00607d',
 	        'marker-symbol': 'circle',
