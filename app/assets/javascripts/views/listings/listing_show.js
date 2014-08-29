@@ -7,6 +7,16 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 		this.listenTo(this.model.user(), "sync", this.render)
 	},
 	
+	events: {
+		"submit .request-form": "newBooking"
+	},
+	
+	newBooking: function(event) {
+		event.preventDefault();
+		
+		console.log($(event.target).serializeJSON());
+	},
+	
 	render: function() {
 		
 		var content = this.template({ 

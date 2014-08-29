@@ -15,10 +15,10 @@
 		<p class="score">Average Score: #</p>
 	</div>
 	
-	<div class="request-form">
+	<div class="request-container">
 		<% var price_per = listing.get("term") === "long" ? "/month" : "/day" %>
 		<p>Price: $<%= listing.escape("price") %><%= price_per %></p>
-		<form>
+		<form class="request-form">
 			<label for="booking-start">Check In</label>
 		  <input type="date" name="booking[start_date]" id="booking-start">
 			<br>
