@@ -1,3 +1,3 @@
 AirNZG.Models.Booking = Backbone.Model.extend({
-	urlRoot: "/api/booking"
+	urlRoot: "/api/bookings"
 });

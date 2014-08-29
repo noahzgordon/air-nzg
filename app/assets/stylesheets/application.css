@@ -164,8 +164,10 @@ form {
 }
 
 .notice-bar {
+	position: fixed;
 	background: red;
 	color: white;
 	font-weight: bold;
 	z-index: 1000;
+	display: block;
 }

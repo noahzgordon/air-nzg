@@ -1,4 +1,4 @@
-class BookingsController < ApplicationController
+class Api::BookingsController < ApplicationController
   before_action :require_signed_in
   
   def create
@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     if @booking.save
       render json: @booking
     else
-      render json: @booking.errors.full_messages
+      render json: @booking.errors.full_messages, status: :unprocessable_entity
     end
   end
   

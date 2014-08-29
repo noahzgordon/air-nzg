@@ -14,7 +14,17 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	newBooking: function(event) {
 		event.preventDefault();
 		
-		console.log($(event.target).serializeJSON());
+		var formData = $(event.target).serializeJSON();
+		var booking = new AirNZG.Models.Booking();
+		
+		booking.save(formData, {
+			success: function(model, response) {
+				Backbone.history.navigate("/", { trigger: true })
+			},
+			error: function(model, response) {
+				$(".notice-bar").html(response.responseText);
+			}
+		});
 	},
 	
 	render: function() {

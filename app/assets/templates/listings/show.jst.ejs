@@ -20,14 +20,14 @@
 		<p>Price: $<%= listing.escape("price") %><%= price_per %></p>
 		<form class="request-form">
 			<label for="booking-start">Check In</label>
-		  <input type="date" name="booking[start_date]" id="booking-start">
+		  <input type="date" name="start_date" id="booking-start">
 			<br>
 
 		  <label for="booking-end">Check Out</label>
-		  <input type="date" name="booking[end_date]" id="booking-end">
+		  <input type="date" name="end_date" id="booking-end">
 			<br>
 			
-			<input type="hidden" name="booking[listing_id]" value="<%= listing.id %>">
+			<input type="hidden" name="listing_id" value="<%= listing.id %>">
 			
 			<button>Request</button>
 		</form>			

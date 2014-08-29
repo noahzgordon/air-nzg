@@ -42,7 +42,7 @@
 	
 			var queryString = $(event.currentTarget).serialize()
 	
-			Backbone.history.navigate("#/listings?" + queryString)	
+			Backbone.history.navigate("#/listings?" + queryString, { trigger: true })	
 		}
 	});
 </script>
