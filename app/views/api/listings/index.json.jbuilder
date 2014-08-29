@@ -5,3 +5,6 @@ end
 json.params do
   json.merge! @params
 end
+
+json.geojson do
+end

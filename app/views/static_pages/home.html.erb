@@ -30,3 +30,19 @@
   <button>Search</button>
 
 </form>
+
+<script>
+	$(document).ready(function(){
+	  AirNZG.initialize();
+
+		$("body").on("submit", "form.listing-search", executeQuery);
+
+		function executeQuery(event) {
+			event.preventDefault();
+	
+			var queryString = $(event.currentTarget).serialize()
+	
+			Backbone.history.navigate("#/listings?" + queryString)	
+		}
+	});
+</script>

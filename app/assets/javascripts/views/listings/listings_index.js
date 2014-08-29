@@ -1,7 +1,7 @@
 AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	
 	initialize: function() {
-		this.listenTo(this.collection, "add", this.render)
+		this.listenTo(this.collection, "add", this.renderList)
 	},
 	
 	events: {	
@@ -42,5 +42,11 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		var listView = new AirNZG.Views.ListingsList({ collection: this.collection });
 		
 		$(".listings-list").html(listView.render().$el)
+	},
+	
+	showMap: function() {
+		var map = L.mapbox.map("map", "tortuga-man.jc47j4o8", {
+			accessToken: 'pk.eyJ1IjoidG9ydHVnYS1tYW4iLCJhIjoiLTI5bEk0OCJ9.X62Suravr7Rij4PdYOizFQ'
+		});
 	}
 });
