@@ -1,24 +1,9 @@
 AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	
 	initialize: function() {
-		this.listenTo(this.collection, "add", this.renderList),
-		this.listenTo(this.collection, "add", this.updateMap)
-	},
-	
-	events: {	
-		"click .filter-form": "filterPage"
-	},
-	
-	filterPage: function(event) {
-		event.preventDefault();
-		
-		var data = $(event.currentTarget).serializeJSON();
-		
-		// REMEMBER: ask instructors if it's OK to NOT use strong params for get requests
-		
-		this.collection.fetch({
-			data: data
-		})
+		this.listenTo(this.collection, "sync", this.renderList),
+		this.listenTo(this.collection, "sync", this.renderForm),
+		this.listenTo(this.collection, "sync", this.updateMap)
 	},
 	
   template: JST['listings/index'],
@@ -35,6 +20,7 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		// use "slide" or "stop" event to change listings on every movement
 		
 		this.renderList();
+		this.renderForm();
 		
 		return this;
 	},
@@ -43,6 +29,12 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		var listView = new AirNZG.Views.ListingsList({ collection: this.collection });
 		
 		$(".listings-list").html(listView.render().$el)
+	},
+	
+	renderForm: function() {
+		var filterView = new AirNZG.Views.ListingsFilter({ collection: this.collection });
+		
+		$(".listing-params").html(filterView.render().$el)
 	},
 	
 	showMap: function() {
