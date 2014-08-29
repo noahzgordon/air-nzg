@@ -1,0 +1,16 @@
+<section class="sidebar">
+	<div class="avatar-block">
+		<img src="<%= user.escape("avatar_medium") %>">
+		<a href="#">contact</a>
+	</div>
+</section>
+
+<section class="content">
+	<article class="basic-info">
+		<p><%= user.escape("locale") %> | Member since <%= user.escape("created_at") %></p>
+	</article>
+	
+	<article class="reviews">
+		Reviews will eventually go here!
+	</article>
+</section>

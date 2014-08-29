@@ -53,7 +53,7 @@
   <h3>Listings</h3>
   <ul>
   <% @listings.each do |listing| %>
-    <li><a href="<%= listing_url(listing) %>"><%= listing.title %></a></li>
+    <li><a href="<%= listing_path(listing) %>"><%= listing.title %></a></li>
   <% end %>
 </section>
 

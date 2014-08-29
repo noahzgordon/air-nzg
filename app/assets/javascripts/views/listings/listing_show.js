@@ -9,9 +9,6 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	
 	render: function() {
 		
-		console.log("Listing", this.model)
-		console.log("User", this.model.user())
-		
 		var content = this.template({ 
 			listing: this.model,
 			user: this.model.user()
