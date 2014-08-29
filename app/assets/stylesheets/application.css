@@ -162,3 +162,10 @@ form {
   border: 1px solid black;
   text-align: center;
 }
+
+.notice-bar {
+	background: red;
+	color: white;
+	font-weight: bold;
+	z-index: 1000;
+}

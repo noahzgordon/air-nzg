@@ -54,11 +54,12 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		var data = [];
 		
 		this.collection.each(function(listing) {
+			
 			data.push({
 	      type: 'Feature',
 	      geometry: {
 	        type: 'Point',
-	        coordinates: [listing.get("longitude"), listing.get("latitude")]
+	        coordinates: [listing.get("latitude"), listing.get("longitude")]
 	      },
 	      properties: {
 	        title: listing.get("title"),
