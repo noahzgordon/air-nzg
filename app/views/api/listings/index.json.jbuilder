@@ -1,3 +1,7 @@
-json.array!(@listings) do |listing|
+json.listings @listings do |listing|
   json.partial!("listing", :listing => listing)
+end
+
+json.params do
+  json.merge! @params
 end

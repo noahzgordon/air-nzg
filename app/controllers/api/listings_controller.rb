@@ -1,48 +1,45 @@
 class Api::ListingsController < ApplicationController
   before_action :require_signed_in, only: []
+  
+  def index
+    @listings = Listing.all
 
-  # def index
-  #   listing_params = params[:listing]
-  #   @listings = Listing.all
-  #
-  #   if listing_params[:city] && listing_params[:city] != ""
-  #     @listings = @listings.where(city: listing_params[:city])
-  #   end
-  #
-  #   if listing_params[:accomodates] && listing_params[:accomodates] != ""
-  #     @listings = @listings.where("accomodates >= ?", listing_params[:accomodates])
-  #   end
-  #
-  #   if listing_params[:room_type] && listing_params[:room_type] != ""
-  #     @listings = @listings.where(room_type: listing_params[:room_type])
-  #   end
-  #
-  #   if listing_params[:low_price] && listing_params[:high_price] &&
-  #      listing_params[:low_price] != "" && listing_params[:high_price] != ""
-  #     @listings = @listings.where(
-  #       "price >= ? AND price <= ?",
-  #       listing_params[:low_price],
-  #       listing_params[:high_price]
-  #     )
-  #   end
-  #
-  #   if listing_params[:start] && listing_params[:end] &&
-  #      listing_params[:start] != "" && listing_params[:start] != ""
-  #     @listings = @listings.includes(:unavailable_ranges).select do |listing|
-  #       listing.available_range?(listing_params[:start], listing_params[:end])
-  #     end
-  #   end
-  #
-  #   @params = listing_params
-  #
-  #   render json: @listings
-  # end
+    if params[:city].present?
+      @listings = @listings.where(city: params[:city])
+    end
+
+    if params[:accomodates].present?
+      @listings = @listings.where("accomodates >= ?", params[:accomodates])
+    end
+
+    if params[:room_type].present?
+      @listings = @listings.where(room_type: params[:room_type])
+    end
+
+    if params[:low_price].present? && params[:high_price].present?
+      @listings = @listings.where(
+        "price >= ? AND price <= ?",
+        listing_params[:low_price],
+        listing_params[:high_price]
+      )
+    end
+
+    if params[:start].present? && params[:end].present?
+      @listings = @listings.includes(:unavailable_ranges).select do |listing|
+        listing.available_range?(_params[:start], params[:end])
+      end
+    end
+
+    @params = params
+
+    render :index
+  end
   
   def show
     @listing = Listing.find(params[:id])
     render :show
   end
-  #
+
   # def new
   #   @listing = current_user.listings.new
   #   render :new
@@ -83,20 +80,5 @@ class Api::ListingsController < ApplicationController
   # def my_listings
   #   @listings = current_user.listings
   #   render :my_listings
-  # end
-  #
-  # private
-  #
-  # def listing_params
-  #   params.require(:listing).permit(
-  #     :title,
-  #     :city,
-  #     :home_type,
-  #     :room_type,
-  #     :accomodates,
-  #     :term,
-  #     :price,
-  #     :address
-  #   )
   # end
 end
