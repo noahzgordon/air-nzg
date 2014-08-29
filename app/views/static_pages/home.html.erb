@@ -6,25 +6,25 @@
 
 <form action="<%= listings_url %>" method="GET" class="listing-search">
   <label for="short-term">Short Term (less than 1 month)</label>
-  <input type="radio" name="listing[term]" value="short" id="short-term">
+  <input type="radio" name="term" value="short" id="short-term">
 
   <label for="long-term">Long Term (a month or longer)</label>
-  <input type="radio" name="listing[term]" value="long" id="long-term">
+  <input type="radio" name="term" value="long" id="long-term">
 
   <br>
 
   <label for="listing-city">Where to?</label>
-  <input type="text" name="listing[city]" id="listing-city"
+  <input type="text" name="city" id="listing-city"
          placeholder="City, Country">
 
   <label for="listing-start">Start Date</label>
-  <input type="date" name="listing[start]" id="listing-start">
+  <input type="date" name="start" id="listing-start">
 
   <label for="listing-end">End Date</label>
-  <input type="date" name="listing[end]" id="listing-end">
+  <input type="date" name="end" id="listing-end">
 
   <label for="listing-accomodates">For how many?</label>
-  <input type="number" name="listing[accomodates]" id="listing-accomodates"
+  <input type="number" name="accomodates" id="listing-accomodates"
          placeholder="# of Guests">
 
   <button>Search</button>

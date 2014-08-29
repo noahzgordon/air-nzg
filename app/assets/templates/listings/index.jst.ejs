@@ -6,17 +6,19 @@
   <form class="filter-form">
 
   <!-- Hidden form inputs carry over search params from prev. page -->
-    <input type="hidden" value="<%= listings.params().term %>" id="listing-term">
-    <input type="hidden" value="<%= listings.params().city %>" id="listing-city">
-    <input type="hidden" id="listing-accomodates" 
+    <input type="hidden" value="<%= listings.params().term %>" name="term">
+    <input type="hidden" value="<%= listings.params().city %>" name="city">
+    <input type="hidden" name="accomodates" 
 					 value="<%= listings.params().accomodates %>">
 
     <strong>Dates:</strong>
     <label for="listing-start">Start Date</label>
-    <input type="date" id="listing-start" value="<%= listings.params().start %>">
+    <input type="date" id="listing-start" value="<%= listings.params().start %>"
+					 name="start">
 
     <label for="listing-end">End Date</label>
-    <input type="date" id="listing-end" value="<%= listings.params().end %>">
+    <input type="date" id="listing-end" value="<%= listings.params().end %>"
+					 name="end">
     <br>
 
     <strong>Room:</strong>
@@ -41,9 +43,9 @@
 
     <strong>Price:</strong>
     <input type="number" placeholder="Low Price"
-           id="listing-low-price" value="<%= listings.params().low_price %>">
+           name="low_price" value="<%= listings.params().low_price %>">
     <input type="number" placeholder="High Price"
-           id="listing-high-price" value="<%= listings.params().high_price %>">
+           name="high_price" value="<%= listings.params().high_price %>">
     <br>
 		
 		<div class="price-slider"></div>

@@ -12,4 +12,14 @@ window.AirNZG = {
 
 $(document).ready(function(){
   AirNZG.initialize();
+	
+	$("form.listing-search").on("submit", executeQuery);
+	
+	function executeQuery(event) {
+		event.preventDefault();
+		
+		var queryString = $(event.currentTarget).serialize()
+		
+		Backbone.history.navigate("#/listings?" + queryString)	
+	}
 });

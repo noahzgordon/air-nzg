@@ -11,16 +11,9 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	filterPage: function(event) {
 		event.preventDefault();
 		
-		var data = {};
+		var data = $(event.currentTarget).serializeJSON();
 		
-		data.term = $("#listing-term").val();
-		data.city = $("#listing-city").val();
-		data.accomodates = $("#listing-accomodates").val()
-		data.start = $("#listing-start").val();
-		data.end = $("#listing-end").val();
-		data.room_type = $("input[name=room_type]:checked").val();
-		data.low_price = $("#listing-low-price").val();
-		data.high_price = $("#listing-high-price").val();
+		// REMEMBER: ask instructors if it's OK to NOT use strong params for get requests
 		
 		this.collection.fetch({
 			data: data
