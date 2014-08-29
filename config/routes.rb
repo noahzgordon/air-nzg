@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :listings, only: [:index, :show]
     resources :users, only: [:index, :show]
+    
+    resources :bookings, only: [:create]
+    get 'my_booking_requests', to: 'bookings#my_booking_requests'
+    patch '/bookings/approve/:id', to: 'bookings#approve', as: 'approve_booking'
+    patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
   end
 
   resources :listings
