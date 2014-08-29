@@ -8,7 +8,7 @@
 
 require 'csv'
 
-seed_text = CSV.foreach("#{Rails.root}/seeds/us-100.csv") do |row|  
+seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|  
   next if row[0] == "first_name"
 
   user = User.create!(
@@ -80,7 +80,7 @@ lex = User.create!(
 
 l1 = bruce.listings.create!(
   title: "Wayne Manor",
-  description: "Stately Mansion of Local Millionaire and Man-About-Town Bruce Wayne"
+  description: "Stately Mansion of Local Millionaire and Man-About-Town Bruce Wayne",
   home_type: "mansion",
   room_type: "private",
   accomodates: 1,
