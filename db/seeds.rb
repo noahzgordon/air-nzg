@@ -79,7 +79,8 @@ lex = User.create!(
 )
 
 l1 = bruce.listings.create!(
-  title: "Stately Wayne Manor",
+  title: "Wayne Manor",
+  description: "Stately Mansion of Local Millionaire and Man-About-Town Bruce Wayne"
   home_type: "mansion",
   room_type: "private",
   accomodates: 1,
