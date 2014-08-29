@@ -3,7 +3,7 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(this.collection, "sync", this.renderList),
 		this.listenTo(this.collection, "sync", this.renderForm),
-		this.listenTo(this.collection, "sync", this.updateMap)
+		this.listenTo(this.collection, "sync", this.renderMap)
 	},
 	
   template: JST['listings/index'],
@@ -18,9 +18,6 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		// use .slider("values") to get the vals of both handles
 		// use .slider( "values", #, # ) to set the values initially
 		// use "slide" or "stop" event to change listings on every movement
-		
-		this.renderList();
-		this.renderForm();
 		
 		return this;
 	},
@@ -37,14 +34,19 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		$(".listing-params").html(filterView.render().$el)
 	},
 	
-	showMap: function() {
+	renderMap: function() {
 		L.mapbox.accessToken = "pk.eyJ1IjoidG9ydHVnYS1tYW4iLCJhIjoiLTI5bEk0OCJ9.X62Suravr7Rij4PdYOizFQ"
-		this.map = L.mapbox.map("map", "tortuga-man.jc47j4o8");
+		this.mapBox = L.mapbox.map("map", "tortuga-man.jc47j4o8");
 		
-		// ap.setView(/* CITY LAT/LONG */)
-	},
-	
-	updateMap: function() {
+		var map = this.mapBox
+		L.mapbox.geocoder("mapbox.places-city-v1").query(this.collection.params().city, function(err, data) {
+			if (data.lbounds) {
+        map.fitBounds(data.lbounds);
+	    } else if (data.latlng) {
+        map.setView([data.latlng[0], data.latlng[1]], 13);
+	    }
+		});
+		
 		var data = [];
 		
 		this.collection.each(function(listing) {
@@ -64,6 +66,6 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	    });
 		});
 		
-		L.mapbox.featureLayer(data).addTo(this.map);
+		this.mapBox.featureLayer.setGeoJSON(data)
 	}
 });
