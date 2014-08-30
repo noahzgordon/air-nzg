@@ -40,7 +40,8 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="submit"],
-input[type="radio"] {
+input[type="radio"],
+::-webkit-input-placeholder {
   -webkit-appearance: none;
   display: inline-block;
   box-sizing: content-box;
@@ -49,7 +50,7 @@ input[type="radio"] {
   border: 0;
   outline: 0;
   width: auto;
-  font: inherit;
+  font-family: sans-serif;;
   vertical-align: baseline;
   background: transparent;
   color: inherit;
