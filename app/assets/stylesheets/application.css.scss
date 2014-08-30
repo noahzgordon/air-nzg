@@ -106,12 +106,12 @@ header > .logo {
 	margin: 10px;
 }
 
-header > nav {
+header > ul {
   display: block;
   float: right;
 }
 
-header article {
+header > ul > li {
 	float: left;
 	height: 70px;
 }
@@ -122,39 +122,36 @@ header a {
 	display: block;
 }
 
-header figure {
-	display: inline-block;
+.user-info {
+  position: relative;
+}
+
+header .user-info > a {
+	display: block;
 	float: left;
+	padding-right: 0;
 }
 
-header figure > img {
-	padding: 6px 10px 0 0;
+header .user-info > img {
+	float: left;
+	padding: 10px;
 	border-radius: 20px;
-}
-
-header article > div {
-	display: inline-block;
 }
 
 ul.dropdown {
   position: absolute;
   display: none;
-	width: 150px;
+	width: 200px;
 	background: #eee;
 	top: 70px;
 	color: #000;
 }
 
-.user-info {
-  position: relative;
-	padding: 0;
-}
-
-article:hover > ul.dropdown {
+li:hover > ul.dropdown {
   display: block;
 }
 
-article:hover > ul.dropdown:after {
+li:hover > ul.dropdown:after {
 	content: "";
   display: block;
   position: absolute;
@@ -170,8 +167,13 @@ article:hover > ul.dropdown:after {
   background: transparent;
 }
 
-.dropdown > li {
+ul.dropdown a, ul.dropdown li {
 	padding: 5px;
+	margin: 0;
+}
+
+ul.dropdown li:hover {
+	background: #aaa;
 }
 
 .notifications > .dropdown {
@@ -179,15 +181,36 @@ article:hover > ul.dropdown:after {
 }
 
 .notif-num {
-	padding: 0 6px;
+	display: block;
+	float: left;
+	padding: 3px 7px;
+	margin-top: 22px;
+	margin-right: 10px;
 	background-color: #008A99;
 	border-radius: 10px;
 }
 
-.logo-main {
-	display: block;
-	margin: auto;
+.new-listing > a {
+	background-color: #008A99;	
+	padding: 10px;
+	margin: 15px;
 }
+
+.new-listing > a:hover {
+	background-color: #00A1B2;	
+	padding: 10px;
+	margin: 15px;
+}
+
+.new-listing > a:active {
+	box-sizing: content-box;
+	border-top: 1px solid #004750;
+	background-color: #00606B;	
+	padding: 10px;
+	margin: 15px;
+}
+
+/* GENERAL */
 
 main {
   padding-top: 50px;
@@ -218,9 +241,5 @@ form {
 	font-weight: bold;
 	z-index: 1000;
 	display: block;
-}
-
-.new-listing > a {
-	background-color: #008A99;
 }
 

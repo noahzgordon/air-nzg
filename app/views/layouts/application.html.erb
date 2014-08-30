@@ -14,66 +14,69 @@
   <header class="group">
     <a href="<%= home_url %>" class="logo"></a>
 
-    <nav class="header-nav group">
+    <ul class="header-nav group">
 
       <% if signed_in? %>
-	      <ul class="user-info">
-						<li>
-							<a href="#">
-								<%= current_user.fname %>
-								<%= image_tag current_user.avatar.url(:thumb) %>
-							</a>
-						</li>
-						<figure class="user-thumbnail">
-							
-						</figure>
-					</a>
+	      <li class="user-info">
+						<a href="#">
+							<%= current_user.fname %>
+						</a>
+						
+						<%= image_tag current_user.avatar.url(:thumb) %>
+						
+		        <ul class="dropdown">
+		          <li><a href="<%= my_listings_url %>">
+								Your Listings
+							</a></li>
+		          <li><a href="<%= my_booking_requests_url %>">
+								Your Booking Requests
+							</a></li>
+		          <li><a href="#">
+								Your Wishlist
+							</a></li>
+		          <li><a href="<%= edit_user_url(current_user) %>">
+								Edit Profile
+							</a></li>
+		          <li><a href="#">
+								Account
+							</a></li>
+		          <li>
+								<%= link_to 'Log Out', session_url, 
+								method: :delete %>
+							</li>
+		        </ul>
+						
 					<div class="invis"></div>
-	        <ul class="dropdown">
-	          <li><a href="<%= my_listings_url %>">
-							Your Listings
-						</a></li>
-	          <li><a href="<%= my_booking_requests_url %>">
-							Your Booking Requests
-						</a></li>
-	          <li><a href="#">
-							Your Wishlist
-						</a></li>
-	          <li><a href="<%= edit_user_url(current_user) %>">
-							Edit Profile
-						</a></li>
-	          <li><a href="#">
-							Account
-						</a></li>
-	          <li>
-							<%= link_to 'Log Out', session_url, 
-							method: :delete %>
-						</li>
-	        </ul>
-	      </article>
+	        
+				</li>
 				
-				<article class="notifications">
+				<li class="notifications">
 	      	<a href="#">Notifications</a> 
-					<div class="notif-num">
-						<%= current_user.notifications.size %>
-					</div>
 					<ul class="dropdown">
 						<%= render partial: "notifications/notification", 
 						collection: current_user.notifications %>
 					</ul>
-				</article>
+				</li>
+				
+				<div class="notif-num">
+					<%= current_user.notifications.size %>
+				</div>
 			
-	      <article class="messages">
+	      <li class="messages">
 					<a href="#">Messages</a>
-				</article>
+				</li>
 			
-				<article class="new-listing">
+				<li class="new-listing">
 	        <a href="<%= new_listing_url %>">New Listing</a>
-				</article>
+				</li>
 				
       <% else %>
-        <a href="<%= new_session_url %>">Sign In</a>
-        <a href="<%= new_user_url %>">Sign Up</a>
+				<li class="sign-in">
+	        <a href="<%= new_session_url %>">Sign In</a>
+				</li>
+				<li class="sign-up">
+	        <a href="<%= new_user_url %>">Sign Up</a>
+				</li>
       <% end %>
 
     </nav>
