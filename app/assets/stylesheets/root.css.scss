@@ -1,0 +1,76 @@
+.logo-main {
+	background-image: url(image-path('logo.png'));
+	background-size: contain;
+	background-position: center;
+	height: 200px;
+	width: 300px;
+	margin: auto;
+}
+
+.listing-search > input {
+  margin: auto;
+	margin-bottom: 10px;
+  display: block;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.root-content {
+	padding: 60px;
+}
+
+.root-content > h3 {
+	font-weight: bold;
+}
+
+.listing-search {
+}
+
+.parallel-radios {
+	width: 304px;
+	margin: auto;
+}
+
+.parallel-radios > input[type=radio] {
+	background: #008A99;
+	height: 50px;
+	width: 150px;
+	display: block;
+	float: left;
+	position: relative;
+	margin: 1px;
+}
+
+.parallel-radios > input[type=radio]:checked {
+	background: #00606B;
+}
+
+#short-term {
+	border-radius: 20px 0 0 20px;
+}
+
+#short-term:after {
+	position: absolute;
+	content: "Short Term";
+	font-size: 20px;
+	top: 15px;
+	left: 25px;
+	color: #fff;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+#long-term:after {
+	position: absolute;
+	content: "Long Term";
+	font-size: 20px;
+	top: 15px;
+	left: 20px;
+	color: #fff;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+#long-term {
+	border-radius: 0 20px 20px 0;
+}

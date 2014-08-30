@@ -17,21 +17,47 @@
 
 /* RESETS */
 
-html, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label,
-figure, article {
+html, main, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label,
+figure, article, a {
   padding: 0;
   margin: 0;
   border: 0;
   outline: none;
   font: inherit;
+	color: inherit;
 }
 
-h1, h3, p, li, input, button, label, td {
+h1, h3, p, li, input, button, label, td, a, div {
   font-family: sans-serif;
+	text-decoration: none;
 }
 
 ul, li{
 	list-style: none;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="submit"],
+input[type="radio"] {
+  -webkit-appearance: none;
+  display: inline-block;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  width: auto;
+  font: inherit;
+  vertical-align: baseline;
+  background: transparent;
+  color: inherit;
+}
+
+input[type="submit"] {
+  display: inline;
+  cursor: pointer;
 }
 
 /* CLEARFIX */
@@ -48,18 +74,36 @@ body {
 	background: #999;
 }
 
+main {
+	width: 1200px;
+	background: #fff;
+	margin: auto;
+}
+
+/* HEADER */
+
 header {
   display: block;
   position: fixed;
-  height: 50px;
+  height: 70px;
   width: 100%;
-  background: #ccc;
+  background: #222;
+	color: #fff;
+	font-weight: bold;
 	z-index: 5000;
 }
 
 header > .logo {
   display: block;
+	width: 55px;
   float: left;
+	background: #fff;
+	background-image: url(image-path('logo.png'));
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 10px;
+	margin: 10px;
 }
 
 header > nav {
@@ -68,10 +112,14 @@ header > nav {
 }
 
 header article {
-	padding: 10px;
+	float: left;
+	height: 70px;
+}
+
+header a {
+	padding: 25px 10px;
 	font-size: 16px;
 	display: block;
-	float: left;
 }
 
 header figure {
@@ -79,16 +127,13 @@ header figure {
 	float: left;
 }
 
-header article > div {
-	display: inline-block;
+header figure > img {
+	padding: 6px 10px 0 0;
+	border-radius: 20px;
 }
 
-main {
-	width: 1200px;
-	background: #fff;
-	margin: auto;
-	padding: 50px 0;
-	
+header article > div {
+	display: inline-block;
 }
 
 ul.dropdown {
@@ -96,7 +141,8 @@ ul.dropdown {
   display: none;
 	width: 150px;
 	background: #eee;
-	top: 50px;
+	top: 70px;
+	color: #000;
 }
 
 .user-info {
@@ -132,6 +178,16 @@ article:hover > ul.dropdown:after {
 	width: 300px;
 }
 
+.notif-num {
+	padding: 0 6px;
+	background-color: #008A99;
+	border-radius: 10px;
+}
+
+.logo-main {
+	display: block;
+	margin: auto;
+}
 
 main {
   padding-top: 50px;
@@ -155,14 +211,6 @@ form {
   text-align: center;
 }
 
-.listing-search > input {
-  margin: auto;
-	margin-bottom: 10px;
-  display: block;
-  border: 1px solid black;
-  text-align: center;
-}
-
 .notice-bar {
 	position: fixed;
 	background: red;
@@ -171,3 +219,8 @@ form {
 	z-index: 1000;
 	display: block;
 }
+
+.new-listing > a {
+	background-color: #008A99;
+}
+

@@ -12,18 +12,20 @@
 <body>
 
   <header class="group">
-    <a href="<%= home_url %>" class="logo">AirNZG</a>
+    <a href="<%= home_url %>" class="logo"></a>
 
     <nav class="header-nav group">
 
       <% if signed_in? %>
-	      <article class="user-info">
-					<a href="#">
-						<article>
-							<%= current_user.fname %>
-						</article>
+	      <ul class="user-info">
+						<li>
+							<a href="#">
+								<%= current_user.fname %>
+								<%= image_tag current_user.avatar.url(:thumb) %>
+							</a>
+						</li>
 						<figure class="user-thumbnail">
-							<%= image_tag current_user.avatar.url(:thumb) %>
+							
 						</figure>
 					</a>
 					<div class="invis"></div>
@@ -76,25 +78,25 @@
 
     </nav>
   </header>
-	
-	
-	
-	<span class="notice-bar">
-    <% if !!flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-
-    <% if !!flash[:errors] %>
-      <ul class="errors">
-        <% flash[:errors].each do |error| %>
-          <li><%= error %></li>
-        <% end %>
-      </ul>
-    <% end %>
-	</span>
 
   <main class="group">
+		
+		<span class="notice-bar">
+	    <% if !!flash[:notice] %>
+	      <div class="notice"><%= flash[:notice] %></div>
+	    <% end %>
+
+	    <% if !!flash[:errors] %>
+	      <ul class="errors">
+	        <% flash[:errors].each do |error| %>
+	          <li><%= error %></li>
+	        <% end %>
+	      </ul>
+	    <% end %>
+		</span>
+		
     <%= yield %>
+		
   </main>
 	
 </body>
