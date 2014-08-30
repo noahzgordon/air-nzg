@@ -1,0 +1,76 @@
+#map {
+	box-sizing: border-box;
+  width: 40%;
+  height: 700px;
+  border-right: 5px solid #222;
+  float: left;
+  display: block;
+}
+
+.listings-content {
+	display: block;
+	float: left;
+	width: 60%;
+	height: 700px;
+	overflow: scroll;
+}
+
+.listing-params {
+  display: block;
+	margin: auto;
+  padding: 20px;
+}
+
+.dates > strong {
+	display: block;
+	float: left;
+}
+
+.dates > div {
+	width: 300px;
+	display: block;
+	float: left;
+	margin: auto;
+	text-align: center;
+}
+
+.dates > div > input {
+	display: block;
+	margin: auto;
+}
+
+.filter-form > button {
+  display: block;
+  margin: auto;
+  padding: 5px 15px;
+  background: #555;
+  color: #fff;
+}
+
+.filter-form > button:active {
+	box-sizing: border-box;
+	border-top: 2px solid #222;
+}
+
+.listings-list {
+  display: block;
+  float: left;
+	margin: auto;
+  padding: 20px;
+}
+
+.my-listings-toggler {
+	width: 300px;
+	height: 400px;
+	display: block;
+	float: left;
+	border: 1px solid black;
+}
+
+.my-listings-list {
+	width: 500px;
+	min-height: 400px;
+	display: block;
+	float: right;
+	border: 1px solid black;
+}

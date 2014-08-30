@@ -2,68 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#map {
-  width: 40%;
-  height: 900px;
-  border: 5px solid black;
-  float: left;
-  display: block;
-}
-
-.listing-params {
-  display: block;
-  float: left;
-  width: 55%;
-  padding: 20px;
-}
-
-.listing-params input {
-  border: 1px solid black;
-  margin: 20px;
-  margin-left: 5px;
-}
-
-.listing-params input[type="date"] {
-  border: 1px solid black;
-  width: 150px;
-}
-
-.listing-params button {
-  display: block;
-  margin: auto;
-  padding: 5px 15px;
-  background: #555;
-  color: #fff;
-}
-
-//.listing-params button:active {
-//  border-top: 2px solid #222;
-//  box-sizing: border-box;
-//}
-
-.listings-list {
-  display: block;
-  float: left;
-  width: 55%;
-  padding: 20px;
-}
-
-.my-listings-toggler {
-	width: 300px;
-	height: 400px;
-	display: block;
-	float: left;
-	border: 1px solid black;
-}
-
-.my-listings-list {
-	width: 500px;
-	min-height: 400px;
-	display: block;
-	float: right;
-	border: 1px solid black;
-}
-
 .listing-head > div {
 	display: block;
 	float: left;

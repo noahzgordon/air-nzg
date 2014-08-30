@@ -4,14 +4,23 @@
 <input type="hidden" name="accomodates" 
 			 value="<%= listings.params().accomodates %>">
 
-<strong>Dates:</strong>
-<label for="listing-start">Start Date</label>
-<input type="date" id="listing-start" value="<%= listings.params().start %>"
-			 name="start">
+<article class="dates group">
+	<strong>Dates:</strong>
+	
+	<div class="start">
+	<label for="listing-start">Start Date</label>
+	<input type="date" id="listing-start" value="<%= listings.params().start %>"
+				 name="start">
+	 </div>
+	 
+	 <div class="end">
+	<label for="listing-end">End Date</label>
+	<input type="date" id="listing-end" value="<%= listings.params().end %>"
+				 name="end">
+	 </div>
+</article>
 
-<label for="listing-end">End Date</label>
-<input type="date" id="listing-end" value="<%= listings.params().end %>"
-			 name="end">
+
 <br>
 
 <strong>Room:</strong>

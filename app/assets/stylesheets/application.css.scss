@@ -61,6 +61,10 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+::-webkit-input-placeholder {
+  color: #999;
+}
+
 /* CLEARFIX */
 
 .group:after {
@@ -72,10 +76,13 @@ input[type="submit"] {
 /* STYLES */
 
 body {
+	position: relative;
+	top: 70px;
 	background: #999;
 }
 
-main {
+main.main-content {
+	padding: 0;
 	width: 1200px;
 	background: #fff;
 	margin: auto;
@@ -135,7 +142,7 @@ header .user-info > a {
 
 header .user-info > img {
 	float: left;
-	padding: 10px;
+	margin: 10px;
 	border-radius: 20px;
 }
 
