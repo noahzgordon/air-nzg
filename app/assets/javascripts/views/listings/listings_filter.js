@@ -27,6 +27,17 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 		var content = this.template({ listings: this.collection });
 		this.$el.html(content)
 		
+		var $slider = this.$(".price-slider").slider({ values: [1, 10000], range: true })
+		
+		this.$(".price-low").html($slider.slider("values")[0])
+		this.$(".price-high").html($slider.slider("values")[1])
+		
+		console.log($slider.slider("values")[0])
+		
+		// use .slider("values") to get the vals of both handles
+		// use .slider( "values", #, # ) to set the values initially
+		// use "slide" or "stop" event to change listings on every movement
+		
 		return this;
 	}
 	

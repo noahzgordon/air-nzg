@@ -12,13 +12,6 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		var content = this.template({ listings: this.collection });
 		this.$el.html(content)
 		
-		this.$(".price-slider").append
-		this.$(".price-slider").slider({ values: [1, 10000], range: true })
-		
-		// use .slider("values") to get the vals of both handles
-		// use .slider( "values", #, # ) to set the values initially
-		// use "slide" or "stop" event to change listings on every movement
-		
 		return this;
 	},
 	
