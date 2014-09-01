@@ -9,6 +9,8 @@ AirNZG.Views.Root = Backbone.View.extend({
 		var content = this.template();
 		this.$el.html(content);
 		
+		AirNZG.Utils.deselectableRadios();
+		
 		return this;
 	}
 
