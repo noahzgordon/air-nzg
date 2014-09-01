@@ -32,7 +32,7 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 		this.$(".price-low").html($slider.slider("values")[0])
 		this.$(".price-high").html($slider.slider("values")[1])
 		
-		console.log($slider.slider("values")[0])
+		AirNZG.Utils.deselectableRadios.call(this);
 		
 		// use .slider("values") to get the vals of both handles
 		// use .slider( "values", #, # ) to set the values initially
