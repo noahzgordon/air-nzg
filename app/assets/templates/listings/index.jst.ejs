@@ -6,7 +6,15 @@
 <div class='info'></div>
 
 <section class="listings-content">
-	<article class="listing-params"></article>
+	<form>
+		<input type="hidden" value="<%= listings.params().term %>" name="term">
+		<input type="hidden" value="<%= listings.params().city %>" name="city">
+		<input type="hidden" name="accomodates" 
+					 value="<%= listings.params().accomodates %>">
+					 
+		<article class="listing-params">
+		</article>
+	</form>
 
 	<h3>Listings</h3>
 	<article class="listings-list"></article>

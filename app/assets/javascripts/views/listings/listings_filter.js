@@ -19,8 +19,6 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 		})
 	},
 	
-	tagName: "form",
-	
 	className: "filter-form",
 	
 	render: function() {

@@ -24,6 +24,8 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	renderForm: function() {
 		var filterView = new AirNZG.Views.ListingsFilter({ collection: this.collection });
 		
+		console.log("rendering form...")
+		
 		$(".listing-params").html(filterView.render().$el)
 	},
 	
@@ -33,16 +35,17 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	},
 	
 	renderMap: function() {
-
-		
 		var map = this.mapBox
-		L.mapbox.geocoder("mapbox.places-city-v1").query(this.collection.params().city, function(err, data) {
-			if (data.lbounds) {
-        map.fitBounds(data.lbounds);
-	    } else if (data.latlng) {
-        map.setView([data.latlng[0], data.latlng[1]], 13);
-	    }
-		});
+		
+		if (this.collection.params().city) { 
+			L.mapbox.geocoder("mapbox.places-city-v1").query(this.collection.params().city, function(err, data) {
+				if (data.lbounds) {
+	        map.fitBounds(data.lbounds);
+		    } else if (data.latlng) {
+	        map.setView([data.latlng[0], data.latlng[1]], 13);
+		    }
+			});
+		}
 		
 		var data = [];
 		
