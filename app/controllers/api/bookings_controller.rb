@@ -16,18 +16,18 @@ class Api::BookingsController < ApplicationController
     end
   end
   
-  def approve
+  def update
     @booking = current_user.booking_requests.find(params[:id])
-    @booking.approve!
     
-    render json: @booking
-  end
-  
-  def deny
-    @booking = current_user.booking_requests.find(params[:id])
-    @booking.deny!
-    
-    render json: @booking
+    if params[:approved]
+      @booking.approve!
+      render json: @booking
+    elsif params[:denied]
+      @booking.deny!
+      render json: @booking
+    else
+      render json: @booking, status: :unprocessable_entity
+    end
   end
   
   private

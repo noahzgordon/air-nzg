@@ -6,12 +6,10 @@ Rails.application.routes.draw do
     resources :listings, only: [:index, :show]
     resources :users, only: [:index, :show]
     
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:create, :update]
     
     get '/my_listings', to: 'listings#my_listings'
     get '/my_bookings', to: 'bookings#my_bookings'
-    patch '/bookings/approve/:id', to: 'bookings#approve', as: 'approve_booking'
-    patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
   end
 
   resources :listings

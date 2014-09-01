@@ -18,10 +18,10 @@ class Notification < ActiveRecord::Base
   def url
     case self.event_name
     when :new_booking_request
-      my_booking_requests_url
+      "#/my_booking_requests"
     when :booking_approved
       approving_user = self.notifiable.listing_owner
-      user_url(approving_user)
+      "#/users/#{approving_user}"
       # or message them?
     when :booking_denied
       '#'

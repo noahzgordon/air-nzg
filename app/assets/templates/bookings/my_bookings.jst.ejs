@@ -12,6 +12,8 @@
 				<li><%= booking.get("user").fname %> | Dates requested:	<%= booking.escape("start_date") %> - <%= booking.escape("end_date") %></li>
 				<% if (booking.escape("status") === "pending") { %>
 					<li class="approve-deny-buttons">
+						<button class="approve" data-id="<%= booking.id %>">Approve</button>
+						<button class="deny" data-id="<%= booking.id %>">Deny</button>
 					</li>
 				<% } else if (booking.escape("status") === "approved") { %>
 					<li>Approved</li>
