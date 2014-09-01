@@ -4,7 +4,9 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		"": "root",
 		"listings?:query": "listingsIndex",
 		"listings/:id": "listingShow",
-		"users/:id": "userShow"
+		"users/:id": "userShow",
+		
+		"my_booking_requests": "myBookings"
 	},
 	
 	root: function() {
@@ -35,6 +37,20 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		
 		var showView = new AirNZG.Views.UserShow({ model: user });
 		this._swapView(showView);
+	},
+	
+	myBookings: function() {
+		var bookings = new AirNZG.Collections.MyBookings;
+		var router = this;
+		
+		bookings.fetch({
+			success: function() {
+				var bookingsView = new AirNZG.Views.MyBookings({ collection: bookings })
+				router._swapView(bookingsView);
+			}
+		});
+		
+
 	},
 	
 	_swapView: function(view) {

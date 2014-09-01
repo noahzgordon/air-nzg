@@ -9,7 +9,7 @@
 	<% if (bookings.length > 0) { %>
 		<ul>
 			<% bookings.each(function(booking) { %>
-				<!-- <li><%= booking.user.fname %> | Dates requested:	<%= booking.start_date %> - <%= booking.end_date %></li> -->
+				<li><%= booking.get("user").fname %> | Dates requested:	<%= booking.escape("start_date") %> - <%= booking.escape("end_date") %></li>
 				<% if (booking.escape("status") === "pending") { %>
 					<li class="approve-deny-buttons">
 					</li>

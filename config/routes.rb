@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
     
     get '/my_listings', to: 'listings#my_listings'
-    get '/my_bookings', to: 'bookings#my_booking_requests'
+    get '/my_bookings', to: 'bookings#my_bookings'
     patch '/bookings/approve/:id', to: 'bookings#approve', as: 'approve_booking'
     patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
   end
