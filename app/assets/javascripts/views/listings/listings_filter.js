@@ -6,20 +6,25 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	},
 	
 	events: {	
-		// "submit": "filterPage"
 		"click input[type=radio]": "filterPage",
-		"blur input[type=date]": "filterPage",
-		"stop .price-slider": "filterPage"
+		"blur input[type=date]": "filterPage"
 	},
 	
 	filterPage: function(event) {
-		event.preventDefault();
-		
 		var data = $(event.currentTarget).serializeJSON();
+		data["low_price"] = this.$(".price-slider").slider("values")[0];
+		data["high_price"] = this.$(".price-slider").slider("values")[1];
+		
+		console.log(this.$(".price-slider").slider("values")[1])
 		
 		this.collection.fetch({
 			data: data
 		})
+	},
+	
+	updatePriceValues: function(event) {
+		this.$(".price-low").html("$" + this.$(".price-slider").slider("values")[0])
+		this.$(".price-high").html("$" + this.$(".price-slider").slider("values")[1])
 	},
 	
 	className: "filter-form",
@@ -28,17 +33,26 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 		var content = this.template({ listings: this.collection });
 		this.$el.html(content)
 		
-		var $slider = this.$(".price-slider").slider({ values: [1, 10000], range: true })
+		var view = this;
+		var $slider = this.$(".price-slider").slider({ 
+			min: 0,
+			max: 5000, 
+			values: [1, 5000],
+			range: true,
+			step: 100,
+			stop: function(event, ui) {
+				view.updatePriceValues(event);
+				view.filterPage(event);
+			},
+			slide: function(event, ui) {
+				view.updatePriceValues(event);
+			}
+		 })
 		
-		this.$(".price-low").html($slider.slider("values")[0])
-		this.$(".price-high").html($slider.slider("values")[1])
+		this.$(".price-low").html("$" + $slider.slider("values")[0])
+		this.$(".price-high").html("$" + $slider.slider("values")[1])
 		
 		AirNZG.Utils.deselectableRadios.call(this);
-		
-		// use .slider("values") to get the vals of both handles
-		// use .slider( "values", #, # ) to set the values initially
-		// use "slide" or "stop" event to change listings on every movement
-		
 		return this;
 	}
 	

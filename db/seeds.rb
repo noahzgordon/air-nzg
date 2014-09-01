@@ -27,7 +27,7 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|
     accomodates: [1, 2, 3, 4].sample,
     title: ["#{user.fname} #{user.lname}'s sweet apartment"].sample,
     description: "Check out this awesome apartment!",
-    price: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000].sample,
+    price: [500, 1000, 1200, 1700, 2300, 3000, 3500, 4200, 4500, 5000].sample,
     room_type: ["whole", "private", "shared"].sample,
     home_type: "apartment",
     address: row[3],

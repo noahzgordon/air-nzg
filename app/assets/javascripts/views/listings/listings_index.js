@@ -2,7 +2,7 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	
 	initialize: function() {
 		this.listenTo(this.collection, "sync", this.renderList),
-		this.listenTo(this.collection, "sync", this.renderForm),
+		this.listenToOnce(this.collection, "sync", this.renderForm),
 		this.listenTo(this.collection, "sync", this.renderMap)
 	},
 	
