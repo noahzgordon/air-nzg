@@ -1,0 +1,20 @@
+<section class="my-listings-toggler">
+	<ul>
+		<li>My Listings</a></li>
+		<li><a href="#/my_booking_requests">My Booking Requests</a></li>
+	</ul>
+</section>
+
+<section class="my-listings-list group">
+	<% if (listings.length > 0) { %>
+		<ul>
+			<% listings.each(function(listing) { %>
+				<li><a href="#/listings/:id/edit"><%= listing.get("title") %></a></li>
+			<% }); %>
+		</ul>
+	<% } else { %>
+		<p>You haven't made any listings.
+			<a href="#/listings/new">Make one now!</a>
+		</p>
+	<% } %>
+</section>

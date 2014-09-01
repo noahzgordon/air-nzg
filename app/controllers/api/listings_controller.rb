@@ -34,6 +34,11 @@ class Api::ListingsController < ApplicationController
 
     render :index
   end
+
+  def my_listings
+    @listings = current_user.listings
+    render json: @listings
+  end
   
   def show
     @listing = Listing.find(params[:id])
@@ -77,8 +82,5 @@ class Api::ListingsController < ApplicationController
   # def destroy
   # end
   #
-  # def my_listings
-  #   @listings = current_user.listings
-  #   render :my_listings
-  # end
+
 end
