@@ -26,8 +26,8 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|
     room_type: ["whole", "private", "shared"].sample,
     home_type: "apartment",
     address: row[3],
-    longitude: coords[0],
-    latitude: coords[1]
+    longitude: coords[1],
+    latitude: coords[0]
   )
   
   puts listing.id
@@ -84,9 +84,10 @@ l1 = bruce.listings.create!(
   term: "long",
   city: "Chicago",
   price: 5000,
-  latitude: -87.893272,
-  longitude: 41.666085,
-  address: "11152-11198 W 123rd St., Palos Park, IL 60464"
+  latitude: 41.666085,
+  longitude: -87.893272,
+  address: "11152-11198 W 123rd St., Palos Park, IL 60464",
+  cover_pic: File.new("#{Rails.root}/seeds/images/wayne_manor.jpg")
 )
 
 l2 = batman.listings.create!(
@@ -97,8 +98,9 @@ l2 = batman.listings.create!(
   term: "long",
   city: "Chicago",
   price: 500,
-  latitude: -87.890186,
-  longitude: 41.676043,
+  latitude: 41.676043,
+  longitude: -87.890186,
+  cover_pic: File.new("#{Rails.root}/seeds/images/batcave.jpg")
 )
 
 l1.amenities.create!([

@@ -1,8 +1,8 @@
 <% listings.each(function(listing) { %>
-	<article class="listing-box">
+	<article class="listing-box" data-id="<%= listing.id %>">
 		<a href="#/listings/<%= listing.id %>">
-			<p><%= listing.escape("title") %> | $<%= listing.escape("price") %></p>
-			<img src="images/<%= listing.escape("cover_pic") %>">
+			<p><%= listing.escape("title") %> -- $<%= listing.escape("price") %></p>
+			<img src="<%= listing.escape("cover_pic") %>">
 		</a>
 	</article>
 <% }); %>

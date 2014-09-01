@@ -1,17 +1,18 @@
 <section class="listing-head">
 	<div class="user-block">
 		
-		<a href="#/users/<%= user.get("id") %>">
-			<%= user.escape("fname") %>
+		<a class="prof-link" href="#/users/<%= user.get("id") %>">
+			<p><%= user.escape("fname") %></p>
 			<img src="<%= user.escape("avatar_small") %>">
 		</a>
-		<a href="#">contact</a>
+		<a class="contact-link" href="#">contact</a>
 	</div>
+	
 	
 	<div class="basic-info">
 		<h3 class="listing-title"><%= listing.escape("title") %></h3>
 		<p class="listing-info"><%= listing.escape("home_type") %> in <%= listing.escape("city") %> |
-			Accomodates <%= listing.escape("accomodates") %></p>
+			Accommodates <%= listing.escape("accomodates") %></p>
 		<p class="score">Average Score: #</p>
 	</div>
 	
@@ -19,13 +20,15 @@
 		<% var price_per = listing.get("term") === "long" ? "/month" : "/day" %>
 		<p>Price: $<%= listing.escape("price") %><%= price_per %></p>
 		<form class="request-form">
-			<label for="booking-start">Check In</label>
-		  <input type="date" name="start_date" id="booking-start">
-			<br>
-
-		  <label for="booking-end">Check Out</label>
-		  <input type="date" name="end_date" id="booking-end">
-			<br>
+			<div class="start group">
+				<label for="booking-start">Check In</label>
+			  <input type="date" name="start_date" id="booking-start">
+			</div>
+			
+			<div class="end group">
+			  <label for="booking-end">Check Out</label>
+			  <input type="date" name="end_date" id="booking-end">
+			</div>
 			
 			<input type="hidden" name="listing_id" value="<%= listing.id %>">
 			

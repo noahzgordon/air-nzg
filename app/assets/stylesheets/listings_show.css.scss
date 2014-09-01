@@ -1,0 +1,117 @@
+.user-block {
+	display: block;
+	float: left;
+	margin: 30px;
+	position: relative;
+	text-align: center;
+}
+
+.user-block img {
+	display: block;
+	border: 3px solid #000;
+}
+
+.user-block p {
+	display: block;
+	margin: auto;
+	position: absolute;
+	top: 5px;
+	left: 7px;
+	padding: 5px;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 2px;
+	background-color: rgba(10, 10, 10, 0.5);
+}
+
+.user-block > a.contact-link {
+	font-weight: bold;
+	display: block;
+	margin-top: 5px;
+	color: #008A99;
+}
+
+.basic-info {
+	display: block;
+	float: left;
+	border-radius: 20px;
+	margin: 30px 30px 0 60px;
+	padding: 10px;
+	text-align: left;
+	background: #ddd;
+	width: 500px;
+}
+
+.basic-info > h3 {
+	margin: 0;
+	padding: 20px;
+	display: block;
+}
+
+.basic-info > p {
+	text-transform: capitalize;
+	padding: 0 20px 20px 20px;
+}
+
+.request-container {
+	display: block;
+	float: left;
+	margin-top: 40px;
+	border: 5px solid #000;
+	width: 260px;
+	padding: 10px;
+	padding-bottom: 0;
+	background: #444;
+	color: #fff;
+}
+
+.request-container > p {
+	font-weight: bold;
+	letter-spacing: 5px;
+	margin-bottom: 10px;
+}
+
+.request-container label {
+	display: block;
+	float: left;
+	padding: 3px 8px;
+}
+
+.request-container input {
+	display: block;
+	float: right;
+	margin-right: 15px;
+	color: #000;
+	height: 20px;
+	width: 150px;
+}
+
+.start {
+	text-align: left;
+	display: block;
+	width: 100%;
+}
+
+.end {
+	display: block;
+}
+
+.request-container button {
+	margin: 15px auto;
+	display: block;
+	padding: 10px 20px;
+	color: #000;
+	background: #ccc;
+	font-weight: bold;
+}
+
+.request-container button:hover {
+	background: #ddd;
+}
+
+.request-container button:active {
+	padding-bottom: 9px;
+	border-top: 1px solid #aaa;
+	background: #bbb;
+}
