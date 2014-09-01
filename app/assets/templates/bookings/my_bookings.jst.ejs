@@ -1,0 +1,26 @@
+<section class="my-listings-toggler">
+	<ul>
+		<li><a href="#/my_listings">My Listings</a></li>
+		<li>My Booking Requests</li>
+	</ul>
+</section>
+
+<section class="my-listings-list group">
+	<% if (bookings.length > 0) { %>
+		<ul>
+			<% bookings.each(function(booking) { %>
+				<!-- <li><%= booking.user.fname %> | Dates requested:	<%= booking.start_date %> - <%= booking.end_date %></li> -->
+				<% if (booking.escape("status") === "pending") { %>
+					<li class="approve-deny-buttons">
+					</li>
+				<% } else if (booking.escape("status") === "approved") { %>
+					<li>Approved</li>
+				<% } else if (booking.escape("status") === "denied") { %>
+					<li>Denied</li>
+				<% } %>
+			<% }); %>
+		</ul>
+	<% } else { %>
+		<p>Your listings have no outstanding requests.</p>
+	<% } %>
+</section>

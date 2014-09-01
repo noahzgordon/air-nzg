@@ -1,6 +1,11 @@
 class Api::BookingsController < ApplicationController
   before_action :require_signed_in
   
+  def my_bookings
+    @bookings = current_user.booking_requests
+    render json: @bookings, include: :user
+  end
+  
   def create
     @booking = current_user.bookings.new(booking_params)
     
@@ -9,11 +14,6 @@ class Api::BookingsController < ApplicationController
     else
       render json: @booking.errors.full_messages, status: :unprocessable_entity
     end
-  end
-  
-  def my_booking_requests
-    @bookings = current_user.booking_requests
-    render json: @bookings
   end
   
   def approve

@@ -7,9 +7,11 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show]
     
     resources :bookings, only: [:create]
-    # get 'my_booking_requests', to: 'bookings#my_booking_requests'
-    # patch '/bookings/approve/:id', to: 'bookings#approve', as: 'approve_booking'
-    # patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
+    
+    get '/my_listings', to: 'listings#my_listings'
+    get '/my_bookings', to: 'bookings#my_booking_requests'
+    patch '/bookings/approve/:id', to: 'bookings#approve', as: 'approve_booking'
+    patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
   end
 
   resources :listings
@@ -21,6 +23,6 @@ Rails.application.routes.draw do
   patch '/bookings/deny/:id', to: 'bookings#deny', as: 'deny_booking'
   
   get 'auth/facebook/callback', to: 'oauth_callbacks#facebook'
-
+  
   root to: "static_pages#home", as: "home"
 end

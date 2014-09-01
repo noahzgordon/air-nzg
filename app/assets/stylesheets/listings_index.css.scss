@@ -121,7 +121,12 @@ div.price-slider {
   display: block;
   float: left;
 	margin: auto;
-  padding: 20px;
+  padding: 0 20px;
+}
+
+.listings-content > h3 {
+	margin: 0 auto;
+	
 }
 
 .my-listings-toggler {
