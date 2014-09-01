@@ -25,6 +25,7 @@ gem 'backbone-on-rails'
 gem 'ejs'
 
 gem 'geocoder'
+gem 'kaminari'
 
 group :development do
   gem 'better_errors'

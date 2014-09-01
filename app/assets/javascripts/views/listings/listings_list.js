@@ -6,7 +6,9 @@ AirNZG.Views.ListingsList = Backbone.View.extend({
 		this.listenTo(this.collection, "sync", this.render);
 	},
 	
-	tagName: "ul",
+	tagName: "section",
+	
+	className: "listings-list group",
 	
 	render: function() {
 		var content = this.template({ listings: this.collection });

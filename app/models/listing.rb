@@ -3,6 +3,13 @@ class Listing < ActiveRecord::Base
   has_many :unavailable_ranges
   has_many :amenities
   has_many :bookings
+  
+  has_attached_file(
+    :cover_pic,
+    default_url: "missing_listing.jpg"
+  )
+  
+  validates_attachment_content_type :cover_pic, content_type: /\Aimage\/.*\Z/
 
   validates :title, presence: true, uniqueness: true
   validates :home_type, :room_type, :accomodates, :term, :city, :price,

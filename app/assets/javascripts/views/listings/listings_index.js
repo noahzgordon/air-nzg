@@ -18,7 +18,7 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	renderList: function() {
 		var listView = new AirNZG.Views.ListingsList({ collection: this.collection });
 		
-		$(".listings-list").html(listView.render().$el)
+		$("div.list").html(listView.render().$el)
 	},
 	
 	renderForm: function() {

@@ -121,28 +121,40 @@ div.price-slider {
 
 .listings-list {
   display: block;
-  float: left;
 	margin: auto;
   padding: 0 20px;
+	width: 550px;
 }
 
 .listings-content > h3 {
 	margin: 0 auto;
-	
+	padding-bottom: 20px;
 }
 
-.my-listings-toggler {
-	width: 300px;
-	height: 400px;
+.listing-box {
 	display: block;
 	float: left;
-	border: 1px solid black;
+	width: 248px;
+	height: 150px;
+	border: 3px solid #000;
+	margin: 10px;
+	position: relative;
+
 }
 
-.my-listings-list {
-	width: 500px;
-	min-height: 400px;
+.listing-box > a {
+	text-align: center;
+}
+
+.listing-box > a > img {
+	width: 248px;
+	height: 150px;
+}
+
+.listing-box > a > p {
+	font-weight: bold;
+	position: absolute;
 	display: block;
-	float: right;
-	border: 1px solid black;
+	width: 100%;
+	background-color: rgba(200, 200, 200, 0.5);
 }
