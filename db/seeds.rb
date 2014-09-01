@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 
 require 'csv'
 
@@ -19,21 +13,24 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|
     password: "password"
   )
   
-  coords = Geocoder.coordinates([row[4], row[5], row[6], row[7], row[8]].join(","))
+  coords = Geocoder.coordinates([row[3], row[4], row[5], row[6], row[7]].join(","))
+  next if !coords
   
   listing = user.listings.create!(
     term: ["short", "long"].sample,
     city: user.locale,
     accomodates: [1, 2, 3, 4].sample,
-    title: ["#{user.fname} #{user.lname}'s sweet apartment"].sample,
+    title: "#{user.fname} #{user.lname}'s sweet apartment",
     description: "Check out this awesome apartment!",
     price: [500, 1000, 1200, 1700, 2300, 3000, 3500, 4200, 4500, 5000].sample,
     room_type: ["whole", "private", "shared"].sample,
     home_type: "apartment",
     address: row[3],
-    latitude: coords[1],
-    longitude: coords[0]
+    longitude: coords[0],
+    latitude: coords[1]
   )
+  
+  puts listing.id
 end
 
 bruce = User.create!(

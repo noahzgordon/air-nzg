@@ -1,4 +1,9 @@
 <!-- Hidden form inputs carry over search params from prev. page -->
+<input type="hidden" value="<%= listings.params().term %>" name="term">
+<input type="hidden" value="<%= listings.params().city %>" name="city">
+<input type="hidden" name="accomodates" 
+			 value="<%= listings.params().accomodates %>">
+
 
 <strong>Dates:</strong>
 <article class="dates group">

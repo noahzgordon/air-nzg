@@ -11,7 +11,8 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	},
 	
 	filterPage: function(event) {
-		var data = $(event.currentTarget).serializeJSON();
+		var data = this.$el.serializeJSON();
+		
 		data["low_price"] = this.$(".price-slider").slider("values")[0];
 		data["high_price"] = this.$(".price-slider").slider("values")[1];
 		
@@ -28,6 +29,8 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	},
 	
 	className: "filter-form",
+	
+	tagName: "form",
 	
 	render: function() {
 		var content = this.template({ listings: this.collection });
