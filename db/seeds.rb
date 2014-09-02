@@ -27,8 +27,8 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|
     home_type: "apartment",
     address: row[3],
     longitude: coords[1],
-    latitude: coords[0]
-    essentails: true
+    latitude: coords[0],
+    essentials: true
   )
   
   puts listing.id
