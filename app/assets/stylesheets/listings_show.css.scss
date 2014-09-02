@@ -1,7 +1,8 @@
 .user-block {
 	display: block;
 	float: left;
-	margin: 30px;
+	margin: 70px 50px;
+	margin-bottom: 0;
 	position: relative;
 	text-align: center;
 }
@@ -36,7 +37,7 @@
 	display: block;
 	float: left;
 	border-radius: 20px;
-	margin: 30px 30px 0 60px;
+	margin: 40px 30px 0 40px;
 	padding: 10px;
 	text-align: left;
 	background: #ddd;
@@ -67,6 +68,7 @@
 }
 
 .request-container > p {
+	text-align: center;
 	font-weight: bold;
 	letter-spacing: 5px;
 	margin-bottom: 10px;
@@ -114,4 +116,58 @@
 	padding-bottom: 9px;
 	border-top: 1px solid #aaa;
 	background: #bbb;
+}
+
+.listing-basics {
+	display: block;
+	margin: 30px auto;
+	width: 700px;
+}
+
+.listing-basics > h3 {
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+.listing-basics h4 {
+	padding: 5px 0;
+	margin: 0;
+	text-decoration: underline;
+}
+
+.unavailable-list, .description {
+	padding: 10px 0;
+}
+
+.photo-gallery {
+	display: block;
+	width: 1100px;
+}
+
+.photo-gallery > img {
+	width: 100%;
+	height: auto;
+}
+
+.listing-details {
+	display: block;
+	margin: auto;
+	width: 700px;
+}
+
+.more-info > h3 {
+	margin: 20px 0;
+}
+
+.more-info > table {
+	padding-bottom: 20px;
+}
+
+.more-info tr {
+	padding: 5px 0;
+	text-align: left;
+}
+
+.more-info th {
+	padding-right: 15px;
 }

@@ -1,4 +1,4 @@
-<section class="listing-head">
+<section class="listing-head group">
 	<div class="user-block">
 		
 		<a class="prof-link" href="#/users/<%= user.get("id") %>">
@@ -37,58 +37,67 @@
 	</div>
 </section>
 
-<section class="listing-main">
-	<h3>About This Listing</h3>
+<section class="listing-main group">
+	<section class="listing-basics">
+		<h3>About This Listing</h3>
 	
-	<article class="unavailable-list">
-		<p>Dates Unavailable</p>
-		<% if(listing.get("unavailable_ranges") && listing.get("unavailable_ranges").count > 0) { %>
-		<ul>
-			<% listing.get("unavailable_ranges").forEach(function(range) { %>
-				<li><%= range.start_date %> - <%= range.end_date %></li>
-			<% }) %>
-		</ul>
-		<% } else { %>
-			<p>None!</p>
-		<% } %>
-	</article>
-	
-	<article class="description">
-		<% if(listing.escape("description")) { %>
-			<p><%= listing.escape("description") %></p>
-		<% } else { %>
-			<p>There is no description for this listing.</p>
+		<article class="unavailable-list">
+			<h4>Dates Unavailable</h4>
+			<% if(listing.get("unavailable_ranges") && listing.get("unavailable_ranges").count > 0) { %>
+			<ul>
+				<% listing.get("unavailable_ranges").forEach(function(range) { %>
+					<li><%= range.start_date %> - <%= range.end_date %></li>
+				<% }) %>
+			</ul>
+			<% } else { %>
+				None! All dates are available.
 			<% } %>
-	</article>
+		</article>
 	
-	<article class="photo-galery">
-		Photos go here!
+		<article class="description">
+				<h4>Description</h4>
+				<% if(listing.escape("description")) { %>
+					<p><%= listing.escape("description") %></p>
+				<% } else { %>
+					<p>There is no description for this listing.</p>
+				<% } %>
+		</article>
+	
+	</section>
+	
+	<article class="photo-gallery">
+		<img src="<%= listing.escape("cover_pic") %>">
 	</div>
 	
-	<article class="more-info">
-		<h3>More Info</h3>
-		<table>
-			<tr>
-				<td>Room Type:</td>
-				<td><%= listing.escape("room_type") %></td>
-			</tr>
-			<tr>
-				<td>Home Type:</td>
-				<td><%= listing.escape("home_type") %></td>
-			</tr>
-			<tr>
-				<td>Amenities:</td>
-				<td>
-					<% if (listing.get("amenities")) { %>
-					<ul>
-						<% listing.get("amenities").forEach(function(amenity) { %>
-							<li><%= amenity.name %></li>
-						<% }); %>
-					</ul>
-					<% }; %>
-				</td>
-			</tr>
-		</table>
-	</article>
+	<section class="listing-details">
+	
+		<article class="more-info">
+			<h3>More Info</h3>
+			<table>
+				<tr>
+					<th>Room Type:</th>
+					<td><%= listing.escape("room_type") %></td>
+				</tr>
+				<tr>
+					<th>Home Type:</th>
+					<td><%= listing.escape("home_type") %></td>
+				</tr>
+				<tr>
+					<th>Amenities:</th>
+					<td>
+						<% if (listing.get("amenities")) { %>
+						<ul>
+							<% listing.get("amenities").forEach(function(amenity) { %>
+								<li><%= amenity.name %></li>
+							<% }); %>
+						</ul>
+						<% } else { %>
+							None
+						<% }; %>
+					</td>
+				</tr>
+			</table>
+		</article>
+	</section>
 						
 </section>
