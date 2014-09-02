@@ -92,7 +92,8 @@ class Api::ListingsController < ApplicationController
       :term,
       :address,
       :description,
-      :cover_pic
+      :cover_pic,
+      :amenities => []
     )
   end
 

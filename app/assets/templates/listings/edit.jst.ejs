@@ -119,7 +119,72 @@
 					value="<%= listing.escape("address") %>">
 			</article>
 		
-		<h3>Details</h3>
+		<h3>Amenities</h3>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Essentials" id="amen-essentials" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("Essentials") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-essentials">Essentials</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Television" id="amen-tv"
+					<% if (listing.escape("amenities").indexOf("Television") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-tv">Television</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Cable TV" id="amen-essentials" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("Cable TV") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-essentials">Cable TV</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Air Conditioning" id="amen-ac" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("Air Conditioning") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-ac">Air Conditioning</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Heat" id="amen-heat" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("Heat") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-heat">Heat</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Kitchen" id="amen-kitchen" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("Kitchen") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-kitchen">Kitchen</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="Internet" id="amen-internet" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("Internet") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-wifi">Wired Internet</label>
+			</div>
+			
+			<div class="amenity-wrapper">
+				<input type="checkbox" value="WiFi" id="amen-wifi" name="amenities[]"
+					<% if (listing.escape("amenities").indexOf("WiFi") > 0) { %>
+						<%= "checked" %>
+					<% } %>>
+				<label for="amen-wifi">WiFi</label>
+			</div>
+
 	
 	<span class="error-bar"></span>
 	

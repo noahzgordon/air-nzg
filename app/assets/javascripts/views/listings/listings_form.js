@@ -16,6 +16,8 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		var view = this;
 		var data = $(event.currentTarget).serializeJSON();
 		
+		console.log(data)
+		
 		this.model.save(data, {
 			success: function(model, response) {
 				Backbone.history.navigate("/listings/" + model.id, { trigger: true })
