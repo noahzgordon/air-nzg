@@ -1,8 +1,9 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :unavailable_ranges
-  has_many :amenities
   has_many :bookings
+  
+  before_save :default_amenities
   
   has_attached_file(
     :cover_pic,
@@ -27,5 +28,32 @@ class Listing < ActiveRecord::Base
 
     true
   end
-
+  
+  def amenities
+    amen_arr = []
+    
+    amen_arr << "Essentials" if self.essentials
+    amen_arr << "Television" if self.tv
+    amen_arr << "Cable TV" if self.cable
+    amen_arr << "Air Conditioning" if self.ac
+    amen_arr << "Heat" if self.heat
+    amen_arr << "Kitchen" if self.kitchen
+    amen_arr << "Wired Internet" if self.internet
+    amen_arr << "WiFi" if self.wifi
+    
+    amen_arr
+  end
+  
+  private
+  
+  def default_amenities
+    self.essentials ||= false
+    self.tv ||= false
+    self.cable ||= false
+    self.ac ||= false
+    self.heat ||= false
+    self.kitchen ||= false
+    self.internet ||= false
+    self.wifi ||= false
+  end
 end

@@ -7,16 +7,16 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 	className: "form-container",
 	
 	events: {
-		"submit .listing-form": "saveListing",
-		"change #listing-pic": "fileSelect"
+		"click .save-button": "saveListing",
+		"change #listing-pic": "fileSelect",
+		"click .deactivate-button": "deleteListing"
 	},
 	
 	saveListing: function(event) {
 		event.preventDefault();
 		var view = this;
-		var data = $(event.currentTarget).serializeJSON();
 		
-		console.log(data)
+		var data = this.$(".listing-form").serializeJSON();
 		
 		this.model.save(data, {
 			success: function(model, response) {
@@ -40,8 +40,6 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		var imageFile = event.currentTarget.files[0];
 		var reader = new FileReader();
 		
-		
-		
 		reader.onloadend = function() {
 			view.model.set("cover_pic", this.result)
 			view.$("#listing-pic").attr("src", this.result); // updates preview
@@ -52,6 +50,16 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		} else {
 			view.$("#listing-pic").attr("src", "") // set preview string to empty
 		}
+	},
+	
+	deleteListing: function(event) {
+		event.preventDefault();
+		
+		this.model.destroy({
+			success: function() {
+				Backbone.history.navigate("/", { trigger: true });
+			}
+		});
 	},
 	
 	render: function() {

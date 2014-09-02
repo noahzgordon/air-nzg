@@ -4,6 +4,6 @@ json.(listing, :id, :title, :created_at, :updated_at, :user_id, :term, :city,
                
 json.cover_pic listing.cover_pic.url
       
-json.amenities listing.amenities, :name
+json.amenities listing.amenities
 
 json.unavailable_ranges listing.unavailable_ranges, :start_date, :end_date

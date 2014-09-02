@@ -28,6 +28,7 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|
     address: row[3],
     longitude: coords[1],
     latitude: coords[0]
+    essentails: true
   )
   
   puts listing.id
@@ -100,16 +101,12 @@ l2 = batman.listings.create!(
   price: 500,
   latitude: 41.676043,
   longitude: -87.890186,
-  cover_pic: File.new("#{Rails.root}/seeds/images/batcave.jpg")
+  cover_pic: File.new("#{Rails.root}/seeds/images/batcave.jpg"),
+  tv: true,
+  essentials: true,
+  cable: true,
+  wifi: true
 )
-
-l1.amenities.create!([
-  { name: "Television" },
-  { name: "Essentials" },
-  { name: "Cable TV"},
-  { name: "WiFi"}
-])
-
 
 
 

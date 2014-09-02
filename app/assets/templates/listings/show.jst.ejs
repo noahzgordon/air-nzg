@@ -82,13 +82,15 @@
 					<th>Home Type:</th>
 					<td><%= listing.escape("home_type") %></td>
 				</tr>
-				<tr>
+				<tr class="amenities-row">
+					
+					<%= console.log(listing) %>
 					<th>Amenities:</th>
 					<td>
 						<% if (listing.get("amenities")) { %>
-						<ul>
+						<ul class="amenity-list">
 							<% listing.get("amenities").forEach(function(amenity) { %>
-								<li><%= amenity.name %></li>
+								<li><%= amenity %></li>
 							<% }); %>
 						</ul>
 						<% } else { %>

@@ -4,7 +4,7 @@ class Api::ListingsController < ApplicationController
   wrap_parameters false
   
   def index
-    @listings = Listing.includes(:amenities).includes(:unavailable_ranges).all
+    @listings = Listing.includes(:unavailable_ranges).all
 
     if params[:city].present?
       @listings = @listings.where(city: params[:city])
@@ -74,26 +74,24 @@ class Api::ListingsController < ApplicationController
       render json: @listing.errors.full_messages, status: :unprocessable_entity
     end
   end
-  #
-  # def destroy
-  # end
-  #
+  
+
+  def destroy
+    @listing = current_user.listings.find(params[:id])
+    
+    @listing.destroy
+    
+    render json: @listing
+  end
+
   
   private
   
   def listing_params
     params.require(:listing).permit(
-      :title,
-      :city,
-      :home_type,
-      :room_type,
-      :accomodates,
-      :price,
-      :term,
-      :address,
-      :description,
-      :cover_pic,
-      :amenities => []
+      :title, :city, :home_type, :room_type,
+      :accomodates, :price, :term, :address, :description, :cover_pic, 
+      :essentials, :tv, :cable, :ac, :heat, :kitchen, :internet, :wifi
     )
   end
 
