@@ -1,7 +1,10 @@
 <h1>Sign in!</h1>
 
+<div class="exit">✕</div>
+
 <form class="user-form" action="/session" method="POST">
 	<input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr('content') %>">
+	<input type="hidden" name="path" value="">
 	
   <input type="text" name="user[email]" id="user-email">
   <label for="user-email">Email</label>

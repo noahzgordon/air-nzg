@@ -6,26 +6,33 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 	className: "auth-modal",
 	
 	events: {
-		"submit .user-form": "newSession"
+		"click .exit": "exitView",
+		"submit .user-form": "signInUser"
 	},
 	
-	newSession: function(event) {
-		// event.preventDefault();
-		// var data = $(event.currentTarget).serializeJSON();
-		//
-		// console.log(data)
+	exitView: function(event) {
+		console.log("blurred!");
+		this._closeModal();
+		history.back();
+	},
+	
+	signInUser: function(event) {
+		event.preventDefault();
+		var data = $(event.currentTarget).serializeJSON();
+		var view = this
 		
-		// $.ajax({
-		// 	url: "/session",
-		// 	type: "POST",
-		// 	data: data,
-		// 	success: function(response) {
-		// 		console.log("success!");
-		// 	},
-		// 	error: function(response) {
-		// 		console.log("failure!");
-		// 	}
-		// })
+		$.ajax({
+			url: "/session",
+			type: "POST",
+			data: data,
+			success: function() {
+				view._closeModal();
+				history.back();
+			}
+			
+		})
+		console.log(data);
+		
 	},
 	
 	render: function() {
@@ -33,6 +40,11 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 		this.$el.html(content);
 		
 		return this;
+	},
+	
+	_closeModal: function() {
+		$(".modal-screen").removeClass("active");
+		$(".modal-card").removeClass("active");
 	}
 
 });
