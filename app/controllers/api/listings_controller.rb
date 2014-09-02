@@ -1,6 +1,8 @@
 class Api::ListingsController < ApplicationController
   before_action :require_signed_in, only: []
   
+  wrap_parameters false
+  
   def index
     @listings = Listing.includes(:amenities).includes(:unavailable_ranges).all
 
@@ -58,23 +60,20 @@ class Api::ListingsController < ApplicationController
       render json: @listing.errors.full_messages, status: :unprocessable_entity
     end
   end
-  #
-  # def edit
-  #   @listing = current_user.listings.find(params[:id])
-  #   render :edit
-  # end
-  #
-  # def update
-  #   @listing = current_user.listings.find(params[:id])
-  #
-  #   if @listing.update(listing_params)
-  #     flash[:notice] = "Listing updated!"
-  #     redirect_to edit_listing_url(@listing)
-  #   else
-  #     flash[:errors] = @listing.errors.full_messages
-  #     render :edit
-  #   end
-  # end
+  
+  def update
+    @listing = current_user.listings.find(params[:id])
+    
+    @listing.latitude, @listing.longitude = Geocoder.coordinates(
+      "#{listing_params[:address]}, #{listing_params[:city]}, United States"
+    ) if listing_params[:address]
+
+    if @listing.update(listing_params)
+      render json: @listing
+    else
+      render json: @listing.errors.full_messages, status: :unprocessable_entity
+    end
+  end
   #
   # def destroy
   # end
@@ -91,7 +90,9 @@ class Api::ListingsController < ApplicationController
       :accomodates,
       :price,
       :term,
-      :address
+      :address,
+      :description,
+      :cover_pic
     )
   end
 

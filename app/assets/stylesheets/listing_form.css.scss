@@ -8,6 +8,11 @@ div.form-container {
 	display: block;
 	text-align: left;
 	
+	h3 {
+		text-decoration: underline;
+		margin: 30px 0 10px 0;
+	}
+	
 	article {
 		display: block;
 		text-align: left;
@@ -35,6 +40,13 @@ div.form-container {
 			color: #fff;
 			font-weight: bold;
 		}
+	}
+	
+	#listing-description {
+		height: 100px;
+		width: 300px;
+		border: 1px solid #000;
+		padding: 10px;
 	}
 	
 	article.term {

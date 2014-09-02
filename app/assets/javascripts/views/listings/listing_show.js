@@ -22,7 +22,7 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 				Backbone.history.navigate("/", { trigger: true })
 			},
 			error: function(model, response) {
-				$(".notice-bar").html(response.responseText);
+				$(".error-bar").html(response.responseText);
 			}
 		});
 	},

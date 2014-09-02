@@ -5,6 +5,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		"listings?:query": "listingsIndex",
 		"listings/new": "listingNew",
 		"listings/:id": "listingShow",
+		"listings/:id/edit": "listingEdit",
 		"users/:id": "userShow",
 		
 		"my_listings": "myListings",
@@ -29,7 +30,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	listingNew: function() {
 		var listing = new AirNZG.Models.Listing();
 		
-		var newView = new AirNZG.Views.ListingNew({ model: listing });
+		var newView = new AirNZG.Views.ListingForm({ model: listing });
 		this._swapView(newView);
 	},
 	
@@ -39,6 +40,18 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		
 		var showView = new AirNZG.Views.ListingShow({ model: listing });
 		this._swapView(showView);
+	},
+	
+	listingEdit: function(id) {
+		var listing = new AirNZG.Models.Listing({ id: id });
+		var router = this;
+		
+		listing.fetch({
+			success: function() {
+				var newView = new AirNZG.Views.ListingForm({ model: listing });
+				router._swapView(newView);
+			}
+		});
 	},
 	
 	userShow: function(id) {
