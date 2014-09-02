@@ -77,12 +77,12 @@ input[type="submit"], button {
 
 body {
 	position: relative;
-	top: 70px;
 	background: #999;
 }
 
 main.main-content {
 	width: 1100px;
+	padding-top: 70px;
 	background: #fff;
 	margin: auto;
 }
@@ -97,7 +97,7 @@ header {
   background: #222;
 	color: #fff;
 	font-weight: bold;
-	z-index: 5000;
+	z-index: 5;
 }
 
 header > .logo {
@@ -217,7 +217,7 @@ ul.dropdown li:hover {
 	margin: 15px;
 }
 
-/* GENERAL */
+/* ELEMENTS */
 
 h1 {
   text-align: center;
@@ -265,4 +265,20 @@ form {
 			content: "- ";
 		}
 	}
+}
+
+.modal-screen {
+	display: none;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	opacity: 0.7;
+	z-index: 9;
+}
+
+.modal-card {
+	display: none;
+	z-index: 10;
+	background: #fff;
 }
