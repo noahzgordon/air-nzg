@@ -3,6 +3,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	routes: {
 		"": "root",
 		"listings?:query": "listingsIndex",
+		"listings/new": "listingNew",
 		"listings/:id": "listingShow",
 		"users/:id": "userShow",
 		
@@ -23,6 +24,13 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		this._swapView(indexView)
 		
 		indexView.showMap();
+	},
+	
+	listingNew: function() {
+		var listing = new AirNZG.Models.Listing();
+		
+		var newView = new AirNZG.Views.ListingNew({ model: listing });
+		this._swapView(newView);
 	},
 	
 	listingShow: function(id) {

@@ -1,0 +1,71 @@
+<h1>List your Space!</h1>
+
+<form class="listing-form listing-new-form">
+	<article class="title group">
+	  <label for="listing-title">Title</label>
+	  <input type="text" name="title" id="listing-title">
+	</article>
+
+	<article class="city group">
+	  <label for="listing-city">City</label>
+	  <input type="text" name="city" id="listing-city" list="cities">
+	  <datalist id="cities">
+			<!-- readlines from us-zips to get all US cities -->
+	    <option value="New York, United States">
+	    <option value="Chicago, United States">
+	    <option value="Los Angeles, United States">
+	    <option value="Tokyo, Japan">
+	  </datalist>
+	</article>
+	
+	<article class="home-type group">
+	  <label for="listing-home-type">Type of Home</label>
+	  <select name="home_type" id="listing-home-type">
+	    <option value="apartment">Apartment</option>
+	    <option value="house">House</option>
+	    <option value="mansion">Mansion</option>
+	    <option value="cave">Cave</option>
+	  </select>
+	</article>
+	
+	<article class="room-type group">
+	  <label for="listing-room-type">Type of Room</label>
+	  <select name="room_type" id="listing-room-type">
+	    <option value="shared">
+	      Shared Room
+	    </option>
+	    <option value="private">
+	      Private Room
+	    </option>
+	    <option value="whole">
+	      Whole Place
+	    </option>
+	  </select>
+  </article>
+	
+	<article class="accommodates group">
+	  <label for="listing-accomodates">Accommodates: </label>
+	  <input type="number" name="accomodates" id="listing-accomodates">
+	</article>
+
+	<article class="term group">
+		<label>Term: </label>
+	  <input type="radio" name="term" value="short" id="short-term">
+	  <input type="radio" name="term" value="long" id="long-term">
+	</article>
+	
+	<article class="price group">
+	  <label for="listing-price">Price: </label>
+	  <input type="text" name="price" id="listing-price">
+	</article>
+	<small>Per day if short term, per month if long term</small>
+  
+  <article class="address group">
+		<label for="listing-address">Address: </label>
+		<input type="text" name="address" id="listing-address">
+	</article>
+	<small>Used for geolocation purposes; never shared with other users!</small>
+	
+  <button>Create Listing</button>
+
+</form>

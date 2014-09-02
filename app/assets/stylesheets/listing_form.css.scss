@@ -1,0 +1,115 @@
+div.form-container {
+	width: 600px;
+	padding: 30px;
+	margin: auto;
+}
+
+.listing-form {
+	display: block;
+	text-align: left;
+	
+	article {
+		display: block;
+		text-align: left;
+		padding: 20px;
+		
+		label {
+			display: block;
+			float: left;
+			width: 200px;
+		}
+		
+		input[type=text], input[type=number] {
+			display: block;
+			float: left;
+			border: 1px solid #000;
+			padding: 5px;
+		}
+		
+		select {
+			outline: 0;
+			text-align: center;
+			height: 30px;
+			width: 200px;
+			background: #008A99;
+			color: #fff;
+			font-weight: bold;
+		}
+		
+		
+		small {
+			display: block;
+		}
+	}
+	
+	article.term {
+		display: block;
+		height: 50px;
+		margin: auto;
+		
+		label {
+			display: block;
+			float: left;
+			width: 170px;
+		}
+		
+		input[type=radio] {
+			background: #008A99;
+			height: 40px;
+			width: 120px;
+			display: block;
+			float: left;
+			position: relative;
+			margin: 0 10px;
+		}
+		
+		input[type=radio]:checked {
+			background: #00606B;
+		}
+
+		#short-term:after {
+			position: absolute;
+			content: "Short Term";
+			font-size: 15px;
+			top: 12px;
+			left: 22px;
+			color: #fff;
+			font-weight: bold;
+			font-family: sans-serif;
+		}
+
+		#long-term:after {
+			position: absolute;
+			content: "Long Term";
+			font-size: 15px;
+			top: 12px;
+			left: 22px;
+			color: #fff;
+			font-weight: bold;
+			font-family: sans-serif;
+		}
+	}
+	
+	small:before, small:after {
+		content: "**";
+	}
+	
+	button {
+		display: block;
+		width: 250px;
+		height: 75px;
+		margin: 30px auto;
+		background: #000;
+		color: #fff;
+		font-weight: bold;
+		font-size: 20px;
+		border-radius: 10px;
+	}
+	
+	button:active {
+		box-sizing: border-box;
+		border-top: 2px solid #000;
+		background: #222;
+	}
+}
+
