@@ -82,7 +82,6 @@ body {
 }
 
 main.main-content {
-	padding: 0;
 	width: 1100px;
 	background: #fff;
 	margin: auto;
@@ -220,10 +219,6 @@ ul.dropdown li:hover {
 
 /* GENERAL */
 
-main {
-  padding-top: 50px;
-}
-
 h1 {
   text-align: center;
   margin: 60px;
@@ -249,4 +244,3 @@ form {
 	z-index: 1000;
 	display: block;
 }
-
