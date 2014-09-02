@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
       flash[:notice] = "Welcome back!"
       redirect_to home_url
     else
-      flash.now[:errors] = ["Invalid email or password!"]
       render :new
     end
   end

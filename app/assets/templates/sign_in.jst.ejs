@@ -1,17 +1,13 @@
-<h1>Sign in below!</h1>
+<h1>Sign in!</h1>
 
-<form action="<%= session_url %>" method="POST" class="user-form">
-  <%= auth_token %>
-
-  <input type="text"
-         name="user[email]"
-         id="user-email"
-         value="<%= @user.email %>">
+<form class="user-form" action="/session" method="POST">
+	<input type="hidden" name="authenticity_token" value="<%= $('meta[name="csrf-token"]').attr('content') %>">
+	
+  <input type="text" name="user[email]" id="user-email">
   <label for="user-email">Email</label>
 
   <input type="password" name="user[password]" id="user-password">
   <label for="user-password">Password</label>
-  <br>
 
   <button>Sign In</button>
 </form>

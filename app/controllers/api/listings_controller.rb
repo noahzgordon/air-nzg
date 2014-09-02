@@ -1,5 +1,5 @@
 class Api::ListingsController < ApplicationController
-  before_action :require_signed_in, only: []
+  before_action :require_signed_in, only: [:my_listings, :create, :update, :destroy]
   
   wrap_parameters false
   

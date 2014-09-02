@@ -7,12 +7,12 @@ class OauthCallbacksController < ApplicationController
       sign_in(@user, auth_hash)
       
       flash[:notice] = "Profile created with Facebook! Now tailor your info."
-      redirect_to edit_user_url(@user)
+      redirect_to "#/users/#{@user.id}/edit"
     else
       sign_in(@user, auth_hash)
     
       flash[:notice] = "Logged in with Facebook!"
-      redirect_to home_url
+      redirect_to "#/"
     end
   end
   

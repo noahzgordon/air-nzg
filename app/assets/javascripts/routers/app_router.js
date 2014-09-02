@@ -6,7 +6,12 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		"listings/new": "listingNew",
 		"listings/:id": "listingShow",
 		"listings/:id/edit": "listingEdit",
+		
 		"users/:id": "userShow",
+		"users/:id/edit": "userEdit",
+		
+		"sign_in": "signIn",
+		"sign_up": "signUp",
 		
 		"my_listings": "myListings",
 		"my_booking_requests": "myBookings"
@@ -83,8 +88,18 @@ AirNZG.Routers.App = Backbone.Router.extend({
 				router._swapView(bookingsView);
 			}
 		});
+	},
+	
+	signIn: function() {
+		var signInView = new AirNZG.Views.SignIn();
 		
-
+		$(".modal-screen").addClass("active");
+		$(".modal-card").addClass("active");
+		$(".modal-card").html(signInView.render().$el)
+	},
+	
+	signUp: function() {
+		
 	},
 	
 	_swapView: function(view) {

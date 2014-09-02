@@ -32,8 +32,7 @@ class ApplicationController < ActionController::Base
   
   def require_signed_in
     unless signed_in?
-      flash[:notice] = "You must be signed in to do that!"
-      redirect_to new_session_url 
+      render json: "You must be signed in to do that!", status: :unauthorized
     end
   end
   
