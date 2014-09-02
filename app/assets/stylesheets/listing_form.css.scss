@@ -35,11 +35,6 @@ div.form-container {
 			color: #fff;
 			font-weight: bold;
 		}
-		
-		
-		small {
-			display: block;
-		}
 	}
 	
 	article.term {
@@ -88,6 +83,11 @@ div.form-container {
 			font-weight: bold;
 			font-family: sans-serif;
 		}
+	}
+	
+	small {
+		display: block;
+		margin-bottom: 20px;
 	}
 	
 	small:before, small:after {

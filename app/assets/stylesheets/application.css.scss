@@ -244,3 +244,24 @@ form {
 	z-index: 1000;
 	display: block;
 }
+
+.error-bar {
+	display: block;
+	background: #C7150C;
+	font-weight: bold;
+	color: #fff;
+	border-radius: 20px;
+	opacity: 0.8;
+	
+	ul {
+		padding: 20px;
+		
+		li {
+			padding: 5px;
+		}
+		
+		li:before {
+			content: "- ";
+		}
+	}
+}

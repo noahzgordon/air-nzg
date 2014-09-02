@@ -19,7 +19,13 @@ AirNZG.Views.ListingNew = Backbone.View.extend({
 			},
 			
 			error: function(model, response) {
-				console.log(response.responseText)
+				var errorHtml = "<ul>"
+				response.responseJSON.forEach(function(error) {
+					errorHtml += "<li>" + error + "</li>"
+				})
+				errorHtml += "</ul>"
+				
+				this.$(".error-bar").html(errorHtml)
 			}
 		});
 	},
