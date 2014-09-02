@@ -12,7 +12,7 @@ class Listing < ActiveRecord::Base
   validates_attachment_content_type :cover_pic, content_type: /\Aimage\/.*\Z/
 
   validates :title, presence: true, uniqueness: true
-  validates :home_type, :room_type, :accomodates, :term, :city, :price,
+  validates :home_type, :room_type, :accomodates, :term, :city, :price, :address,
              presence: true
 
   validates :home_type, inclusion: { in: %w(apartment house mansion cave),

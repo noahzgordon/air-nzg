@@ -45,22 +45,19 @@ class Api::ListingsController < ApplicationController
     render :show
   end
 
-  # def new
-  #   @listing = current_user.listings.new
-  #   render :new
-  # end
-  #
-  # def create
-  #   @listing = current_user.listings.new(listing_params)
-  #
-  #   if @listing.save
-  #     flash[:notice] = "Listing created. Now tell the world more!"
-  #     redirect_to edit_listing_url(@listing)
-  #   else
-  #     flash.now[:errors] = @listing.errors.full_messages
-  #     render :new
-  #   end
-  # end
+  def create
+    @listing = current_user.listings.new(listing_params)
+    
+    @listing.latitude, @listing.longitude = Geocoder.coordinates(
+      "#{listing_params[:address]}, #{listing_params[:city]}, United States"
+    )
+
+    if @listing.save
+      render json: @listing
+    else
+      render json: @listing.errors.full_messages, status: :unprocessable_entity
+    end
+  end
   #
   # def edit
   #   @listing = current_user.listings.find(params[:id])
@@ -82,5 +79,20 @@ class Api::ListingsController < ApplicationController
   # def destroy
   # end
   #
+  
+  private
+  
+  def listing_params
+    params.require(:listing).permit(
+      :title,
+      :city,
+      :home_type,
+      :room_type,
+      :accomodates,
+      :price,
+      :term,
+      :address
+    )
+  end
 
 end
