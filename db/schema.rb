@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901192018) do
+ActiveRecord::Schema.define(version: 20140902163645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "amenities", force: true do |t|
-    t.integer  "listing_id"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "bookings", force: true do |t|
     t.integer  "user_id"
@@ -54,6 +47,14 @@ ActiveRecord::Schema.define(version: 20140901192018) do
     t.string   "cover_pic_content_type"
     t.integer  "cover_pic_file_size"
     t.datetime "cover_pic_updated_at"
+    t.boolean  "essentials"
+    t.boolean  "tv"
+    t.boolean  "cable"
+    t.boolean  "ac"
+    t.boolean  "heat"
+    t.boolean  "kitchen"
+    t.boolean  "internet"
+    t.boolean  "wifi"
   end
 
   add_index "listings", ["accomodates"], name: "index_listings_on_accomodates", using: :btree
