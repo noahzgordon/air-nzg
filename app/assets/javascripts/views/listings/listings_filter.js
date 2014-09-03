@@ -16,8 +16,6 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 		data["low_price"] = this.$(".price-slider").slider("values")[0];
 		data["high_price"] = this.$(".price-slider").slider("values")[1];
 		
-		console.log(this.$(".price-slider").slider("values")[1])
-		
 		this.collection.fetch({
 			data: data
 		})

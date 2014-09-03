@@ -120,6 +120,7 @@ div.price-slider {
 }
 
 .listings-list {
+	position: relative;
   display: block;
 	margin: auto;
   padding: 0 20px;
@@ -158,4 +159,13 @@ div.price-slider {
 	display: block;
 	width: 100%;
 	background-color: rgba(200, 200, 200, 0.5);
+}
+
+.loading-list {
+	width: 550px;
+	height: 460px;
+	background: url(image-path('loading.gif'));
+	background-size: 50px 50px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
