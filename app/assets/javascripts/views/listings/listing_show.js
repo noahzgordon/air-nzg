@@ -24,12 +24,13 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 					Backbone.history.navigate("/", { trigger: true })
 				},
 				error: function(model, response) {
-				
-					// if (response.status === 401) {
-					// 	Backbone.history.navigate("#/sign_in")
-					// }
-				
-					$(".error-bar").html(response.responseText);
+					var errorHtml = "<ul>"
+					response.responseJSON.forEach(function(error) {
+						errorHtml += "<li>" + error + "</li>"
+					})
+					errorHtml += "</ul>"
+			
+					$(".error-bar").html(errorHtml)
 				}
 			});
 		} else {

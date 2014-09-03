@@ -118,6 +118,8 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		this._currentView && this._currentView.remove();
 		this._currentView = view;
 		
+		$(".notice-bar").delay(2000).fadeOut(3000)
+		
 		$("main").html(view.render().$el)
 	}
 

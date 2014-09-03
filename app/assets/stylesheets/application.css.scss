@@ -260,12 +260,15 @@ form {
 }
 
 .error-bar {
+	position: fixed;
+	top: 80px;
+	left: 440px;
 	display: block;
 	background: #FB7600;
 	font-weight: bold;
 	color: #fff;
 	border-radius: 20px;
-	opacity: 0.8;
+	z-index: 5;
 	
 	ul {
 		padding: 20px;
