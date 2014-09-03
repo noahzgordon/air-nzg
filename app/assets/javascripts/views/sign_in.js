@@ -25,8 +25,11 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 			url: "/session",
 			type: "POST",
 			data: data,
-			success: function() {
-				view.exitView
+			success: function(data) {
+				console.log(data)
+				AirNZG.currentUser = AirNZG.users.get(data.id);
+				$("header").html(AirNZG.headerView.render().$el);
+				view.exitView();
 			}
 		})
 	},

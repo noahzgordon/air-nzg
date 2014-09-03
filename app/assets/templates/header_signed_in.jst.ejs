@@ -1,0 +1,51 @@
+<a href="/" class="logo"></a>
+
+<ul class="header-nav group">
+	<li class="user-info">
+		<a href="<%= '#/users/' + AirNZG.currentUser.id %>" >
+			<%= AirNZG.currentUser.escape("fname") %>
+		</a>
+
+		<img src="<%= AirNZG.currentUser.escape("avatar_thumb") %>">
+
+	   <ul class="dropdown">
+	     <li><a href="#/my_listings">
+				Your Listings
+			</a></li>
+	     <li><a href="#/my_booking_requests">
+				Your Booking Requests
+			</a></li>
+	     <li><a href="#/wishlist">
+				Your Wishlist
+			</a></li>
+	     <li><a href="#/users/<%= AirNZG.currentUser.id %>/edit">
+				Edit Profile
+			</a></li>
+	    <li><a href="#" class="sign-out-link">
+				Sign Out
+			</a></li>
+	   </ul>
+
+		<div class="invis"></div>
+
+		<li class="notifications">
+	   	<a href="#">Notifications</a>
+			<ul class="dropdown">
+
+			</ul>
+		</li>
+
+		<div class="notif-num">
+			<%= AirNZG.currentUser.escape("notification_num") %>
+		</div>
+
+	   <li class="messages">
+			<a href="#">Messages</a>
+		</li>
+
+		<li class="new-listing">
+	     <a href="#/listings/new">New Listing</a>
+		</li>
+	</li>
+</ul>
+

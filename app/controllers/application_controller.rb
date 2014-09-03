@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
     return false unless found_user
 
     session[:token] = found_user.reset_session_token!
+    
+    found_user
   end
 
   def current_user

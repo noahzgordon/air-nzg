@@ -4,12 +4,17 @@ window.AirNZG = {
   Views: {},
   Routers: {},
   initialize: function(options) {
-		// sets a top-level current user property 
+		
 		AirNZG.users.fetch({
 			success: function(collection) {
+				// sets a top-level current user property 
 				if (options.currentUserId > 0) {
 					AirNZG.currentUser = collection.getOrFetch(options.currentUserId)
 				}
+				
+				// sets a top-level view for the header
+				AirNZG.headerView = new AirNZG.Views.HeaderNav();
+				$("header").html(AirNZG.headerView.render().$el);
 			}
 		});
 		
@@ -17,5 +22,3 @@ window.AirNZG = {
 		Backbone.history.start({ root: "/" });
   }
 };
-
-

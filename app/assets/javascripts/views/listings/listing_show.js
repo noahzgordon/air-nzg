@@ -4,7 +4,6 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	
 	initialize: function(options) {
 		this.listenTo(this.model, "sync", this.render);
-		this.listenTo(this.model.user(), "sync", this.render)
 	},
 	
 	events: {

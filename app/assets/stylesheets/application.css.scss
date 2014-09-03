@@ -105,7 +105,7 @@ header {
 	z-index: 5;
 }
 
-header > .logo {
+header .logo {
   display: block;
 	width: 55px;
   float: left;
@@ -118,12 +118,12 @@ header > .logo {
 	margin: 10px;
 }
 
-header > ul {
+header > nav > ul {
   display: block;
   float: right;
 }
 
-header > ul > li {
+header > nav > ul > li {
 	float: left;
 	height: 70px;
 }
