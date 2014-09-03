@@ -55,5 +55,7 @@ class Listing < ActiveRecord::Base
     self.kitchen ||= false
     self.internet ||= false
     self.wifi ||= false
+    
+    nil
   end
 end

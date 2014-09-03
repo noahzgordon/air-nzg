@@ -99,6 +99,7 @@ l2 = batman.listings.create!(
   term: "long",
   city: "Chicago",
   price: 500,
+  address: "A Hidden Cave",
   latitude: 41.676043,
   longitude: -87.890186,
   cover_pic: File.new("#{Rails.root}/seeds/images/batcave.jpg"),
