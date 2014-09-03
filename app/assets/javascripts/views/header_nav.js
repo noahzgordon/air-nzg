@@ -8,7 +8,6 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 	className: "nav-wrapper group",
 	
 	initialize: function() {
-		this.listenTo(AirNZG.currentUser, "change", this.render);
 	},
 	
 	events: {
@@ -24,7 +23,8 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 			type: "DELETE",
 			success: function(data) {
 				AirNZG.currentUser = undefined;
-				AirNZG.headerView.render()
+				AirNZG.headerView.render();
+				AirNZG.Utils.flashNotice("Successfully signed out.");
 			}
 		})
 	},

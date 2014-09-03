@@ -43,5 +43,21 @@ AirNZG.Utils = {
 	  return String(string).replace(/[&<>"'\/]/g, function (char) {
 	     return entityMap[char];
 	  });
+	},
+
+	flashNotice: function(html) {
+		$(".notice-bar").show();
+		$(".notice-bar").html(html);
+		$(".notice-bar").delay(2000).fadeOut(3000);
+	},
+	
+	renderErrors: function(errors) {
+		var errorHtml = "<ul>"
+		errors.forEach(function(error) {
+			errorHtml += "<li>" + error + "</li>"
+		})
+		errorHtml += "</ul>"
+		
+		view.$(".error-bar").html(errorHtml)
 	}
 }

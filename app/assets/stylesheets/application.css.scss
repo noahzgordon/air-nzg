@@ -18,7 +18,7 @@
 /* RESETS */
 
 html, main, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label,
-figure, article, a {
+figure, article, a, span {
   padding: 0;
   margin: 0;
   border: 0;
@@ -250,13 +250,10 @@ form {
 	color: #000;
 	font-weight: bold;
 	z-index: 5;
-	display: block;
+	display: none;
 	opacity: 0.8;
 	border-radius: 20px;
-	
-	* {
-		padding: 20px;
-	}
+	padding: 10px 20px;
 }
 
 .error-bar {

@@ -19,6 +19,7 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 		
 			booking.save(formData, {
 				success: function(model, response) {
+					AirNZG.Utils.flashNotice("Your request has been sent to the listing owner.")
 					Backbone.history.navigate("/", { trigger: true })
 				},
 				error: function(model, response) {

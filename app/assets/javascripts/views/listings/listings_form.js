@@ -20,17 +20,12 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		
 		this.model.save(data, {
 			success: function(model, response) {
+				AirNZG.Utils.flashNotice("Listing updated!")
 				Backbone.history.navigate("/listings/" + model.id, { trigger: true })
 			},
 			
 			error: function(model, response) {
-				var errorHtml = "<ul>"
-				response.responseJSON.forEach(function(error) {
-					errorHtml += "<li>" + error + "</li>"
-				})
-				errorHtml += "</ul>"
-				
-				view.$(".error-bar").html(errorHtml)
+				AirNZG.Utils.renderErrors(response.responseJSON);
 			}
 		});
 	},
@@ -57,6 +52,7 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		
 		this.model.destroy({
 			success: function() {
+				AirNZG.Utils.flashNotice("Listing deactivated.")
 				Backbone.history.navigate("/", { trigger: true });
 			}
 		});
