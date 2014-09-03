@@ -1,26 +1,23 @@
-AirNZG.Views.ListingForm = Backbone.View.extend({
+AirNZG.Views.UserForm = Backbone.View.extend({	
+  editTemplate: JST['users/edit'],
 	
-	newTemplate: JST["listings/new"],
-	
-	editTemplate: JST["listings/edit"],
-	
-	className: "form-container",
+	newTemplate: JST['users/new'],
 	
 	events: {
-		"click .save-button": "saveListing",
-		"change #listing-pic": "fileHandler",
-		"click .deactivate-button": "deleteListing"
+		"submit .user-form": "saveUser",
+		"change #user-avatar": "fileHandler"
 	},
 	
-	saveListing: function(event) {
+	saveUser: function(event) {
 		event.preventDefault();
 		var view = this;
 		
-		var data = this.$(".listing-form").serializeJSON();
+		var data = $(event.currentTarget).serializeJSON();
 		
 		this.model.save(data, {
 			success: function(model, response) {
-				Backbone.history.navigate("/listings/" + model.id, { trigger: true })
+				console.log("Model after", model)
+				Backbone.history.navigate("/", { trigger: true })
 			},
 			
 			error: function(model, response) {
@@ -35,7 +32,8 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		});
 	},
 	
-	fileHandler: function(event) {
+	fileHandler: 	function(event) {
+		// SHOULD BE REFACTORED!
 		var view = this;
 		var imageFile = event.currentTarget.files[0];
 		var reader = new FileReader();
@@ -52,26 +50,16 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		}
 	},
 	
-	deleteListing: function(event) {
-		event.preventDefault();
-		
-		this.model.destroy({
-			success: function() {
-				Backbone.history.navigate("/", { trigger: true });
-			}
-		});
-	},
-	
 	render: function() {
 		if (this.model.isNew()) {
-			var content = this.newTemplate({ listing: this.model })
+			var content = this.newTemplate({ user: this.model })
 		} else {
-			var content = this.editTemplate({ listing: this.model })
+			var content = this.editTemplate({ user: this.model })
 		}
-
-		this.$el.html(content)
+		
+		this.$el.html(content);
 		
 		return this;
 	}
-	
+
 });

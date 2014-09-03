@@ -37,7 +37,7 @@
 			          <li><a href="#/wishlist">
 									Your Wishlist
 								</a></li>
-			          <li><a href="#/users/:id/edit">
+			          <li><a href="#/users/<%= current_user.id %>/edit">
 									Edit Profile
 								</a></li>
 			          <li>
@@ -75,7 +75,7 @@
 		        <a href="<%= new_session_url %>">Sign In</a>
 					</li>
 					<li class="sign-up">
-		        <a href="<%= new_user_url %>">Sign Up</a>
+		        <a href="#/users/new">Sign Up</a>
 					</li>
 	      <% end %>
 

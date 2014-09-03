@@ -1,4 +1,5 @@
 AirNZG.Utils = {
+	
 	deselectableRadios: function() {
 		var wasChecked;
 		

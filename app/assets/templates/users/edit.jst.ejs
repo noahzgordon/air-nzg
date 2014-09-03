@@ -1,0 +1,41 @@
+<h1>Update your Profile</h1>
+
+<form class="user-form">
+  <input type="text"
+         name="fnam]"
+         id="user-fname"
+         value="<%= user.escape("fname") %>">
+  <label for="user-fname">First Name</label>
+
+  <input type="text"
+         name="lname"
+         id="user-lname"
+         value="<%= user.escape("lname") %>">
+  <label for="user-lname">Last Name</label>
+ 
+  <input type="text"
+         name="locale"
+         id="user-locale"
+         value="<%= user.escape("locale") %>"
+				 list="cities">
+  <label for="user-locale">What city do you live in?</label>
+  
+  <datalist id="cities">
+		<!-- read in list of cities -->
+    <option value="New York">
+    <option value="Chicago">
+    <option value="Los Angeles">
+    <option value="North Pole">
+  </datalist>
+	
+	<textarea name="description" id="user-description"><%= user.escape("description") %></textarea>
+	
+	<label for="user-description">Tell us a bit about yourself.</label>
+
+	<input type="file" name="avatar" id="user-avatar">
+	<label for="user-avatar">Upload an Avatar</label>
+	
+	<small>*If you've signed in with Facebook, your Facebook profile picture is set by default.</small>
+	
+  <button>Update Profile</button>
+</form>

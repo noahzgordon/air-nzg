@@ -7,6 +7,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		"listings/:id": "listingShow",
 		"listings/:id/edit": "listingEdit",
 		
+		"users/new": "userNew",
 		"users/:id": "userShow",
 		"users/:id/edit": "userEdit",
 		
@@ -53,8 +54,8 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		
 		listing.fetch({
 			success: function() {
-				var newView = new AirNZG.Views.ListingForm({ model: listing });
-				router._swapView(newView);
+				var editView = new AirNZG.Views.ListingForm({ model: listing });
+				router._swapView(editView);
 			}
 		});
 	},
@@ -64,6 +65,25 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		
 		var showView = new AirNZG.Views.UserShow({ model: user });
 		this._swapView(showView);
+	},
+	
+	userNew: function() {
+		var user = new AirNZG.Models.User();
+		
+		var newView = new AirNZG.Views.UserForm({ model: user });
+		this._swapView(newView);
+	},
+	
+	userEdit: function(id) {
+		var user = new AirNZG.Models.User({ id: id });
+		var router = this;
+		
+		user.fetch({
+			success: function() {
+				var editView = new AirNZG.Views.UserForm({ model: user });
+				router._swapView(editView);
+			}
+		});
 	},
 	
 	myListings: function() {

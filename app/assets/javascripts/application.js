@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require air_nzg
+//= require utils
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
