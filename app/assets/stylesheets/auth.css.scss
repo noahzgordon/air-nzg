@@ -15,7 +15,6 @@
 	label {
 		display: block;
 		margin: auto;
-		width: 100px;
 		padding: 10px 0 20px 0;
 	}
 	
@@ -25,6 +24,13 @@
 		border: 1px solid #000;
 		text-align: center;
 		padding: 3px 5px;
+	}
+	
+	textarea {
+		border: 1px solid #000;
+		width: 300px;
+		height: 70px;
+		padding: 8px;
 	}
 	
 	button {
@@ -41,6 +47,15 @@
 		box-sizing: border-box;
 		border-top: 2px solid #000;
 		background: #222;
+	}
+	
+	small {
+		display: block;
+		margin-bottom: 20px;
+	}
+	
+	small:before, small:after {
+		content: "**";
 	}
 }
 
