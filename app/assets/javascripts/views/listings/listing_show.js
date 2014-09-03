@@ -11,10 +11,9 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	},
 	
 	newBooking: function(event) {
+		event.preventDefault();
 		
 		if (AirNZG.Utils.isSignedIn()) {
-			event.preventDefault();
-		
 			var formData = $(event.target).serializeJSON();
 			var booking = new AirNZG.Models.Booking();
 		

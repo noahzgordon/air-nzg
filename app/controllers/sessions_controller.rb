@@ -8,11 +8,10 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    signed_in_user = sign_in(@user)
-    
-    if signed_in_user
+
+    if sign_in(@user)
       flash[:notice] = "Welcome back!"
-      render json: signed_in_user
+      redirect_to home_url
     else
       render :new
     end

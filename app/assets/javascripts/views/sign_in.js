@@ -22,12 +22,11 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 		var view = this
 		
 		$.ajax({
-			url: "/session",
+			url: "api/session",
 			type: "POST",
 			data: data,
-			success: function(data) {
-				console.log(data)
-				AirNZG.currentUser = AirNZG.users.get(data.id);
+			success: function(user) {
+				AirNZG.currentUser = AirNZG.users.get(user.id);
 				$("header").html(AirNZG.headerView.render().$el);
 				view.exitView();
 			}
