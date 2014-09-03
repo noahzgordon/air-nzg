@@ -12,76 +12,7 @@
 	</head>
 	<body>
 	  <header class="group">
-			<nav>
-		    <a href="<%= home_url %>" class="logo"></a>
-
-		    <ul class="header-nav group">
-
-		      <% if signed_in? %>
-			      <li class="user-info">
-								<a href="#">
-									<%= current_user.fname %>
-								</a>
-						
-								<%= image_tag current_user.avatar.url(:thumb) %>
-						
-				        <ul class="dropdown">
-				          <li><a href="#/my_listings">
-										Your Listings
-									</a></li>
-				          <li><a href="#/my_booking_requests">
-										Your Booking Requests
-									</a></li>
-				          <li><a href="#/wishlist">
-										Your Wishlist
-									</a></li>
-				          <li><a href="#/users/<%= current_user.id %>/edit">
-										Edit Profile
-									</a></li>
-				          <li>
-										<%= link_to 'Log Out', session_url, 
-										method: :delete %>
-									</li>
-				        </ul>
-						
-							<div class="invis"></div>
-	        
-						</li>
-				
-						<li class="notifications">
-			      	<a href="#">Notifications</a> 
-							<ul class="dropdown">
-								<%= render partial: "notifications/notification", 
-								collection: current_user.notifications %>
-							</ul>
-						</li>
-				
-						<div class="notif-num">
-							<%= current_user.notifications.size %>
-						</div>
-			
-			      <li class="messages">
-							<a href="#">Messages</a>
-						</li>
-			
-						<li class="new-listing">
-			        <a href="#/listings/new">New Listing</a>
-						</li>
-				
-		      <% else %>
-						<li class="sign-in">
-			        <a href="<%= new_session_url %>">Sign In</a>
-						</li>
-						<li class="sign-up">
-			        <a href="#/users/new">Sign Up</a>
-						</li>
-		      <% end %>
-
-				</ul>
-			</nav>
 	  </header>
-		
-
 		
 		<div class="modal-screen"></div>
 		<div class="modal-card"></div>
