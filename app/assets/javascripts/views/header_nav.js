@@ -31,7 +31,7 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 	
 	render: function() {
 		if (AirNZG.Utils.isSignedIn()) {
-			var content = this.signedInTemplate();
+			var content = this.signedInTemplate({ user: AirNZG.currentUser });
 		} else {
 			var content = this.signedOutTemplate();
 		}

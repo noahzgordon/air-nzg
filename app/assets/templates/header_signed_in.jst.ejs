@@ -2,11 +2,11 @@
 
 <ul class="header-nav group">
 	<li class="user-info">
-		<a href="<%= '#/users/' + AirNZG.currentUser.id %>" >
-			<%= AirNZG.currentUser.escape("fname") %>
+		<a href="<%= '#/users/' + user.id %>" >
+			<%= user.escape("fname") %>
 		</a>
 
-		<img src="<%= AirNZG.currentUser.escape("avatar_thumb") %>">
+		<img src="<%= user.escape("avatar_thumb") %>">
 
 	   <ul class="dropdown">
 	     <li><a href="#/my_listings">
@@ -18,7 +18,7 @@
 	     <li><a href="#/wishlist">
 				Your Wishlist
 			</a></li>
-	     <li><a href="#/users/<%= AirNZG.currentUser.id %>/edit">
+	     <li><a href="#/users/<%= user.id %>/edit">
 				Edit Profile
 			</a></li>
 	    <li><a href="#" class="sign-out-link">
@@ -31,12 +31,18 @@
 		<li class="notifications">
 	   	<a href="#">Notifications</a>
 			<ul class="dropdown">
-
+				<% user.get("notifications").forEach(function(notification) { %>
+					<li>
+						<a href="<%= notification.url %>">
+							<%= notification.text %>
+						</a>
+					</li>
+				<% }); %>
 			</ul>
 		</li>
 
 		<div class="notif-num">
-			<%= AirNZG.currentUser.escape("notification_num") %>
+			<%= user.escape("notification_num") %>
 		</div>
 
 	   <li class="messages">
