@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :booking_requests, through: :listings, source: :bookings
   has_many :notifications, inverse_of: :user, counter_cache: true
   
+  has_many :messages
+  has_many :conversations, through: :messages, source: :conversation
+  
   has_attached_file(
     :avatar, 
     styles: { thumb: "50x50#", small: "100x100#", medium: "200x200#" },

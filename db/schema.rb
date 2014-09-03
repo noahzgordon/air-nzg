@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902163645) do
+ActiveRecord::Schema.define(version: 20140903210514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,10 @@ ActiveRecord::Schema.define(version: 20140902163645) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "status",     default: 0
+  end
+
+  create_table "conversations", force: true do |t|
+    t.string "title"
   end
 
   create_table "listings", force: true do |t|
@@ -67,6 +71,13 @@ ActiveRecord::Schema.define(version: 20140902163645) do
   add_index "listings", ["room_type"], name: "index_listings_on_room_type", using: :btree
   add_index "listings", ["term"], name: "index_listings_on_term", using: :btree
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.text    "content"
+    t.string  "subject"
+    t.integer "user_id"
+    t.integer "conversation_id"
+  end
 
   create_table "notifications", force: true do |t|
     t.integer  "notifiable_id"
