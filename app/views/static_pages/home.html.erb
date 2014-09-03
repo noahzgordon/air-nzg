@@ -1,10 +1,10 @@
-<h1 class="welcome">Welcome to AirNZG!</h1>
+<!-- <h1 class="welcome">Welcome to AirNZG!</h1> -->
 
-<h3>What are you looking for?</h3>
+<!-- <h3>What are you looking for?</h3> -->
 
 <!-- Search Form Goes Here -->
 
-<form action="<%= listings_url %>" method="GET" class="listing-search">
+<!-- <form action="<%= listings_url %>" method="GET" class="listing-search">
   <label for="short-term">Short Term (less than 1 month)</label>
   <input type="radio" name="term" value="short" id="short-term">
 
@@ -29,20 +29,14 @@
 
   <button>Search</button>
 
-</form>
+</form> -->
+
+<h3>Loading...</h3>
+
+<div class="loading"></div>
 
 <script>
 	$(document).ready(function(){
 	  AirNZG.initialize();
-
-		$("body").on("submit", "form.listing-search", executeQuery);
-
-		function executeQuery(event) {
-			event.preventDefault();
-	
-			var queryString = $(event.currentTarget).serialize()
-	
-			Backbone.history.navigate("#/listings?" + queryString, { trigger: true })	
-		}
 	});
 </script>

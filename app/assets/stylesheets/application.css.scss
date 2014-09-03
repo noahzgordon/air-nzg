@@ -311,3 +311,12 @@ form {
 .modal-card.active {
 	display: block;
 }
+
+.loading {
+	width: 100px;
+	height: 100px;
+	background: url(image-path('loading.gif'));
+	background-size: contain;
+	background-position: center;
+	margin: 200px auto;
+}
