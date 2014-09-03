@@ -6,8 +6,18 @@ class Api::NotificationsController < ApplicationController
     
     @notification.destroy
     
-    render json: { 
-      notifications: current_user.notifications, 
+    notif_objects = []
+    
+    current_user.notifications.each do |notification|
+      notif_objects << {
+        text: notification.text,
+        url: notification.url,
+        id: notification.id
+      }
+    end
+    
+    render json: {
+      notifications: notif_objects,
       num: current_user.notifications.size 
     }
   end

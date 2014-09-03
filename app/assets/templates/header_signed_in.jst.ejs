@@ -35,7 +35,7 @@
 					<li>
 						<a href="<%= notification.url %>" class="notif" 
 							data-id="<%= notification.id %>">
-							<%= notification.text %>
+							<%= AirNZG.Utils.escapeHTML(notification.text) %>
 						</a>
 					</li>
 				<% }); %>

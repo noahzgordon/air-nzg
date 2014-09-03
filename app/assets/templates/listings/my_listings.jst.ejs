@@ -9,7 +9,7 @@
 	<% if (listings.length > 0) { %>
 		<ul>
 			<% listings.each(function(listing) { %>
-				<li><a href="<%= '#/listings/' + listing.id + '/edit' %>"><%= listing.get("title") %></a></li>
+				<li><a href="<%= '#/listings/' + listing.id + '/edit' %>"><%= listing.escape("title") %></a></li>
 			<% }); %>
 		</ul>
 	<% } else { %>

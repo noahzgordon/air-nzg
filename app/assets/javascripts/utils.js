@@ -28,5 +28,20 @@ AirNZG.Utils = {
 		$(".modal-screen").addClass("active");
 		$(".modal-card").addClass("active");
 		$(".modal-card").html(signInView.render().$el)
+	},
+	
+	escapeHTML: function(string) {
+	  var entityMap = {
+	    "&": "&amp;",
+	    "<": "&lt;",
+	    ">": "&gt;",
+	    '"': '&quot;',
+	    "'": '&#39;',
+	    "/": '&#x2F;'
+	  };
+	 
+	  return String(string).replace(/[&<>"'\/]/g, function (char) {
+	     return entityMap[char];
+	  });
 	}
 }
