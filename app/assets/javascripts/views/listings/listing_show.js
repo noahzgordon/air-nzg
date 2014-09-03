@@ -12,24 +12,29 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	},
 	
 	newBooking: function(event) {
-		event.preventDefault();
 		
-		var formData = $(event.target).serializeJSON();
-		var booking = new AirNZG.Models.Booking();
+		if (AirNZG.Utils.isSignedIn()) {
+			event.preventDefault();
 		
-		booking.save(formData, {
-			success: function(model, response) {
-				Backbone.history.navigate("/", { trigger: true })
-			},
-			error: function(model, response) {
+			var formData = $(event.target).serializeJSON();
+			var booking = new AirNZG.Models.Booking();
+		
+			booking.save(formData, {
+				success: function(model, response) {
+					Backbone.history.navigate("/", { trigger: true })
+				},
+				error: function(model, response) {
 				
-				if (response.status === 401) {
-					Backbone.history.navigate("#/sign_in")
+					// if (response.status === 401) {
+					// 	Backbone.history.navigate("#/sign_in")
+					// }
+				
+					$(".error-bar").html(response.responseText);
 				}
-				
-				$(".error-bar").html(response.responseText);
-			}
-		});
+			});
+		} else {
+			AirNZG.Utils.popSignInModal();
+		}
 	},
 	
 	render: function() {

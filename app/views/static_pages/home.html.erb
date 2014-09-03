@@ -38,7 +38,7 @@
 <script>
 	$(document).ready(function(){
 	  AirNZG.initialize({
-	  	currentUserId: <%= current_user.id %>
+	  	currentUserId: <%= signed_in? ? current_user.id : 0 %>
 	  });
 	});
 </script>

@@ -16,6 +16,17 @@ AirNZG.Utils = {
 				$radio.prop("checked", false);
 			}
 		});
+	},
+	
+	isSignedIn: function() {
+		return AirNZG.currentUser ? true : false
+	},
+	
+	popSignInModal: function() {
+		var signInView = new AirNZG.Views.SignIn();
 		
+		$(".modal-screen").addClass("active");
+		$(".modal-card").addClass("active");
+		$(".modal-card").html(signInView.render().$el)
 	}
 }

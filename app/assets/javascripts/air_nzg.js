@@ -7,7 +7,9 @@ window.AirNZG = {
 		// sets a top-level current user property 
 		AirNZG.users.fetch({
 			success: function(collection) {
-				AirNZG.currentUser = collection.getOrFetch(options.currentUserId)
+				if (options.currentUserId > 0) {
+					AirNZG.currentUser = collection.getOrFetch(options.currentUserId)
+				}
 			}
 		});
 		

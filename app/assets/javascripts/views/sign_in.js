@@ -11,9 +11,9 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 	},
 	
 	exitView: function(event) {
-		console.log("blurred!");
-		this._closeModal();
-		history.back();
+		$(".modal-screen").removeClass("active");
+		$(".modal-card").removeClass("active");
+		$(".modal-card").empty();
 	},
 	
 	signInUser: function(event) {
@@ -26,13 +26,9 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 			type: "POST",
 			data: data,
 			success: function() {
-				view._closeModal();
-				history.back();
+				view.exitView
 			}
-			
 		})
-		console.log(data);
-		
 	},
 	
 	render: function() {
@@ -40,11 +36,6 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 		this.$el.html(content);
 		
 		return this;
-	},
-	
-	_closeModal: function() {
-		$(".modal-screen").removeClass("active");
-		$(".modal-card").removeClass("active");
 	}
 
 });

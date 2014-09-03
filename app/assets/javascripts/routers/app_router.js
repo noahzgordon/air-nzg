@@ -111,15 +111,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	signIn: function() {
-		var signInView = new AirNZG.Views.SignIn();
-		
-		$(".modal-screen").addClass("active");
-		$(".modal-card").addClass("active");
-		$(".modal-card").html(signInView.render().$el)
-	},
-	
-	signUp: function() {
-		
+
 	},
 	
 	_swapView: function(view) {
