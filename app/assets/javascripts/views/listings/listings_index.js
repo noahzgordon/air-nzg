@@ -44,10 +44,6 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 	showMap: function() {
 		L.mapbox.accessToken = "pk.eyJ1IjoidG9ydHVnYS1tYW4iLCJhIjoiLTI5bEk0OCJ9.X62Suravr7Rij4PdYOizFQ"
 		this.mapBox = L.mapbox.map("map", "tortuga-man.jc47j4o8");
-		
-		this.mapBox.featureLayer.on('click', function(e) {
-        map.panTo(e.layer.getLatLng());
-    });
 	},
 	
 	renderMap: function() {
@@ -88,8 +84,9 @@ AirNZG.Views.ListingsIndex = Backbone.View.extend({
 		this.mapBox.featureLayer.setGeoJSON(data)
 		
 		this.mapBox.featureLayer.eachLayer(function(layer) {
-			var content = 
-	        '<p>' + layer.feature.properties.title + 
+			var content =
+					'<p>' + '<a href="#/listings/' + layer.feature.properties.id + '">' +
+	        layer.feature.properties.title + '</a>' +
 					' | $' + layer.feature.properties.price + '<\/p>' +
 					'<p>' + layer.feature.properties.description + '<\/p>';
 	    layer.bindPopup(content);

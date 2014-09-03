@@ -13,7 +13,6 @@ AirNZG.Views.ListingsList = Backbone.View.extend({
 	
 	startLoading: function() {
 		this.$el.html('<div class="loading-list">')
-		console.log("LOADING")
 	},
 	
 	render: function() {

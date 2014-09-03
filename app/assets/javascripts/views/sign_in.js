@@ -27,7 +27,7 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 			data: data,
 			success: function(user) {
 				AirNZG.currentUser = AirNZG.users.get(user.id);
-				$("header").html(AirNZG.headerView.render().$el);
+				AirNZG.headerView.render()
 				view.exitView();
 			}
 		})

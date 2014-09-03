@@ -7,9 +7,14 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 	
 	className: "nav-wrapper group",
 	
+	initialize: function() {
+		this.listenTo(AirNZG.currentUser, "change", this.render);
+	},
+	
 	events: {
 		"click .sign-out-link": "signOut",
-		"click .sign-in-link": "signIn"
+		"click .sign-in-link": "signIn",
+		"click .notif": "deleteNotification"
 	},
 	
 	signOut: function(event) {
@@ -19,7 +24,7 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 			type: "DELETE",
 			success: function(data) {
 				AirNZG.currentUser = undefined;
-				$("header").html(AirNZG.headerView.render().$el);
+				AirNZG.headerView.render()
 			}
 		})
 	},
@@ -27,6 +32,20 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 	signIn: function(event) {
 		event.preventDefault();
 		AirNZG.Utils.popSignInModal();
+	},
+	
+	deleteNotification: function() {
+		var id = $(event.target).data("id")
+		
+		$.ajax({
+			url: "api/notifications/" + id,
+			type: "DELETE",
+			success: function(data) {
+				console.log(data);
+				AirNZG.currentUser.set("notifications", data.notifications);
+				AirNZG.currentUser.set("notification_num", data.num);
+			}
+		});
 	},
 	
 	render: function() {

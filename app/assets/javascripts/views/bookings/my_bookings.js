@@ -20,7 +20,7 @@ AirNZG.Views.MyBookings = Backbone.View.extend({
 	
 	denyBooking: function(event) {
 		var id = $(event.currentTarget).data("id");
-		var booking = this.collection.get("id");
+		var booking = this.collection.getOrFetch(id);
 		
 		booking.save({ denied: true });
 	},

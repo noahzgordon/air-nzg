@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     
     resources :bookings, only: [:create, :update]
     
+    resources :notifications, only: [:destroy]
+    
     get '/my_listings', to: 'listings#my_listings'
     get '/my_bookings', to: 'bookings#my_bookings'
   end

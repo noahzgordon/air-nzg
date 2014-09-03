@@ -21,7 +21,7 @@ class Notification < ActiveRecord::Base
       "#/my_booking_requests"
     when :booking_approved
       approving_user = self.notifiable.listing_owner
-      "#/users/#{approving_user}"
+      "#/users/#{approving_user.id}"
       # or message them?
     when :booking_denied
       '#'

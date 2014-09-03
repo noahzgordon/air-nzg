@@ -9,4 +9,5 @@ json.avatar_medium user.avatar.url(:medium)
 json.notifications user.notifications do |notification|
   json.text notification.text
   json.url notification.url
+  json.id notification.id
 end
