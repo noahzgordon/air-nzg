@@ -3,10 +3,13 @@ class User < ActiveRecord::Base
   has_many :bookings
   
   has_many :booking_requests, through: :listings, source: :bookings
-  has_many :notifications, inverse_of: :user, counter_cache: true
+  has_many :notifications, inverse_of: :user, counter_cache: true, dependent: :destroy
   
-  has_many :messages
-  has_many :conversations, through: :messages, source: :conversation
+  has_many :authored_messages, foreign_key: :author_id, class_name: "Message"
+  has_many :received_messages, foreign_key: :receiver_id, class_name: "Message"
+  
+  has_many :authored_conversations, through: :authored_messages, source: :conversation
+  has_many :received_conversations, through: :authored_messages, source: :conversation
   
   has_attached_file(
     :avatar, 
@@ -72,12 +75,15 @@ class User < ActiveRecord::Base
 
     self.session_token
   end
+  
+  def conversations
+    authored_conversations + received_conversations
+  end
 
   private
 
   def ensure_session_token
     self.session_token ||= self.class.generate_token
   end
-  
   
 end

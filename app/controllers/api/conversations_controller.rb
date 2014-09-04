@@ -1,6 +1,7 @@
 class Api::ConversationsController < ApplicationController
   def index
     @conversations = current_user.conversations
+    p @conversations
     render :index
   end
   
@@ -11,12 +12,13 @@ class Api::ConversationsController < ApplicationController
   
   def create
     @conversation = Conversation.new(conversation_params)
+    @message = @conversation.messages.new(message_params)
     
-    if @conversation.save
-      @conversation.messages.create!(params[:message]) if params[:message]
+    if @conversation.save && @message.save
       render json: @conversation
     else
-      render json: @conversation.errors.full_messages, status: :unprocessable_entity
+      render json: @conversation.errors.full_messages + @message.errors.full_messages, 
+        status: :unprocessable_entity
     end
   end
   
@@ -24,5 +26,9 @@ class Api::ConversationsController < ApplicationController
   
   def conversation_params
     params.require(:conversation).permit(:title)
+  end
+  
+  def message_params
+    params.require(:message).permit(:subject, :content)
   end
 end

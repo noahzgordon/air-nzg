@@ -41,7 +41,6 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 			url: "api/notifications/" + id,
 			type: "DELETE",
 			success: function(data) {
-				console.log(data);
 				AirNZG.currentUser.set("notifications", data.notifications);
 				AirNZG.currentUser.set("notification_num", data.num);
 			}

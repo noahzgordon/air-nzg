@@ -3,7 +3,8 @@ class CreateMessagesAndConversations < ActiveRecord::Migration
     create_table :messages do |t|
       t.text :content
       t.string :subject
-      t.references :user
+      t.references :author
+      t.references :receiver
       t.references :conversation
       
       t.timestamps

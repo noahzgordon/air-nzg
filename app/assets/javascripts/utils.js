@@ -30,6 +30,17 @@ AirNZG.Utils = {
 		$(".modal-card").html(signInView.render().$el)
 	},
 	
+	popContactModal: function() {
+		if (this.isSignedIn()) {
+			var newView = new AirNZG.Views.ConversationForm();
+			$(".modal-screen").addClass("active");
+			$(".modal-card").addClass("active");
+			$(".modal-card").html(newView.render().$el);
+		} else {
+			this.popSignInModal();
+		}
+	},
+	
 	escapeHTML: function(string) {
 	  var entityMap = {
 	    "&": "&amp;",

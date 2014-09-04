@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   def create
-    @message = current_user.messages.new(message_params)
+    @message = current_user.authored_messages.new(message_params)
     
     if @message.save
       render json: @message

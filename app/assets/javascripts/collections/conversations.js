@@ -4,7 +4,6 @@ AirNZG.Collections.Conversations = Backbone.Collection.extend({
 	
   getOrFetch: function (id) {
      var convos = this;
-		 console.log(this);
 		 var convo = this.get(id);
      if (!convo) {
        convo = new AirNZG.Models.Conversation({ id: id });

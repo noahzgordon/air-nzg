@@ -308,6 +308,14 @@ form {
 	border-radius: 30px;
 }
 
+.exit {
+	position: absolute;
+	top: 15px;
+	right: 20px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
 .modal-card.active {
 	display: block;
 }

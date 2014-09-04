@@ -16,7 +16,6 @@ AirNZG.Views.UserForm = Backbone.View.extend({
 		
 		this.model.save(data, {
 			success: function(model, response) {
-				console.log("Model after", model)
 				Backbone.history.navigate("/", { trigger: true })
 			},
 			
