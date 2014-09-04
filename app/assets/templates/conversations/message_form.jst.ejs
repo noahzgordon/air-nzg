@@ -3,4 +3,7 @@
 
 <textarea id="message-content" name="content"></textarea>
 
+<input type="hidden" name="receiver_id" 
+	value="<%= conversation.escape("user_id") %>">
+
 <button>Submit</button>

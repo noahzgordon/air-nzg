@@ -142,10 +142,17 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	conversationShow: function(id) {
 		if (this._requireSignIn()) { return null; }
 		
-		var conversation = AirNZG.conversations.findByUserId(parseInt(id))
+		var router = this
+		
+		AirNZG.conversations.fetch({
+			success: function() {
+				var conversation = AirNZG.conversations.findByUserId(parseInt(id))
 
-		var showView = new AirNZG.Views.ConversationShow({ model: conversation })
-		this._swapView(showView);
+				var showView = new AirNZG.Views.ConversationShow({ model: conversation })
+				router._swapView(showView);
+			}
+		})
+		
 	},
 	
 	_swapView: function(view) {
