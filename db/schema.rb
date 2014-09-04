@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20140903210514) do
     t.integer  "status",     default: 0
   end
 
-  create_table "conversations", force: true do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "listings", force: true do |t|
     t.integer  "user_id"
     t.string   "term"
@@ -79,7 +73,6 @@ ActiveRecord::Schema.define(version: 20140903210514) do
     t.string   "subject"
     t.integer  "author_id"
     t.integer  "receiver_id"
-    t.integer  "conversation_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

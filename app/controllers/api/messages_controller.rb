@@ -1,4 +1,28 @@
-class Api::MessagesController < ApplicationController
+class Api::MessagesController < ApplicationController  
+  def index
+    convos_hash = Hash.new { |h, k| h[k] = [] }
+  
+    current_user.authored_messages.each do |message|
+      convos_hash[message.receiver.id] << message
+    end
+  
+    current_user.received_messages.each do |message|
+      convos_hash[message.author.id] << message
+    end
+    
+    convos_arr = []
+    convos_hash.each do |key, value|
+      convos_arr << { user_id: key, messages: value }
+    end
+    
+    render json: convos_arr
+  end
+  
+  def show
+    @message = current_user.find(params[:id])
+    render json: @message
+  end
+  
   def create
     @message = current_user.authored_messages.new(message_params)
     

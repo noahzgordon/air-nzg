@@ -8,9 +8,6 @@ class User < ActiveRecord::Base
   has_many :authored_messages, foreign_key: :author_id, class_name: "Message"
   has_many :received_messages, foreign_key: :receiver_id, class_name: "Message"
   
-  has_many :authored_conversations, through: :authored_messages, source: :conversation
-  has_many :received_conversations, through: :authored_messages, source: :conversation
-  
   has_attached_file(
     :avatar, 
     styles: { thumb: "50x50#", small: "100x100#", medium: "200x200#" },
@@ -74,10 +71,6 @@ class User < ActiveRecord::Base
     self.save!
 
     self.session_token
-  end
-  
-  def conversations
-    authored_conversations + received_conversations
   end
 
   private
