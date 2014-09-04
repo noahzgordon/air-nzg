@@ -7,12 +7,12 @@ AirNZG.Views.UserShow = Backbone.View.extend({
 	
 	events: {
 		"click .contact-link": "newMessage"
-	}
+	},
 	
 	newMessage: function(event) {
 		event.preventDefault();
 		
-		AirNZG.Utils.popContactModal(this.model.user().id);
+		AirNZG.Utils.popContactModal(this.model.id);
 	},
 	
 	render: function() {

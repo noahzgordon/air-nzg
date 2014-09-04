@@ -31,18 +31,12 @@ AirNZG.Utils = {
 	},
 	
 	popContactModal: function(id) {
-		if (this.isSignedIn()) {
 		
-			AirNZG.conversations.fetch({
-				success: function() {
-					var conversation = AirNZG.conversations.findByUserId(parseInt(id))
-					
-					var formView = new AirNZG.Views.MessageForm({ model: conversation });
-					$(".modal-screen").addClass("active");
-					$(".modal-card").addClass("active");
-					$(".modal-card").html(formView.render().$el);
-				}
-			});
+		if (this.isSignedIn()) {
+			var formView = new AirNZG.Views.MessageForm({ receiver_id: id });
+			$(".modal-screen").addClass("active");
+			$(".modal-card").addClass("active");
+			$(".modal-card").html(formView.render().$el);
 		} else {
 			this.popSignInModal();
 		}
