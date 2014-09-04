@@ -1,6 +1,4 @@
 AirNZG.Models.Conversation = Backbone.Model.extend({
-	urlRoot: "/api/conversations",
-	
 	messages: function() {
 		this._messages = this._messages || new AirNZG.Collections.Messages([], {
 			conversation: this

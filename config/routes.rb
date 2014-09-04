@@ -12,8 +12,7 @@ Rails.application.routes.draw do
     get '/my_listings', to: 'listings#my_listings'
     get '/my_bookings', to: 'bookings#my_bookings'
     
-    get "/conversations", to: "messages#index"
-    resources :messages, only: [:create]
+    resources :messages, only: [:index, :show, :create]
   end
   
   get 'auth/facebook/callback', to: 'oauth_callbacks#facebook'

@@ -8,7 +8,7 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	
 	events: {
 		"submit .request-form": "newBooking",
-		"click .contact-link": "newConversation"
+		"click .contact-link": "newMessage"
 	},
 	
 	newBooking: function(event) {
@@ -32,10 +32,10 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 		}
 	},
 	
-	newConversation: function(event) {
+	newMessage: function(event) {
 		event.preventDefault();
 		
-		AirNZG.Utils.popContactModal();
+		AirNZG.Utils.popContactModal(this.model.user().id);
 	},
 	
 	render: function() {

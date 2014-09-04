@@ -30,12 +30,19 @@ AirNZG.Utils = {
 		$(".modal-card").html(signInView.render().$el)
 	},
 	
-	popContactModal: function() {
+	popContactModal: function(id) {
 		if (this.isSignedIn()) {
-			var newView = new AirNZG.Views.ConversationForm();
-			$(".modal-screen").addClass("active");
-			$(".modal-card").addClass("active");
-			$(".modal-card").html(newView.render().$el);
+		
+			AirNZG.conversations.fetch({
+				success: function() {
+					var conversation = AirNZG.conversations.findByUserId(parseInt(id))
+					
+					var formView = new AirNZG.Views.MessageForm({ model: conversation });
+					$(".modal-screen").addClass("active");
+					$(".modal-card").addClass("active");
+					$(".modal-card").html(formView.render().$el);
+				}
+			});
 		} else {
 			this.popSignInModal();
 		}

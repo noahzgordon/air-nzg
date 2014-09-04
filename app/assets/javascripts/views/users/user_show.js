@@ -5,6 +5,16 @@ AirNZG.Views.UserShow = Backbone.View.extend({
 		this.listenTo(this.model, "sync", this.render);
 	},
 	
+	events: {
+		"click .contact-link": "newMessage"
+	}
+	
+	newMessage: function(event) {
+		event.preventDefault();
+		
+		AirNZG.Utils.popContactModal(this.model.user().id);
+	},
+	
 	render: function() {
 		var content = this.template({ user: this.model });
 		

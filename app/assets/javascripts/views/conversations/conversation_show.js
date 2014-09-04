@@ -5,12 +5,17 @@ AirNZG.Views.ConversationShow = Backbone.View.extend({
 		this.listenTo(this.model.messages(), "add", this.render)
 	},
 	
+	events: {
+		"click .new-message": "popNewMessageModal"
+	},
+	
+	popNewMessageModal: function() {
+		AirNZG.Utils.popContactModal(this.model.get("user_id"));
+	},
+	
 	render: function() {
 		var content = this.template({ conversation: this.model });
 		this.$el.html(content);
-		
-		var formView = new AirNZG.Views.MessageForm({ model: this.model });
-		this.$(".new-message").html(formView.render().$el)
 		
 		return this;
 	}

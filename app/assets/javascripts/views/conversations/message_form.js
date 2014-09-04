@@ -1,15 +1,13 @@
 AirNZG.Views.MessageForm = Backbone.View.extend({
 	template: JST["conversations/message_form"],
 	
-	initialize: function(options) {
-	},
-	
 	tagName: "form",
 	
 	className: "new-message-form",
 	
 	events: {
-		"submit": "saveNewMessage"
+		"submit": "saveNewMessage",
+		"click .exit": "exitView"
 	},
 	
 	saveNewMessage: function(event) {
@@ -20,7 +18,8 @@ AirNZG.Views.MessageForm = Backbone.View.extend({
 		var message = new AirNZG.Models.Message(data)
 		message.save({}, {
 			success: function(model, response) {
-				view.model.messages().add(message)
+				view.model.messages().add(message);
+				view.exitView();
 			},
 			error: function(model, response) {
 				AirNZG.Utils.renderErrors (response.responseJSON);
@@ -29,8 +28,15 @@ AirNZG.Views.MessageForm = Backbone.View.extend({
 		
 	},
 	
+	exitView: function(event) {
+		$(".modal-screen").removeClass("active");
+		$(".modal-card").removeClass("active");
+		$(".modal-card").empty();
+	},
+	
 	render: function() {
 		var content = this.template({ conversation: this.model });
+		
 		this.$el.html(content);
 		
 		return this;

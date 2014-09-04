@@ -1,5 +1,5 @@
 AirNZG.Collections.Conversations = Backbone.Collection.extend({
-	url: "/api/conversations",
+	url: "/api/messages",
   model: AirNZG.Models.Conversation,
 	
   findByUserId: function(id) {
