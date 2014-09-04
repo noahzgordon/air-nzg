@@ -2,7 +2,7 @@ AirNZG.Views.ConversationShow = Backbone.View.extend({
 	template: JST["conversations/show"],
 	
 	initialize: function() {
-		this.listenTo(AirNZG.conversations, "newMessage", this.render)
+		this.listenTo(this.model.messages(), "add", this.render)
 	},
 	
 	events: {
