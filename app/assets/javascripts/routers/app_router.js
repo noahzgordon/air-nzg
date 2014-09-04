@@ -17,7 +17,8 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		"my_listings": "myListings",
 		"my_booking_requests": "myBookings",
 		
-		"conversations": "conversationsIndex"
+		"conversations": "conversationsIndex",
+		"conversations/:id": "conversationShow"
 	},
 	
 	root: function() {
@@ -162,6 +163,24 @@ AirNZG.Routers.App = Backbone.Router.extend({
 				router._swapView(indexView);
 			}
 		})
+	},
+	
+	conversationShow: function(id) {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
+		var router = this;
+		var conversation = new AirNZG.Models.Conversation({ id: id })
+		
+		conversation.fetch({
+			success: function() {
+				var showView = new AirNZG.Views.ConversationShow({ model: conversation })
+				router._swapView(showView);
+			}
+		});
 	},
 	
 	_swapView: function(view) {

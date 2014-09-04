@@ -11,7 +11,7 @@
 				<% var other_user = AirNZG.users.getOrFetch(conversation.get("other_user_id")) %>
 			
 				<p>With: <%= other_user.escape("fname") %></p>
-				<img src="<%= other_user.escape("avatar_thumb") %>">
+				<img src="<%= other_user.escape("avatar_small") %>">
 			</li>
 		<% }) %>
 	</ul>

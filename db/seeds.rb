@@ -109,5 +109,21 @@ l2 = batman.listings.create!(
   wifi: true
 )
 
+convo = Conversation.create!(
+  title: "Just Two Normal Guys Having a Good Time"
+)
+
+convo.messages.create!(
+  subject: "Hey man",
+  content: "How's it going?"
+  user_id: User.find_by_fname("Superman").id
+)
+
+convo.messages.create!(
+  subject: "Go Away",
+  content: "I don't like you"
+  user_id: User.find_by_fname("Batman").id
+)
+
 
 
