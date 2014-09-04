@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 20140903210514) do
   end
 
   create_table "conversations", force: true do |t|
-    t.string "title"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "listings", force: true do |t|
@@ -73,10 +75,12 @@ ActiveRecord::Schema.define(version: 20140903210514) do
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "messages", force: true do |t|
-    t.text    "content"
-    t.string  "subject"
-    t.integer "user_id"
-    t.integer "conversation_id"
+    t.text     "content"
+    t.string   "subject"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", force: true do |t|
