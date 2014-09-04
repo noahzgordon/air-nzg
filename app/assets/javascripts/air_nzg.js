@@ -4,21 +4,26 @@ window.AirNZG = {
   Views: {},
   Routers: {},
   initialize: function(options) {
-		AirNZG.users.fetch({
-			success: function(collection) {
-				// sets a top-level current user property 
-				if (options.currentUserId > 0) {
-					AirNZG.currentUser = collection.getOrFetch(options.currentUserId)
+		
+		if (options.currentUserId > 0) {
+			AirNZG.currentUser = new AirNZG.Models.User({id: options.currentUserId})
+			AirNZG.currentUser.fetch({
+				success: function() {
+					AirNZG.headerView = new AirNZG.Views.HeaderNav();
+					$("header").html(AirNZG.headerView.render().$el);
 				}
-				
-				// sets a top-level view for the header
-				AirNZG.headerView = new AirNZG.Views.HeaderNav();
-				$("header").html(AirNZG.headerView.render().$el);
-				
+			});
+		} else {
+			AirNZG.headerView = new AirNZG.Views.HeaderNav();
+			$("header").html(AirNZG.headerView.render().$el);
+		}
+		
+		AirNZG.users.fetch({
+			success: function() {
 				$(".loading-main").hide();
 			}
-		});
-		
+		})
+
     new AirNZG.Routers.App();
 		Backbone.history.start({ root: "/" });
   }

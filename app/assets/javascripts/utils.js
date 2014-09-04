@@ -58,6 +58,10 @@ AirNZG.Utils = {
 		})
 		errorHtml += "</ul>"
 		
-		view.$(".error-bar").html(errorHtml)
+		$(".error-bar").show();
+		$(".error-bar").html(errorHtml);
+		$(".error-bar").on("click", function(event) {
+			$(event.currentTarget).fadeOut(1000);
+		});
 	}
 }

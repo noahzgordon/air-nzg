@@ -5,6 +5,8 @@ class Api::SessionsController < ApplicationController
     @user = User.new(user_params)
     signed_in_user = sign_in(@user)
     
+    p signed_in_user
+    
     if signed_in_user
       render json: signed_in_user
     else

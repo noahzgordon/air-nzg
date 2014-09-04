@@ -249,7 +249,7 @@ form {
 	left: 440px;
 	color: #000;
 	font-weight: bold;
-	z-index: 5;
+	z-index: 10005;
 	display: none;
 	opacity: 0.8;
 	border-radius: 20px;
@@ -260,16 +260,16 @@ form {
 	position: fixed;
 	top: 80px;
 	left: 440px;
-	display: block;
+	display: none;
 	background: #FB7600;
 	font-weight: bold;
 	color: #fff;
 	border-radius: 20px;
-	z-index: 5;
+	z-index: 10005;
+	padding: 10px 20px;
+	cursor: pointer;
 	
 	ul {
-		padding: 20px;
-		
 		li {
 			padding: 5px;
 		}

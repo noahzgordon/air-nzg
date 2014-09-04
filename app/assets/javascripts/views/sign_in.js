@@ -26,10 +26,18 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 			type: "POST",
 			data: data,
 			success: function(user) {
-				AirNZG.currentUser = AirNZG.users.get(user.id);
-				AirNZG.headerView.render()
-				view.exitView();
-				AirNZG.Utils.flashNotice("Welcome back!");
+				AirNZG.currentUser = new AirNZG.Models.User({ id: user.id });
+				AirNZG.currentUser.fetch({
+					success: function() {
+						AirNZG.headerView.render();
+						view.exitView();
+						AirNZG.Utils.flashNotice("Welcome back!");
+					}
+				});
+			},
+			
+			error: function(data) {
+				AirNZG.Utils.renderErrors(data.responseJSON, view);
 			}
 		})
 	},

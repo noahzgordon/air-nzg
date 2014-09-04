@@ -51,9 +51,17 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 	render: function() {
 		if (AirNZG.Utils.isSignedIn()) {
 			var content = this.signedInTemplate({ user: AirNZG.currentUser });
+			
+			if (AirNZG.currentUser.limited) {
+				// The only way currentUse could have this attribute is if someone attempted
+				// to hack the site using the console.
+				$(".body").html("<h1>Oops, something went wrong ;)</h1>")
+			}
 		} else {
 			var content = this.signedOutTemplate();
 		}
+		
+		
 		
 		this.$el.html(content);
 		

@@ -25,20 +25,18 @@
 	    <% end %>
 		</span>
 		
+		<span class="error-bar">
+	    <% if !!flash[:errors] %>
+	      <ul class="errors">
+	        <% flash[:errors].each do |error| %>
+	          <li><%= error %></li>
+	        <% end %>
+	      </ul>
+	    <% end %>
+		</span>
+		
 	  <main class="main-content group">
-		
-			<span class="error-bar">
-		    <% if !!flash[:errors] %>
-		      <ul class="errors">
-		        <% flash[:errors].each do |error| %>
-		          <li><%= error %></li>
-		        <% end %>
-		      </ul>
-		    <% end %>
-			</span>
-		
 	    <%= yield %>
-		
 		</main>
 	
 	</body>
