@@ -5,9 +5,10 @@
 		<% conversations.each(function(conversation) { %>
 			<li>
 				<% var other_user = AirNZG.users.get(conversation.get("user_id")) %>
-				<a href="conversations/">
-				<p>Conversation with: <%= other_user.escape("fname") %></p>
-				<img src="<%= other_user.escape("avatar_small") %>">
+				<a href="<%= '#/conversations/' + other_user.id %>">
+					<p>Conversation with: <%= other_user.escape("fname") %></p>
+					<img src="<%= other_user.escape("avatar_small") %>">
+				</a>
 			</li>
 		<% }) %>
 	</ul>
