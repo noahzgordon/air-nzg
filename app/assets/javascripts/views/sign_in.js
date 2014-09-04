@@ -30,6 +30,7 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 				AirNZG.currentUser.fetch({
 					success: function() {
 						AirNZG.headerView.render();
+						AirNZG.conversations.fetch();
 						view.exitView();
 						AirNZG.Utils.flashNotice("Welcome back!");
 					}

@@ -18,6 +18,8 @@ window.AirNZG = {
 			$("header").html(AirNZG.headerView.render().$el);
 		}
 		
+		AirNZG.conversations.fetch();
+		
 		AirNZG.users.fetch({
 			success: function() {
 				$(".loading-main").hide();

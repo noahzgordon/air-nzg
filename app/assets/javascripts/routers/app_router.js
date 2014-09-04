@@ -37,11 +37,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	listingNew: function() {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
+		if (this._requireSignIn()) { return null; }
 		
 		var listing = new AirNZG.Models.Listing();
 		
@@ -58,11 +54,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	listingEdit: function(id) {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
+		if (this._requireSignIn()) { return null; }
 		
 		var listing = new AirNZG.Models.Listing({ id: id });
 		var router = this;
@@ -90,11 +82,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	userEdit: function(id) {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
+		if (this._requireSignIn()) { return null; }
 		
 		var user = new AirNZG.Models.User({ id: id });
 		var router = this;
@@ -108,12 +96,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	myListings: function() {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
-		
+		if (this._requireSignIn()) { return null; }
 		
 		var listings = new AirNZG.Collections.MyListings;
 		var router = this;
@@ -127,11 +110,7 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	myBookings: function() {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
+		if (this._requireSignIn()) { return null; }
 		
 		var bookings = new AirNZG.Collections.MyBookings;
 		var router = this;
@@ -145,19 +124,14 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	conversationsIndex: function() {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
+		if (this._requireSignIn()) { return null; }
 		
 		var router = this;
-		var conversations = new AirNZG.Collections.Conversations({});
-		
-		conversations.fetch({
+	
+		AirNZG.conversations.fetch({
 			success: function() {
 				var indexView = new AirNZG.Views.ConversationsIndex({ 
-					collection: conversations
+					collection: AirNZG.conversations
 				})
 				
 				router._swapView(indexView);
@@ -166,21 +140,12 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	conversationShow: function(id) {
-		if (!AirNZG.Utils.isSignedIn()) {
-			AirNZG.Utils.popSignInModal();
-			AirNZG.Utils.flashNotice("You need to sign in to do that!")
-			return null;
-		}
+		if (this._requireSignIn()) { return null; }
 		
-		var router = this;
-		var conversation = new AirNZG.Models.Conversation({ id: id })
-		
-		conversation.fetch({
-			success: function() {
-				var showView = new AirNZG.Views.ConversationShow({ model: conversation })
-				router._swapView(showView);
-			}
-		});
+		var conversation = AirNZG.conversations.getOrFetch(id)
+
+		var showView = new AirNZG.Views.ConversationShow({ model: conversation })
+		this._swapView(showView);
 	},
 	
 	_swapView: function(view) {
@@ -190,6 +155,16 @@ AirNZG.Routers.App = Backbone.Router.extend({
 		$(".notice-bar").delay(2000).fadeOut(3000)
 		
 		$("main").html(view.render().$el)
+	},
+	
+	_requireSignIn: function() {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return true;
+		} else {
+			return false
+		}
 	}
 
 });

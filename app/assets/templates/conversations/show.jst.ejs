@@ -1,21 +1,28 @@
 <h3><%= conversation.escape("title") %></h3>
 
-<ul>
-<% conversation.get("messages").forEach(function(message) { %>
-	<li>
-		<article class="message">
-			<section class="message-user-box">
-				<% var user = AirNZG.users.getOrFetch(message.user_id) %>
-				<p><%= user.escape("fname") %></p>
-				<a href="<%= '#/users/' + user.id %>">
-					<img src="<%= user.avatar_thumb %>">
-				</a>
-			</section>
-			<section class="content">
-				<h4><%= AirNZG.Utils.escapeHTML(message.subject) %></h4>
-				<p><%= AirNZG.Utils.escapeHTML(message.content) %></p>
-			</section>
-		</article>
-	</li>
-<% }) %>
-</ul>
+
+<section class="message-list">
+	<ul>
+	<% conversation.messages().each(function(message) { %>
+		<li>
+			<article class="message">
+				<section class="message-user-box">
+					<% var user = AirNZG.users.getOrFetch(message.get("user_id")) %>
+					<p><%= user.escape("fname") %></p>
+					<a href="<%= '#/users/' + user.id %>">
+						<img src="<%= user.escape("avatar_thumb") %>">
+					</a>
+				</section>
+				<section class="content">
+					<h4><%= message.escape("subject") %></h4>
+					<p><%= message.escape("content") %></p>
+				</section>
+			</article>
+		</li>
+	<% }) %>
+	</ul>
+</section>
+
+<section class="new-message">
+	
+</section>
