@@ -3,6 +3,7 @@ AirNZG.Views.ConversationShow = Backbone.View.extend({
 	
 	initialize: function() {
 		this.listenTo(this.model, "sync", this.render)
+		this.listenTo(this.model.messages(), "add", this.render)
 	},
 	
 	render: function() {
@@ -10,7 +11,7 @@ AirNZG.Views.ConversationShow = Backbone.View.extend({
 		this.$el.html(content);
 		
 		var formView = new AirNZG.Views.MessageForm({ conversation: this.model });
-		this.$(".new-message").append(formView.render().$el)
+		this.$(".new-message").html(formView.render().$el)
 		
 		return this;
 	}

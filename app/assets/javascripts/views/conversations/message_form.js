@@ -15,6 +15,7 @@ AirNZG.Views.MessageForm = Backbone.View.extend({
 	
 	saveNewMessage: function(event) {
 		event.preventDefault();
+		var view = this
 		
 		var data = $(event.currentTarget).serializeJSON();
 		data.conversation_id = this.conversation.id
@@ -22,7 +23,7 @@ AirNZG.Views.MessageForm = Backbone.View.extend({
 		var message = new AirNZG.Models.Message(data)
 		message.save({}, {
 			success: function(model, response) {
-				console.log("saved!")
+				view.conversation.messages().add(model)
 			},
 			error: function(model, response) {
 				AirNZG.Utils.renderErrors (response.responseJSON);
