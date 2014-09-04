@@ -3,6 +3,7 @@ class Api::BookingsController < ApplicationController
   
   def my_bookings
     @bookings = current_user.booking_requests
+    
     render json: @bookings, include: :user
   end
   

@@ -6,8 +6,8 @@ class Booking < ActiveRecord::Base
   has_many :notifications, as: :notifiable, inverse_of: :notifiable, dependent: :destroy
   
   validates :start_date, :end_date, :user, :listing, presence: true
-  validate :end_date_is_after_start_date
-  validate :start_date_is_not_past
+  validate :end_date_is_after_start_date, on: :create
+  validate :start_date_is_not_past, on: :create
   validate :does_not_overlap_with_approved_request_or_unavailable_range, on: :create
   
   before_save :default_to_pending_status

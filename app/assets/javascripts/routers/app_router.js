@@ -36,6 +36,12 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	listingNew: function() {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
 		var listing = new AirNZG.Models.Listing();
 		
 		var newView = new AirNZG.Views.ListingForm({ model: listing });
@@ -51,6 +57,12 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	listingEdit: function(id) {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
 		var listing = new AirNZG.Models.Listing({ id: id });
 		var router = this;
 		
@@ -77,6 +89,12 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	userEdit: function(id) {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
 		var user = new AirNZG.Models.User({ id: id });
 		var router = this;
 		
@@ -89,6 +107,13 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	myListings: function() {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
+		
 		var listings = new AirNZG.Collections.MyListings;
 		var router = this;
 		
@@ -101,6 +126,12 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	myBookings: function() {
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
 		var bookings = new AirNZG.Collections.MyBookings;
 		var router = this;
 		
@@ -113,10 +144,19 @@ AirNZG.Routers.App = Backbone.Router.extend({
 	},
 	
 	conversationsIndex: function() {
-		AirNZG.conversations.fetch({
+		if (!AirNZG.Utils.isSignedIn()) {
+			AirNZG.Utils.popSignInModal();
+			AirNZG.Utils.flashNotice("You need to sign in to do that!")
+			return null;
+		}
+		
+		var router = this;
+		var conversations = new AirNZG.Collections.Conversations({});
+		
+		conversations.fetch({
 			success: function() {
 				var indexView = new AirNZG.Views.ConversationsIndex({ 
-					collection: AirNZG.conversations
+					collection: conversations
 				})
 				
 				router._swapView(indexView);

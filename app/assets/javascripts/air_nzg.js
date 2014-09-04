@@ -22,7 +22,7 @@ window.AirNZG = {
 			success: function() {
 				$(".loading-main").hide();
 			}
-		})
+		});
 
     new AirNZG.Routers.App();
 		Backbone.history.start({ root: "/" });

@@ -1,3 +1,3 @@
-AirNZG.Models.Booking = Backbone.Model.extend({
+AirNZG.Models.Conversation = Backbone.Model.extend({
 	urlRoot: "/api/conversations"
 });

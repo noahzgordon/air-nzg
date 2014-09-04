@@ -1,0 +1,20 @@
+<h3>Your Conversations</h3>
+
+<% if (conversations.length > 0) { %>
+	<ul>
+		<% conversations.each(function(conversation) { %>
+			<li>
+				<a href="<%= '#/conversations/' + conversation.id %>">
+					<%= conversation.escape("title") %>
+				</a>
+			
+				<% var other_user = AirNZG.users.getOrFetch(conversation.get("other_user_id")) %>
+			
+				<p>With: <%= other_user.escape("fname") %></p>
+				<img src="<%= other_user.escape("avatar_thumb") %>">
+			</li>
+		<% }) %>
+	</ul>
+<% } else { %>
+	<p>You haven't started any conversations yet.</p>
+<% } %>
