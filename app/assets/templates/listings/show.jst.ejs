@@ -65,22 +65,23 @@
 	
 	</section>
 	
-	<article class="photo-gallery">
-		<% if (listing.get("pictures") && listing.get("pictures").length > 0) { %>
+	<% if (listing.get("pictures") && listing.get("pictures").length > 0) { %>
+		<article class="photo-gallery">
 			<div class="jcarousel">
 				<ul class="group">
 					<% listing.get("pictures").forEach(function(photo) { %>
 						<li><img src="<%= photo.url %>"></li>
 					<% }); %>
 				</ul>
-			<% } else { %>
-				<p>No images available.</p>
-			<% } %>
-		</div>
-		
-    <a class="jcarousel-prev" href="#">‹</a>
-    <div class="jcarousel-pagination"></div>
-    <a class="jcarousel-next" href="#">›</a>
+			</div>
+			
+	    <a class="jcarousel-prev" href="#">‹</a>
+	    <div class="jcarousel-pagination"></div>
+	    <a class="jcarousel-next" href="#">›</a>
+		</article>
+	<% } else { %>
+		<p class="no-images">No images available.</p>
+	<% } %>
 	</article>
 	
 	<section class="listing-details">

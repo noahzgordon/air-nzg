@@ -147,6 +147,7 @@
 	position: relative;
 	border-radius: 5px;
 	overflow: hidden;
+	border: 10px solid #555;
 	
 	.jcarousel {
 		width: 950px;
@@ -193,7 +194,7 @@
 	height: auto;
 }
 
-.photo-gallery > p {
+p.no-images {
 	display: block;
 	width: 700px;
 	margin: auto;

@@ -45,8 +45,6 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 			user: this.model.user()
 		});
 		
-		console.log(this.model.get("pictures"))
-		
 		this.$el.html(content);
 		
 		this.setUpCarousel();

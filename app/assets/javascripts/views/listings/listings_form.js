@@ -32,7 +32,16 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 	
 	fileHandler: function(event) {
 		var view = this;
-		var imageFile = event.currentTarget.files[0];
+		var imageFiles = event.currentTarget.files;
+		
+		if (imageFiles.size === 1) {
+			this.handleSingleFile(imageFiles[0])
+		} else if (imageFiles.size > 1) {
+			this.handleMultipleFiles(imageFiles)
+		}
+	},
+	
+	handleSingleFile: function(file) {
 		var reader = new FileReader();
 		
 		reader.onloadend = function() {
@@ -45,6 +54,10 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		} else {
 			$(event.currentTarget).attr("src", "") // set preview string to empty
 		}
+	},
+	
+	handleMultipleFiles: function(files) {
+		
 	},
 	
 	deleteListing: function(event) {

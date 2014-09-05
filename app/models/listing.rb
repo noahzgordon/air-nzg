@@ -42,9 +42,10 @@ class Listing < ActiveRecord::Base
     photos.where(cover: true).first
   end
   
-  # def cover_pic=(photo)
-#
-#   end
+  def cover_pic=(photo_data)
+    pic = photos.new(attachment: photo_data, cover: true)
+    pic.save!
+  end
   
   private
   
