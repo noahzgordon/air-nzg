@@ -49,6 +49,10 @@
 	display: none;
 }
 
+.listing-params .hidden-params.expanded {
+	display: block;
+}
+
 .listing-params strong {
 	display: block;
 	float: left;

@@ -28,7 +28,13 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	},
 	
 	toggleExpansion: function(event) {
+		this.$(".hidden-params").slideToggle(100)
 		
+		if (this.$(".expander").html() === "⬇") {
+			this.$(".expander").html("⬆") ;
+		} else {
+			this.$(".expander").html("⬇");
+		}
 	},
 	
 	className: "filter-form",
