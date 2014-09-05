@@ -7,7 +7,8 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	
 	events: {	
 		"click input[type=radio]": "filterPage",
-		"blur input[type=date]": "filterPage"
+		"blur input[type=date]": "filterPage",
+		"click .expander": "toggleExpansion"
 	},
 	
 	filterPage: function(event) {
@@ -24,6 +25,10 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	updatePriceValues: function(event) {
 		this.$(".price-low").html("$" + this.$(".price-slider").slider("values")[0])
 		this.$(".price-high").html("$" + this.$(".price-slider").slider("values")[1])
+	},
+	
+	toggleExpansion: function(event) {
+		
 	},
 	
 	className: "filter-form",

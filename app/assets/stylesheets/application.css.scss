@@ -36,6 +36,10 @@ ul, li{
 	list-style: none;
 }
 
+small {
+	font-size: 12px;
+}
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -236,7 +240,6 @@ footer {
 	padding: 15px;
 	
 	small {
-		font-size: 12px;
 		display: block;
 	}
 	

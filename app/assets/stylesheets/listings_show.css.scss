@@ -41,7 +41,7 @@
 	padding: 10px;
 	text-align: left;
 	background: #ddd;
-	width: 500px;
+	width: 600px;
 }
 
 .basic-info > h3 {
@@ -141,7 +141,8 @@
 
 .photo-gallery {
 	display: block;
-	width: 1100px;
+	min-width: 1200px;
+	width: 100%;
 }
 
 .photo-gallery > img {
