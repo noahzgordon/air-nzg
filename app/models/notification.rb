@@ -26,7 +26,7 @@ class Notification < ActiveRecord::Base
     when :booking_denied
       '#'
     when :new_message
-      '#'
+      "#/conversations/#{self.notifiable.author.id}"
     end
   end
 
@@ -48,7 +48,7 @@ class Notification < ActiveRecord::Base
       
       "#{approving_user.fname} has denied your request to rent #{listing.title}."
     when :new_message
-      "You have a new message from #{self.notifiable.sender}"
+      "You have a new message from #{self.notifiable.author.fname}"
     end
   end
   

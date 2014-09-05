@@ -1,20 +1,22 @@
-<h3><%= conversation.escape("title") %></h3>
-
 <button class="new-message">New Message</button>
+
+<h3>Your conversation with 
+	<%= AirNZG.users.getOrFetch(conversation.get("user_id")).escape("fname") %>
+</h3>
 
 <section class="message-list">
 	<ul>
 	<% conversation.messages().each(function(message) { %>
-		<li>
-			<article class="message">
+		<li class="group">
+			<article class="message group">
 				<section class="message-user-box">
 					<% var user = AirNZG.users.getOrFetch(message.escape("author_id")) %>
-					<p><%= user.escape("fname") %></p>
 					<a href="<%= '#/users/' + user.id %>">
 						<img src="<%= user.escape("avatar_thumb") %>">
 					</a>
+					<p><%= user.escape("fname") %></p>
 				</section>
-				<section class="content">
+				<section class="content group">
 					<h4><%= message.escape("subject") %></h4>
 					<p><%= message.escape("content") %></p>
 				</section>

@@ -26,6 +26,7 @@ AirNZG.Views.MessageForm = Backbone.View.extend({
 			success: function(model, response) {
 				var conversation = AirNZG.conversations.findByUserId(model.get("receiver_id"))
 				conversation.messages().add(model)
+				AirNZG.Utils.flashNotice("Message sent.")
 				
 				view.exitView();
 			},

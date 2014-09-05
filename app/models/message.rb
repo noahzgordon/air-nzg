@@ -7,9 +7,11 @@ class Message < ActiveRecord::Base
   validates :content, :author, :receiver, presence: true
   validates :subject, presence: true, length: { maximum: 20 }
   
+  after_create :notify_receiving_user
+  
   private
   
   def notify_receiving_user
-    # notifications.create(event_id: 4, user_id: )
+    notifications.create(event_id: 4, user_id: receiver.id)
   end
 end

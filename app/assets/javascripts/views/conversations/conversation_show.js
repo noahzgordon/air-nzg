@@ -5,6 +5,8 @@ AirNZG.Views.ConversationShow = Backbone.View.extend({
 		this.listenTo(this.model.messages(), "add", this.render)
 	},
 	
+	className: "convo-show",
+	
 	events: {
 		"click .new-message": "popNewMessageModal"
 	},

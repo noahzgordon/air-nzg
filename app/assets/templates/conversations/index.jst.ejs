@@ -1,13 +1,15 @@
 <h3>Your Conversations</h3>
 
 <% if (conversations.length > 0) { %>
-	<ul>
+	<ul class="convo-list">
 		<% conversations.each(function(conversation) { %>
-			<li>
+			<li class="group">
 				<% var other_user = AirNZG.users.get(conversation.get("user_id")) %>
 				<a href="<%= '#/conversations/' + other_user.id %>">
-					<p>Conversation with: <%= other_user.escape("fname") %></p>
 					<img src="<%= other_user.escape("avatar_small") %>">
+					<p>Conversation with <%= other_user.escape("fname") %></p>
+					<% var date = new Date(conversation.messages().first().get('created_at')) %>
+					<p>Last message at: <%= date.toGMTString() %></p>
 				</a>
 			</li>
 		<% }) %>

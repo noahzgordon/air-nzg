@@ -20,11 +20,14 @@ window.AirNZG = {
 		
 		AirNZG.users.fetch({
 			success: function() {
-				$(".loading-main").hide();
+				AirNZG.conversations.fetch({
+					success: function() {
+				    new AirNZG.Routers.App();
+						Backbone.history.start({ root: "/" });
+						$(".loading-main").hide();
+					}
+				});
 			}
 		});
-
-    new AirNZG.Routers.App();
-		Backbone.history.start({ root: "/" });
   }
 };

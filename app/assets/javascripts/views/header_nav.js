@@ -7,9 +7,6 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 	
 	className: "nav-wrapper group",
 	
-	initialize: function() {
-	},
-	
 	events: {
 		"click .sign-out-link": "signOut",
 		"click .sign-in-link": "signIn",
@@ -25,6 +22,7 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 				AirNZG.currentUser = undefined;
 				AirNZG.headerView.render();
 				AirNZG.Utils.flashNotice("Successfully signed out.");
+				Backbone.history.navigate("/", { trigger: true })
 			}
 		})
 	},
@@ -43,6 +41,7 @@ AirNZG.Views.HeaderNav = Backbone.View.extend({
 			success: function(data) {
 				AirNZG.currentUser.set("notifications", data.notifications);
 				AirNZG.currentUser.set("notification_num", data.num);
+				AirNZG.headerView.render();
 			}
 		});
 	},
