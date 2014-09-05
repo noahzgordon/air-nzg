@@ -2,16 +2,10 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :unavailable_ranges
   has_many :bookings
+  has_many :photos
   
   before_save :default_amenities
   
-  has_attached_file(
-    :cover_pic,
-    default_url: "missing_listing.jpg"
-  )
-  
-  validates_attachment_content_type :cover_pic, content_type: /\Aimage\/.*\Z/
-
   validates :title, presence: true, uniqueness: true
   validates :home_type, :room_type, :accomodates, :term, :city, :price, :address,
              presence: true
@@ -42,6 +36,10 @@ class Listing < ActiveRecord::Base
     amen_arr << "WiFi" if self.wifi
     
     amen_arr
+  end
+  
+  def cover_photo
+    photos.where(cover: true).first
   end
   
   private

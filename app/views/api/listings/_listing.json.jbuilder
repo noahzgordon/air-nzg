@@ -2,7 +2,11 @@ json.(listing, :id, :title, :created_at, :updated_at, :user_id, :term, :city,
                :accomodates, :description, :beds, :baths, :price, :home_type, 
                :room_type, :address, :latitude, :longitude)
                
-json.cover_pic listing.cover_pic.url
+json.cover_pic listing.cover_photo.attachment.url
+
+json.pictures listing.photos do |photo|
+  json.url photo.attachment.url
+end
       
 json.amenities listing.amenities
 
