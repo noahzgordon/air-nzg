@@ -46,7 +46,118 @@
 </article>
 
 <section class="hidden-params">
-	HIDDEN!
+	<strong>Term:</strong>
+	<article class="term group">
+		<input type="radio" name="term" value="short" id="short-term"
+		       <% if(listings.params().term === "short") { %>
+						 <%= "checked" %> 
+					 <% } %>>
+
+		<input type="radio" name="term" value="long" id="long-term"
+		       <% if(listings.params().home_type === "long") { %>
+						 <%= "checked" %> 
+					 <% } %>>
+	</article>
+	
+	<strong>Home:</strong>
+	<article class="home group">
+		<input type="radio" name="home_type" value="apartment" id="home-type-apt"
+		       <% if(listings.params().home_type === "apartment") { %>
+						 <%= "checked" %> 
+					 <% } %>>
+
+		<input type="radio" name="home_type" value="house" id="home-type-house"
+		       <% if(listings.params().home_type === "house") { %>
+						 <%= "checked" %> 
+					 <% } %>>
+
+		<input type="radio" name="home_type" value="mansion" id="home-type-mansion"
+		       <% if(listings.params().room_type === "mansion") { %>
+						 <%= "checked" %> 
+					 <% } %>>
+					 
+ 		<input type="radio" name="home_type" value="cave" id="home-type-cave"
+ 		       <% if(listings.params().room_type === "cave") { %>
+ 						 <%= "checked" %> 
+ 					 <% } %>>
+	</article>
+	
+	<strong>Accommodates:</strong>
+	<article class="accommodates group">
+		<input type="number" name="accomodates" id="listing-accomodates" 
+			placeholder="# of Guests">
+	</article>
+	
+	<strong>Amenities: </strong>
+	<article class="amenities group">
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-essentials" name="essentials"
+				<% if (listings.params().essentials === true) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-essentials">Essentials</label>
+		</div>
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-tv" name="tv"
+				<% if (listings.params().tv) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-tv">Television</label>
+		</div>
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-cable" name="cable"
+				<% if (listings.params().cable) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-cable">Cable TV</label>
+		</div>
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-ac" name="ac"
+				<% if (listings.params().ac) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-ac">Air Conditioning</label>
+		</div>
+	</article>
+	<article class="amenities group">
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-heat" name="heat"
+				<% if (listings.params().heat) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-heat">Heat</label>
+		</div>
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-kitchen" name="kitchen"
+				<% if (listings.params().kitchen) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-kitchen">Kitchen</label>
+		</div>
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-internet" name="internet"
+				<% if (listings.params().internet) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-wifi">Wired Internet</label>
+		</div>
+		
+		<div class="amenity-wrapper">
+			<input type="checkbox" value="true" id="amen-wifi" name="wifi"
+				<% if (listings.params().wifi) { %>
+					<%= "checked" %>
+				<% } %>>
+			<label for="amen-wifi">WiFi</label>
+		</div>
+	</article>
+	
+	
 </section>
 
 <div class="expander">⬇</div>
