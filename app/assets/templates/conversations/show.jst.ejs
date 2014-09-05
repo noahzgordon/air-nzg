@@ -8,7 +8,7 @@
 		<li>
 			<article class="message">
 				<section class="message-user-box">
-					<% var user = AirNZG.users.getOrFetch(message.get("user_id")) %>
+					<% var user = AirNZG.users.getOrFetch(message.escape("author_id")) %>
 					<p><%= user.escape("fname") %></p>
 					<a href="<%= '#/users/' + user.id %>">
 						<img src="<%= user.escape("avatar_thumb") %>">
