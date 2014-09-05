@@ -82,10 +82,10 @@
  					 <% } %>>
 	</article>
 	
-	<strong>Accommodates:</strong>
+	<strong># of Guests:</strong>
 	<article class="accommodates group">
 		<input type="number" name="accomodates" id="listing-accomodates" 
-			min="1" max="4">
+			min="1" max="4" value="<%= listings.params().accomodates %>">
 	</article>
 	
 	<strong>Amenities: </strong>

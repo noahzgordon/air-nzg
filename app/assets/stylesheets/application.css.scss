@@ -231,12 +231,11 @@ ul.dropdown li:hover {
 /* FOOTER */
 
 footer {
-	width: 1170px;
+	width: 1200px;
 	margin: auto;
 	border: 5px solid #777;
 	border-top: 0;
 	background: #ddd;
-	padding: 15px;
 	
 	small {
 		display: block;
@@ -244,10 +243,25 @@ footer {
 	
 	.copy {
 		float: left;
+		padding: 15px;
 	}
 	
 	.hire { 
 		float: right;
+		width: 100px;
+		height: 30px;
+		
+		a {
+			width: 90px;
+			height: 40px;
+			display: block;
+			float: left;
+			background-image: url(image-path('hire-logo.png'));
+			background-size: contain;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: auto;
+		}
 	}
 }
 
