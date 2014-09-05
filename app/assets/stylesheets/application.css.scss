@@ -18,7 +18,7 @@
 /* RESETS */
 
 html, main, body, header, footer, div, ul, li, h1, h3, p, form, input, button, label,
-figure, article, a, span {
+figure, article, a, span, small {
   padding: 0;
   margin: 0;
   border: 0;
@@ -27,7 +27,7 @@ figure, article, a, span {
 	color: inherit;
 }
 
-h1, h3, p, li, input, button, label, td, a, div {
+h1, h3, p, li, input, button, label, td, a, div, small {
   font-family: sans-serif;
 	text-decoration: none;
 }
@@ -86,11 +86,13 @@ body {
 }
 
 main.main-content {
-	width: 1100px;
+	width: 1200px;
 	min-height: 600px;
-	padding: 70px 0 20px 0;
+	padding-top: 65px;
 	background: #fff;
 	margin: auto;
+	border: 5px solid #777;
+	border-bottom: 0;
 }
 
 /* HEADER */
@@ -221,6 +223,30 @@ ul.dropdown li:hover {
 	background-color: #00606B;	
 	padding: 10px;
 	margin: 15px;
+}
+
+/* FOOTER */
+
+footer {
+	width: 1170px;
+	margin: auto;
+	border: 5px solid #777;
+	border-top: 0;
+	background: #ddd;
+	padding: 15px;
+	
+	small {
+		font-size: 12px;
+		display: block;
+	}
+	
+	.copy {
+		float: left;
+	}
+	
+	.hire { 
+		float: right;
+	}
 }
 
 /* ELEMENTS */

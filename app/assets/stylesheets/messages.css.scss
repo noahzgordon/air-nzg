@@ -58,14 +58,25 @@
 			display: block;
 			float: left;
 			padding: 10px;
+			width: 70px;
+			
+			img {
+				display: block;
+				margin: auto;
+			}
+			
+			p {
+				text-align: center;
+				font-size: 14px;
+				padding-top: 5px;
+			}
 		}
 
-		
 		.content {
 			border-left: 1px dotted #ccc;
 			display: block;
 			float: left;
-			width: 940px;
+			width: 900px;
 			padding: 10px;
 			
 			h4 {
@@ -85,5 +96,56 @@
 			}
 		}
 		
+	}
+}
+
+.new-message-form {
+	display: block;
+	margin: auto;
+	padding: 20px;
+	width: 500px;
+	
+	label {
+		display: block;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	
+	input#message-subject {
+		display: block;
+		margin: auto;
+		border-bottom: 3px solid #999;
+		padding: 5px;
+		margin-bottom: 5px;
+		width: 230px;
+	}
+	
+	textarea#message-content {
+		padding: 5px;
+		width: 230px;
+		display: block;
+		margin: auto;
+		height: 90px;
+		outline: 0;
+	}
+	
+	button {
+		margin: 20px;
+		padding: 15px 30px;
+		background: #555;
+		border: 2px solid #111;
+		color: #fff;
+		font-weight: bold;
+		letter-spacing: 2px;
+	}
+	
+	button:hover {
+		background: #777;
+	}
+	
+	button:active {
+		background: #333;
+		border-top: 3px solid #111;
+		padding-bottom: 14px;
 	}
 }
