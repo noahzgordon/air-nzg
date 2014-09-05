@@ -3,6 +3,7 @@ AirNZG.Collections.Listings = Backbone.Collection.extend({
   model: AirNZG.Models.Listing,
 	
 	parse: function(request) {
+		console.log(request)
 		this._params = request["params"];
 		
 		return request["listings"];

@@ -38,9 +38,13 @@ class Listing < ActiveRecord::Base
     amen_arr
   end
   
-  def cover_photo
+  def cover_pic
     photos.where(cover: true).first
   end
+  
+  # def cover_pic=(photo)
+#
+#   end
   
   private
   

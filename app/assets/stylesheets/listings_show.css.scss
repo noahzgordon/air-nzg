@@ -141,13 +141,62 @@
 
 .photo-gallery {
 	display: block;
-	min-width: 1200px;
-	width: 100%;
+	width: 950px;
+	height: 550px;
+	margin: auto;
+	position: relative;
+	border-radius: 5px;
+	overflow: hidden;
+	
+	.jcarousel {
+		width: 950px;
+		position: relative;
+		overflow: hidden;
+	
+		ul {
+			width: 3000px;
+			position: relative;
+	
+			li {
+				width: 950px;
+				float: left;
+				
+				img {
+					width: 950px;
+					height: auto;
+				}
+			}
+		}
+	}
 }
 
-.photo-gallery > img {
+.jcarousel-prev {
+	position: absolute;
+	top: -5px;
+	left: 15px;
+	color: #ddd;
+	font-size: 60px;
+	z-index: 10;
+}
+
+.jcarousel-next {
+	position: absolute;
+	top: -5px;
+	right: 15px;
+	color: #ddd;
+	font-size: 60px;
+	z-index: 10;
+}
+
+.photo-gallery img {
 	width: 100%;
 	height: auto;
+}
+
+.photo-gallery > p {
+	display: block;
+	width: 700px;
+	margin: auto;
 }
 
 .listing-details {

@@ -45,9 +45,42 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 			user: this.model.user()
 		});
 		
+		console.log(this.model.get("pictures"))
+		
 		this.$el.html(content);
 		
+		this.setUpCarousel();
+		
 		return this;
+	},
+	
+	setUpCarousel: function() {
+		$(".jcarousel").jcarousel({
+			animation: {
+				duration: 500,
+				easing: 'linear'
+			},
+			transitions: true,
+			wrap: 'circular'
+		})
+		
+    $('.jcarousel-prev').jcarouselControl({
+        target: '-=1'
+    });
+
+    $('.jcarousel-next').jcarouselControl({
+        target: '+=1'
+    });
+		
+		$('.jcarousel-pagination').jcarouselPagination({});
+		
+		$('.jcarousel-pagination').on('jcarouselpagination:active', 'a', function(event) {
+			$(event.target).addClass("active")
+		});
+		
+		$('.jcarousel-pagination').on('jcarouselpagination:inactive', 'a', function() {
+		  $(event.target).removeClass("active")
+		});
 	}
 
 });

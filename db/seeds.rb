@@ -87,9 +87,13 @@ l1 = bruce.listings.create!(
   price: 5000,
   latitude: 41.666085,
   longitude: -87.893272,
-  address: "11152-11198 W 123rd St., Palos Park, IL 60464",
-  cover_pic: File.new("#{Rails.root}/seeds/images/wayne_manor.jpg")
+  address: "11152-11198 W 123rd St., Palos Park, IL 60464"
 )
+
+l1.photos.create!([{ 
+  attachment: File.new("#{Rails.root}/seeds/images/wayne_manor.jpg"),
+  cover: true
+}])
 
 l2 = batman.listings.create!(
   title: "The Batcave",
@@ -102,27 +106,36 @@ l2 = batman.listings.create!(
   address: "A Hidden Cave",
   latitude: 41.676043,
   longitude: -87.890186,
-  cover_pic: File.new("#{Rails.root}/seeds/images/batcave.jpg"),
   tv: true,
   essentials: true,
   cable: true,
   wifi: true
 )
 
-convo = Conversation.create!(
-  title: "Just Two Normal Guys Having a Good Time"
-)
+l2.photos.create!([{ 
+    attachment: File.new("#{Rails.root}/seeds/images/batcave.jpg"),
+    cover: true
+  }, {
+    attachment: File.new("#{Rails.root}/seeds/images/batcave2.jpg"),
+    cover: false
+  }, {
+    attachment: File.new("#{Rails.root}/seeds/images/batcave3.jpg"),
+    cover: false
+  }
+}])
 
-convo.messages.create!(
+Message.create!(
   subject: "Hey man",
-  content: "How's it going?"
-  user_id: User.find_by_fname("Superman").id
+  content: "How's it going?",
+  author_id: User.find_by_fname("Superman").id,
+  receiver_id: User.find_by_fname("Batman").id
 )
 
-convo.messages.create!(
+Message.create!(
   subject: "Go Away",
-  content: "I don't like you"
-  user_id: User.find_by_fname("Batman").id
+  content: "I don't like you",
+  author_id: User.find_by_fname("Batman").id,
+  receiver_id: User.find_by_fname("Superman").id
 )
 
 

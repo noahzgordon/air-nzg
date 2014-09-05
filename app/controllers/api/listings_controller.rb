@@ -4,7 +4,7 @@ class Api::ListingsController < ApplicationController
   wrap_parameters false
   
   def index
-    @listings = Listing.includes(:unavailable_ranges).all
+    @listings = Listing.includes(:unavailable_ranges).includes(:photos).all
 
     if params[:city].present?
       @listings = @listings.where(city: params[:city])
