@@ -25,7 +25,21 @@ class Api::ListingsController < ApplicationController
         params[:high_price]
       )
     end
-
+    
+    if params[:term].present?
+      @listings = @listings.where(term: params[:term])
+    end
+    
+    if params[:home_type].present?
+      @listings = @listings.where(home_type: params[:home_type])
+    end
+    
+    [:essentials, :tv, :cable, :ac, :heat, :kitchen, :internet, :wifi].each do |amenity|
+      if params[amenity].present? && params[amenity]
+        @listings = @listings.where(amenity => true)
+      end
+    end
+    
     if params[:start].present? && params[:end].present?
       @listings = @listings.includes(:unavailable_ranges).select do |listing|
         listing.available_range?(params[:start], params[:end])

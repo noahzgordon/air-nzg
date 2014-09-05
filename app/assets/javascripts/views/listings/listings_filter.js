@@ -7,7 +7,9 @@ AirNZG.Views.ListingsFilter = Backbone.View.extend({
 	
 	events: {	
 		"click input[type=radio]": "filterPage",
+		"click input[type=checkbox]": "filterPage",
 		"blur input[type=date]": "filterPage",
+		"click input[type=number]": "filterPage",
 		"click .expander": "toggleExpansion"
 	},
 	
