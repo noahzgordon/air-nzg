@@ -18,11 +18,12 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		$(".loading-main").css("display", "block");
 		
 		var view = this;
-		
+		var model = this.model
 		var data = this.$(".listing-form").serializeJSON();
 		
-		this.model.save(data, {
+		model.save(data, {
 			success: function(model, response) {
+				model.set("new_photos", [])
 				AirNZG.Utils.flashNotice("Listing updated!")
 				Backbone.history.navigate("/listings/" + model.id, { trigger: true })
 			},
@@ -58,20 +59,17 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		var view = this;
 		var files = event.currentTarget.files;
 		
-		console.log(files)
-		
 		if (files) {
 			for (var i = 0; i < files.length; i++) {
 				var reader = new FileReader();
 				
 				reader.onloadend = function() {
-					if (!view.model.get("photos")) {
-						view.model.set("photos", [])
+					if (!view.model.get("new_photos")) {
+						view.model.set("new_photos", [])
 					}
 			
-					view.model.attributes.photos.push(this.result)
-					$(event.currentTarget).attr("src", view.model.get("photos")); // updates preview
-					console.log(view.model.get("photos"))
+					view.model.attributes.new_photos.push(this.result)
+					$(event.currentTarget).attr("src", view.model.get("new_photos"));
 				}
 				
 				reader.readAsDataURL(files[i])
