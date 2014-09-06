@@ -8,12 +8,15 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 	
 	events: {
 		"click .save-button": "saveListing",
-		"change #listing-pic": "fileHandler",
+		"change #listing-pic": "fileHandlerSingle",
+		"change #add-pics": "fileHandlerMultiple",
 		"click .deactivate-button": "deleteListing"
 	},
 	
 	saveListing: function(event) {
 		event.preventDefault();
+		$(".loading-main").css("display", "block");
+		
 		var view = this;
 		
 		var data = this.$(".listing-form").serializeJSON();
@@ -30,34 +33,52 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		});
 	},
 	
-	fileHandler: function(event) {
-		var view = this;
-		var imageFiles = event.currentTarget.files;
+	fileHandlerSingle: function(event) {
+		event.preventDefault();
 		
-		if (imageFiles.size === 1) {
-			this.handleSingleFile(imageFiles[0])
-		} else if (imageFiles.size > 1) {
-			this.handleMultipleFiles(imageFiles)
-		}
-	},
-	
-	handleSingleFile: function(file) {
 		var reader = new FileReader();
+		var view = this;
+		var file = event.currentTarget.files[0]
 		
 		reader.onloadend = function() {
 			view.model.set($(event.currentTarget).attr("name"), this.result)
 			$(event.currentTarget).attr("src", this.result); // updates preview
 		}
 		
-		if (imageFile) {
-			reader.readAsDataURL(imageFile); // use reader to read and set image
+		if (file) {
+			reader.readAsDataURL(file); // use reader to read and set image
 		} else {
 			$(event.currentTarget).attr("src", "") // set preview string to empty
 		}
 	},
 	
-	handleMultipleFiles: function(files) {
+	fileHandlerMultiple: function(event) {
+		event.preventDefault();
 		
+		var view = this;
+		var files = event.currentTarget.files;
+		
+		console.log(files)
+		
+		if (files) {
+			for (var i = 0; i < files.length; i++) {
+				var reader = new FileReader();
+				
+				reader.onloadend = function() {
+					if (!view.model.get("photos")) {
+						view.model.set("photos", [])
+					}
+			
+					view.model.attributes.photos.push(this.result)
+					$(event.currentTarget).attr("src", view.model.get("photos")); // updates preview
+					console.log(view.model.get("photos"))
+				}
+				
+				reader.readAsDataURL(files[i])
+			}
+		} else {
+			$(event.currentTarget).attr("src", "")
+		}
 	},
 	
 	deleteListing: function(event) {

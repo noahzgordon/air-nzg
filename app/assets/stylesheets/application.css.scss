@@ -108,7 +108,7 @@ header {
   background: #222;
 	color: #fff;
 	font-weight: bold;
-	z-index: 5;
+	z-index: 9999;
 }
 
 header .logo {
@@ -163,10 +163,12 @@ ul.dropdown {
 	background: #eee;
 	top: 70px;
 	color: #000;
+	z-index: 600;
 }
 
 li:hover > ul.dropdown {
   display: block;
+	z-index: 600;
 }
 
 li:hover > ul.dropdown:after {
@@ -188,6 +190,7 @@ li:hover > ul.dropdown:after {
 ul.dropdown a, ul.dropdown li {
 	padding: 5px;
 	margin: 0;
+	z-index: 600;
 }
 
 ul.dropdown li:hover {
@@ -196,6 +199,7 @@ ul.dropdown li:hover {
 
 .notifications > .dropdown {
 	width: 300px;
+	z-index: 600;
 }
 
 .notif-num {

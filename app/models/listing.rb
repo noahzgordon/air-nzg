@@ -39,12 +39,17 @@ class Listing < ActiveRecord::Base
   end
   
   def cover_pic
-    photos.where(cover: true).first
+    photos.where(cover: true).order(:created_at).first
   end
   
   def cover_pic=(photo_data)
-    pic = photos.new(attachment: photo_data, cover: true)
-    pic.save!
+    photos.create!(attachment: photo_data, cover: true)
+  end
+  
+  def photos=(photo_data_arr)
+    photo_data_arr.each do |photo_data|
+      photos.create!(attachment: photo_data, cover: false)
+    end
   end
   
   private
