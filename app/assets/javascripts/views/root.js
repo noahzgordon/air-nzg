@@ -11,9 +11,13 @@ AirNZG.Views.Root = Backbone.View.extend({
 	
 	executeQuery: function(event) {
 		event.preventDefault();
-		var queryString = $(event.currentTarget).serialize()
+		if (!this.$("#listing-city").val()) {
+			AirNZG.Utils.renderErrors(["Please choose a city!"])
+		} else {
+			var queryString = $(event.currentTarget).serialize()
 
-		Backbone.history.navigate("#/listings?" + queryString, { trigger: true })	
+			Backbone.history.navigate("#/listings?" + queryString, { trigger: true })	
+		}
 	},
 	
 	render: function() {

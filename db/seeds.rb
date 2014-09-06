@@ -36,10 +36,23 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-500.csv") do |row|
     address: row[3],
     longitude: coords[1],
     latitude: coords[0],
-    essentials: true
-    new_cover_pic: apartments.sample
-    new_photos: [apartments.sample, apartments.sample]
+    essentials: true,
+    cable: true,
+    internet: true
   )
+  
+  listing.photos.create!([
+    { 
+      attachment: apartments.sample,
+      cover: true
+    }, {
+      attachment: apartments.sample,
+      cover: false
+    }, {
+      attachment: apartments.sample,
+      cover: false
+    }
+  ])
   
   puts listing.id
 end
@@ -122,7 +135,8 @@ l2 = batman.listings.create!(
   wifi: true
 )
 
-l2.photos.create!([{ 
+l2.photos.create!([
+  { 
     attachment: File.new("#{Rails.root}/seeds/images/batcave.jpg"),
     cover: true
   }, {
@@ -132,7 +146,7 @@ l2.photos.create!([{
     attachment: File.new("#{Rails.root}/seeds/images/batcave3.jpg"),
     cover: false
   }
-}])
+])
 
 Message.create!(
   subject: "Hey man",
