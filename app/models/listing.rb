@@ -52,6 +52,13 @@ class Listing < ActiveRecord::Base
     end
   end
   
+  def new_unavail_range=(range_arr)
+    unavailable_ranges.create!(
+      start_date: range_arr[0],
+      end_date: range_arr[1] 
+    )
+  end
+  
   private
   
   def default_amenities

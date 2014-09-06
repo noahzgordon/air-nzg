@@ -39,6 +39,8 @@ AirNZG.Views.ListingShow = Backbone.View.extend({
 	},
 	
 	render: function() {
+		console.log(this.model)
+		
 		
 		var content = this.template({ 
 			listing: this.model,

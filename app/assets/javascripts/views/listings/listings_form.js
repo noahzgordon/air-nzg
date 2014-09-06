@@ -21,11 +21,16 @@ AirNZG.Views.ListingForm = Backbone.View.extend({
 		var model = this.model
 		var data = this.$(".listing-form").serializeJSON();
 		
+		if (data.unavail_start && data.unavail_end) {
+			data.new_unavail_range = [data.unavail_start, data.unavail_end];
+		}
+		
 		model.save(data, {
 			success: function(model, response) {
-				model.set("new_photos", [])
-				AirNZG.Utils.flashNotice("Listing updated!")
-				Backbone.history.navigate("/listings/" + model.id, { trigger: true })
+				model.set("new_photos", []);
+				model.set("new_unavail_range", []);
+				AirNZG.Utils.flashNotice("Listing updated!");
+				Backbone.history.navigate("/listings/" + model.id, { trigger: true });
 			},
 			
 			error: function(model, response) {

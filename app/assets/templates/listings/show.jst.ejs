@@ -42,7 +42,7 @@
 	
 		<article class="unavailable-list">
 			<h4>Dates Unavailable</h4>
-			<% if(listing.get("unavailable_ranges") && listing.get("unavailable_ranges").count > 0) { %>
+			<% if(listing.get("unavailable_ranges") && listing.get("unavailable_ranges").length > 0) { %>
 			<ul>
 				<% listing.get("unavailable_ranges").forEach(function(range) { %>
 					<li><%= range.start_date %> - <%= range.end_date %></li>
