@@ -2,7 +2,15 @@
 
 require 'csv'
 
-seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|  
+apartments = [
+  File.new("#{Rails.root}/seeds/images/apt1.jpg"),
+  File.new("#{Rails.root}/seeds/images/apt2.jpg"),
+  File.new("#{Rails.root}/seeds/images/apt3.jpg"),
+  File.new("#{Rails.root}/seeds/images/apt4.jpg"),
+  File.new("#{Rails.root}/seeds/images/apt5.jpg")
+]
+
+seed_text = CSV.foreach("#{Rails.root}/seeds/us-500.csv") do |row|  
   next if row[0] == "first_name"
 
   user = User.create!(
@@ -29,6 +37,8 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-250.csv") do |row|
     longitude: coords[1],
     latitude: coords[0],
     essentials: true
+    new_cover_pic: apartments.sample
+    new_photos: [apartments.sample, apartments.sample]
   )
   
   puts listing.id
