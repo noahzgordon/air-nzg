@@ -16,7 +16,13 @@ AirNZG.Views.UserForm = Backbone.View.extend({
 		
 		this.model.save(data, {
 			success: function(model, response) {
-				Backbone.history.navigate("/", { trigger: true })
+				view.model.fetch({
+					success: function() {
+						AirNZG.currentUser = view.model;
+						AirNZG.headerView.render();
+						Backbone.history.navigate("/", { trigger: true })
+					}
+				})
 			},
 			
 			error: function(model, response) {
