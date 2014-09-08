@@ -35,4 +35,20 @@
 	a {
 		color: #00606B;
 	}
+	
+	li {
+		padding: 20px;
+		padding-bottom: 10px;
+		
+		button {
+			padding: 3px 5px;
+			background: #333;
+			color: #fff;
+			border-radius: 5px;
+		}
+	}
+	
+	li.approve-deny-buttons {
+		padding-top: 0px;
+	}
 }
