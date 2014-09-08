@@ -80,6 +80,11 @@
 	margin: auto;
 }
 
+.listing-params input[type=date] {
+	color: #999;
+	border: 1px solid #000;
+}
+
 .listing-params input[type=radio] {
 	padding: 0 10px;
 	background: #008A99;
