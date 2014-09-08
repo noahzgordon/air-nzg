@@ -14,25 +14,22 @@ AirNZG.Views.UserForm = Backbone.View.extend({
 		
 		var data = $(event.currentTarget).serializeJSON();
 		
+		var message = this.model.isNew() ? "Account created!" : "Profile updated!"
+		
 		this.model.save(data, {
 			success: function(model, response) {
 				view.model.fetch({
 					success: function() {
 						AirNZG.currentUser = view.model;
 						AirNZG.headerView.render();
+						AirNZG.Utils.flashNotice(message)
 						Backbone.history.navigate("/", { trigger: true })
 					}
 				})
 			},
 			
 			error: function(model, response) {
-				var errorHtml = "<ul>"
-				response.responseJSON.forEach(function(error) {
-					errorHtml += "<li>" + error + "</li>"
-				})
-				errorHtml += "</ul>"
-				
-				view.$(".error-bar").html(errorHtml)
+				AirNZG.Utils.renderErrors(response.responseJSON)
 			}
 		});
 	},

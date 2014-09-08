@@ -9,6 +9,8 @@ AirNZG.Views.UserShow = Backbone.View.extend({
 		"click .contact-link": "newMessage"
 	},
 	
+	className: "user-show",
+	
 	newMessage: function(event) {
 		event.preventDefault();
 		

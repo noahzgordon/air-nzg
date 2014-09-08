@@ -1,15 +1,38 @@
 .my-listings-toggler {
-	width: 300px;
-	height: 400px;
+	width: 400px;
+	height: 150px;
+	margin: 50px;
 	display: block;
 	float: left;
-	border: 1px solid black;
+	border: 3px solid black;
+	
+	li {
+		margin: 30px;
+		font-size: 20px;
+		color: #777;
+		
+		a {
+			color: #00606B;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+	}
 }
 
 .my-listings-list {
 	width: 500px;
 	min-height: 400px;
 	display: block;
-	float: right;
-	border: 1px solid black;
+	border: 3px solid black;
+	float: left;
+	margin: 50px;
+	
+	p {
+		font-size: 20px;
+		margin: 30px;
+	}
+	
+	a {
+		color: #00606B;
+	}
 }

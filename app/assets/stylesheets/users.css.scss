@@ -1,0 +1,32 @@
+.user-show {
+	.sidebar {
+		width: 300px;
+		display: block;
+		float: left;
+		margin: 50px;
+		
+		.avatar-block {
+			img {
+				border: 5px solid #000;
+				display: block;
+				margin: auto;
+			}
+			
+			a {
+				color: #777;
+				text-decoration: underline;
+				display: block;
+				margin: auto;
+				text-align: center;
+			}
+		}
+	}
+	
+	.content {
+		display: block;
+		float: left;
+		.basic-info {
+			padding: 40px 20px;
+		}
+	}
+}
