@@ -34,7 +34,7 @@
 	}
 	
 	button {
-		width: 125px;
+		width: 200px;
 		height: 50px;
 		background: #000;
 		color: #fff;
@@ -75,4 +75,60 @@
 	border-top: 1px solid #121B32;
 	background: #365097;
 	padding-bottom: 9px;
+}
+
+.example-signins {
+	position: relative;
+	width: 500px;
+	margin: auto;
+	
+	button {
+		width: 100px;
+		height: 50px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		position: absolute;
+		bottom: 20px;
+		border-radius: 10px;
+	}
+	
+	.superman-signin {
+		background-color: #293999;
+		background-image: url(image_path("superman-logo.png"));
+	}
+	
+	.superman-signin:active {
+		box-sizing: border-box;
+		border-top: 1px solid #151D56;
+		background-color: #3042B8;
+	}
+	
+	.superman-signin:after {
+		content: "Sign In As Superman";
+		position: absolute;
+		left: 0;
+		bottom: -40px;
+	}
+
+	.batman-signin {
+		background-color: #595959;
+		background-image: url(image_path("batman-logo.png"));
+		left: 400px;
+	}
+	
+	.batman-signin:active {
+		box-sizing: border-box;
+		border-top: 1px solid #313131;
+		background-color: #727272;
+	}
+	
+	.batman-signin:after {
+		width: 100px;
+		content: "Sign In As Batman";
+		position: absolute;
+		left: 0;
+		bottom: -40px;
+	}
+	
 }
