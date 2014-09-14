@@ -7,7 +7,9 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 	
 	events: {
 		"click .exit": "exitView",
-		"submit .user-form": "signInUser"
+		"submit .user-form": "signInUser",
+		"click .superman-signin": "fillSuperman",
+		"click .batman-signin": "fillBatman"
 	},
 	
 	exitView: function(event) {
@@ -41,6 +43,16 @@ AirNZG.Views.SignIn = Backbone.View.extend({
 				AirNZG.Utils.renderErrors(data.responseJSON, view);
 			}
 		})
+	},
+	
+	fillSuperman: function(event) {
+		this.$("#user-email").val("superman@fortress.sol")
+		this.$("#user-password").val("password")
+	},
+	
+	fillBatman: function(event) {
+		this.$("#user-email").val("batman@batcave.net")
+		this.$("#user-password").val("password")
 	},
 	
 	render: function() {
