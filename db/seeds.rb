@@ -26,7 +26,7 @@ seed_text = CSV.foreach("#{Rails.root}/seeds/us-500.csv") do |row|
   
   listing = user.listings.create!(
     term: ["short", "long"].sample,
-    city: user.locale,
+    city: user.locale.downcase,
     accomodates: [1, 2, 3, 4].sample,
     title: "#{user.fname} #{user.lname}'s sweet apartment",
     description: "Check out this awesome apartment!",
@@ -62,7 +62,7 @@ bruce = User.create!(
   lname: "Wayne",
   email: "bruce@wayneenterprises.com",
   password: "password",
-  locale: "Chicago",
+  locale: "chicago",
   avatar: File.new("#{Rails.root}/seeds/images/bruce.png")
 )
 
@@ -70,7 +70,7 @@ batman = User.create!(
   fname: "Batman",
   email: "batman@batcave.net",
   password: "password",
-  locale: "Chicago",
+  locale: "chicago",
   avatar: File.new("#{Rails.root}/seeds/images/batman.jpg")
 )
 
@@ -78,7 +78,7 @@ joker = User.create!(
   fname: "Joker",
   email: "joker@arkham.com",
   password: "password",
-  locale: "Chicago",
+  locale: "chicago",
   avatar: File.new("#{Rails.root}/seeds/images/joker.jpg")
 )
 
@@ -86,7 +86,7 @@ superman = User.create!(
   fname: "Superman",
   email: "superman@fortress.sol",
   password: "password",
-  locale: "New York",
+  locale: "new york",
   avatar: File.new("#{Rails.root}/seeds/images/superman.jpg")
 )
 
@@ -95,7 +95,7 @@ lex = User.create!(
   lname: "Luthor",
   email: "lex@lexcorp.org",
   password: "password",
-  locale: "New York",
+  locale: "new york",
   avatar: File.new("#{Rails.root}/seeds/images/lex.jpg")
 )
 
@@ -106,7 +106,7 @@ l1 = bruce.listings.create!(
   room_type: "private",
   accomodates: 1,
   term: "long",
-  city: "Chicago",
+  city: "chicago",
   price: 5000,
   latitude: 41.666085,
   longitude: -87.893272,
@@ -124,7 +124,7 @@ l2 = batman.listings.create!(
   room_type: "shared",
   accomodates: 2,
   term: "long",
-  city: "Chicago",
+  city: "chicago",
   price: 500,
   address: "A Hidden Cave",
   latitude: 41.676043,

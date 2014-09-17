@@ -7,7 +7,7 @@ class Api::ListingsController < ApplicationController
     @listings = Listing.includes(:unavailable_ranges).includes(:photos).all
 
     if params[:city].present?
-      @listings = @listings.where(city: params[:city])
+      @listings = @listings.where(city: params[:city].downcase)
     end
 
     if params[:accomodates].present?
