@@ -15,6 +15,52 @@ class Listing < ActiveRecord::Base
   validates :room_type, inclusion: { in: %w(whole private shared),
                                      message: "Not a valid room type."}
 
+  def self.find_by_params_hash(params)
+    listings = Listing.includes(:unavailable_ranges).includes(:photos)
+
+    if params[:city].present?
+     listings = listings.where(city: params[:city].downcase)
+    end
+
+    if params[:accomodates].present?
+     listings = listings.where("accomodates >= ?", params[:accomodates])
+    end
+
+    if params[:room_type].present?
+     listings = listings.where(room_type: params[:room_type])
+    end
+
+    if params[:low_price].present? && params[:high_price].present?
+     listings = listings.where(
+       "price >= ? AND price <= ?",
+       params[:low_price],
+       params[:high_price]
+     )
+    end
+
+    if params[:term].present?
+     listings = listings.where(term: params[:term])
+    end
+
+    if params[:home_type].present?
+     listings = listings.where(home_type: params[:home_type])
+    end
+
+    [:essentials, :tv, :cable, :ac, :heat, :kitchen, :internet, :wifi].each do |amenity|
+     if params[amenity].present? && params[amenity]
+       listings = listings.where(amenity => true)
+     end
+    end
+
+    if params[:start].present? && params[:end].present?
+     listings = listings.includes(:unavailable_ranges).select do |listing|
+       listing.available_range?(params[:start], params[:end])
+     end
+    end
+    
+    listings
+  end
+
   def available_range?(start_date, end_date)
     return false if self.unavailable_ranges
       .where.not("start_date >= ? AND end_date <= ?", start_date, end_date)
